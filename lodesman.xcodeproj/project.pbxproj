@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A786072279D5EB900532E1D /* Forum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A786071279D5EB900532E1D /* Forum.swift */; };
 		2A7A8524279D3C83003579FF /* lodesmanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7A8523279D3C83003579FF /* lodesmanApp.swift */; };
 		2A7A8526279D3C83003579FF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7A8525279D3C83003579FF /* ContentView.swift */; };
 		2A7A8528279D3C84003579FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A7A8527279D3C84003579FF /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A786071279D5EB900532E1D /* Forum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forum.swift; sourceTree = "<group>"; };
 		2A7A8520279D3C83003579FF /* lodesman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lodesman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A7A8523279D3C83003579FF /* lodesmanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lodesmanApp.swift; sourceTree = "<group>"; };
 		2A7A8525279D3C83003579FF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -37,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A786070279D5EA200532E1D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2A786071279D5EB900532E1D /* Forum.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		2A7A8517279D3C83003579FF = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +68,7 @@
 		2A7A8522279D3C83003579FF /* lodesman */ = {
 			isa = PBXGroup;
 			children = (
+				2A786070279D5EA200532E1D /* Model */,
 				2A7A8523279D3C83003579FF /* lodesmanApp.swift */,
 				2A7A8525279D3C83003579FF /* ContentView.swift */,
 				2A7A8527279D3C84003579FF /* Assets.xcassets */,
@@ -149,6 +160,7 @@
 			files = (
 				2A7A8526279D3C83003579FF /* ContentView.swift in Sources */,
 				2A7A8524279D3C83003579FF /* lodesmanApp.swift in Sources */,
+				2A786072279D5EB900532E1D /* Forum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
