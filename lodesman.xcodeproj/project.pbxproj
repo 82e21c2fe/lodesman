@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2A786072279D5EB900532E1D /* Forum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A786071279D5EB900532E1D /* Forum.swift */; };
 		2A786075279D5F6000532E1D /* ForumRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A786074279D5F6000532E1D /* ForumRow.swift */; };
+		2A786077279D601D00532E1D /* ForumListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A786076279D601D00532E1D /* ForumListView.swift */; };
 		2A7A8524279D3C83003579FF /* lodesmanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7A8523279D3C83003579FF /* lodesmanApp.swift */; };
 		2A7A8526279D3C83003579FF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7A8525279D3C83003579FF /* ContentView.swift */; };
 		2A7A8528279D3C84003579FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A7A8527279D3C84003579FF /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		2A786071279D5EB900532E1D /* Forum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forum.swift; sourceTree = "<group>"; };
 		2A786074279D5F6000532E1D /* ForumRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumRow.swift; sourceTree = "<group>"; };
+		2A786076279D601D00532E1D /* ForumListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumListView.swift; sourceTree = "<group>"; };
 		2A7A8520279D3C83003579FF /* lodesman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lodesman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A7A8523279D3C83003579FF /* lodesmanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lodesmanApp.swift; sourceTree = "<group>"; };
 		2A7A8525279D3C83003579FF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 		2A786073279D5F4500532E1D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2A786076279D601D00532E1D /* ForumListView.swift */,
 				2A786074279D5F6000532E1D /* ForumRow.swift */,
 			);
 			path = Views;
@@ -172,6 +175,7 @@
 				2A7A8526279D3C83003579FF /* ContentView.swift in Sources */,
 				2A7A8524279D3C83003579FF /* lodesmanApp.swift in Sources */,
 				2A786075279D5F6000532E1D /* ForumRow.swift in Sources */,
+				2A786077279D601D00532E1D /* ForumListView.swift in Sources */,
 				2A786072279D5EB900532E1D /* Forum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
