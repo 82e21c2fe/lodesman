@@ -27,10 +27,11 @@ struct ForumRow: View
 }
 
 
-
+#if DEBUG
 struct ForumRow_Previews: PreviewProvider {
     static var previews: some View {
         ForumRow(forum: ForumStub())
             .frame(width: 400)
     }
 }
+#endif

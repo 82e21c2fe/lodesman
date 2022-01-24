@@ -23,10 +23,11 @@ struct ForumListView: View
 }
 
 
-
+#if DEBUG
 struct ForumListView_Previews: PreviewProvider {
     static var previews: some View {
         ForumListView(forums: ForumStub.preview, selection: .constant([]))
             .frame(width: 400)
     }
 }
+#endif

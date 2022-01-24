@@ -17,7 +17,7 @@ protocol Forum
 }
 
 
-
+#if DEBUG
 struct ForumStub: Forum
 {
     var forumId: Int = 0
@@ -31,3 +31,4 @@ struct ForumStub: Forum
             ForumStub(forumId: index, title: title, numberOfTopics: index * 9_876)
         }
 }
+#endif
