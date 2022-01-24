@@ -17,7 +17,7 @@ protocol ForumCatalogFetching
 
 
 #if DEBUG
-struct ForumCatalogFecher: ForumCatalogFetching
+struct ForumCatalogFetcherStub: ForumCatalogFetching
 {
     func fetchForumCatalog() -> AnyPublisher<Catalog, FetchingError> {
         return Future{ $0(.success(CatalogStub.preview)) }
