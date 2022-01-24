@@ -10,6 +10,8 @@
 		2A786072279D5EB900532E1D /* Forum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A786071279D5EB900532E1D /* Forum.swift */; };
 		2A786075279D5F6000532E1D /* ForumRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A786074279D5F6000532E1D /* ForumRow.swift */; };
 		2A786077279D601D00532E1D /* ForumListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A786076279D601D00532E1D /* ForumListView.swift */; };
+		2A7860A4279E779A00532E1D /* Catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7860A3279E779A00532E1D /* Catalog.swift */; };
+		2A7860B3279E7C3A00532E1D /* CatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7860B2279E7C3A00532E1D /* CatalogTests.swift */; };
 		2A7A8524279D3C83003579FF /* lodesmanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7A8523279D3C83003579FF /* lodesmanApp.swift */; };
 		2A7A8526279D3C83003579FF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7A8525279D3C83003579FF /* ContentView.swift */; };
 		2A7A8528279D3C84003579FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A7A8527279D3C84003579FF /* Assets.xcassets */; };
@@ -18,10 +20,23 @@
 		2A7A8535279D3D61003579FF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2A7A8534279D3D61003579FF /* LICENSE */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2A7860AD279E7C1F00532E1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A7A8518279D3C83003579FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A7A851F279D3C83003579FF;
+			remoteInfo = lodesman;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		2A786071279D5EB900532E1D /* Forum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forum.swift; sourceTree = "<group>"; };
 		2A786074279D5F6000532E1D /* ForumRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumRow.swift; sourceTree = "<group>"; };
 		2A786076279D601D00532E1D /* ForumListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumListView.swift; sourceTree = "<group>"; };
+		2A7860A3279E779A00532E1D /* Catalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catalog.swift; sourceTree = "<group>"; };
+		2A7860A9279E7C1F00532E1D /* lodesmanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lodesmanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A7860B2279E7C3A00532E1D /* CatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTests.swift; sourceTree = "<group>"; };
 		2A7A8520279D3C83003579FF /* lodesman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lodesman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A7A8523279D3C83003579FF /* lodesmanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lodesmanApp.swift; sourceTree = "<group>"; };
 		2A7A8525279D3C83003579FF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -33,6 +48,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2A7860A6279E7C1F00532E1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A7A851D279D3C83003579FF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -47,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				2A786071279D5EB900532E1D /* Forum.swift */,
+				2A7860A3279E779A00532E1D /* Catalog.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -60,12 +83,21 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		2A7860AA279E7C1F00532E1D /* lodesmanTests */ = {
+			isa = PBXGroup;
+			children = (
+				2A7860B2279E7C3A00532E1D /* CatalogTests.swift */,
+			);
+			path = lodesmanTests;
+			sourceTree = "<group>";
+		};
 		2A7A8517279D3C83003579FF = {
 			isa = PBXGroup;
 			children = (
 				2A7A8532279D3D54003579FF /* README.md */,
 				2A7A8534279D3D61003579FF /* LICENSE */,
 				2A7A8522279D3C83003579FF /* lodesman */,
+				2A7860AA279E7C1F00532E1D /* lodesmanTests */,
 				2A7A8521279D3C83003579FF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				2A7A8520279D3C83003579FF /* lodesman.app */,
+				2A7860A9279E7C1F00532E1D /* lodesmanTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,6 +136,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2A7860A8279E7C1F00532E1D /* lodesmanTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A7860AF279E7C1F00532E1D /* Build configuration list for PBXNativeTarget "lodesmanTests" */;
+			buildPhases = (
+				2A7860A5279E7C1F00532E1D /* Sources */,
+				2A7860A6279E7C1F00532E1D /* Frameworks */,
+				2A7860A7279E7C1F00532E1D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A7860AE279E7C1F00532E1D /* PBXTargetDependency */,
+			);
+			name = lodesmanTests;
+			productName = lodesmanTests;
+			productReference = 2A7860A9279E7C1F00532E1D /* lodesmanTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		2A7A851F279D3C83003579FF /* lodesman */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A7A852F279D3C84003579FF /* Build configuration list for PBXNativeTarget "lodesman" */;
@@ -130,6 +181,10 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					2A7860A8279E7C1F00532E1D = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 2A7A851F279D3C83003579FF;
+					};
 					2A7A851F279D3C83003579FF = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -149,11 +204,19 @@
 			projectRoot = "";
 			targets = (
 				2A7A851F279D3C83003579FF /* lodesman */,
+				2A7860A8279E7C1F00532E1D /* lodesmanTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2A7860A7279E7C1F00532E1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A7A851E279D3C83003579FF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -168,11 +231,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2A7860A5279E7C1F00532E1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A7860B3279E7C3A00532E1D /* CatalogTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A7A851C279D3C83003579FF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2A7A8526279D3C83003579FF /* ContentView.swift in Sources */,
+				2A7860A4279E779A00532E1D /* Catalog.swift in Sources */,
 				2A7A8524279D3C83003579FF /* lodesmanApp.swift in Sources */,
 				2A786075279D5F6000532E1D /* ForumRow.swift in Sources */,
 				2A786077279D601D00532E1D /* ForumListView.swift in Sources */,
@@ -182,7 +254,47 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2A7860AE279E7C1F00532E1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A7A851F279D3C83003579FF /* lodesman */;
+			targetProxy = 2A7860AD279E7C1F00532E1D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		2A7860B0279E7C1F00532E1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ee.82e21c2fe.lodesmanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/lodesman.app/Contents/MacOS/lodesman";
+			};
+			name = Debug;
+		};
+		2A7860B1279E7C1F00532E1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ee.82e21c2fe.lodesmanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/lodesman.app/Contents/MacOS/lodesman";
+			};
+			name = Release;
+		};
 		2A7A852D279D3C84003579FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -351,6 +463,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2A7860AF279E7C1F00532E1D /* Build configuration list for PBXNativeTarget "lodesmanTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A7860B0279E7C1F00532E1D /* Debug */,
+				2A7860B1279E7C1F00532E1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2A7A851B279D3C83003579FF /* Build configuration list for PBXProject "lodesman" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
