@@ -32,10 +32,10 @@ protocol Catalog
 //MARK: - forEach
 extension CatalogItem
 {
-    func forEach(_ body: (CatalogItem) -> Void) {
+    func forEachChildren(_ body: (CatalogItem) -> Void) {
         for child in children ?? [] {
             body(child)
-            child.forEach(body)
+            child.forEachChildren(body)
         }
     }
 }
@@ -45,7 +45,7 @@ extension Catalog
     func forEach(_ body: (CatalogItem) -> Void) {
         for item in root {
             body(item)
-            item.forEach(body)
+            item.forEachChildren(body)
         }
     }
 }
