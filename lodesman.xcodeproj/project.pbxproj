@@ -18,6 +18,7 @@
 		2A7860BC279E982800532E1D /* FetchingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7860BB279E982800532E1D /* FetchingError.swift */; };
 		2A7860BE279E998C00532E1D /* ForumCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7860BD279E998C00532E1D /* ForumCatalogView.swift */; };
 		2A7860C0279E9A4600532E1D /* ForumCatalog.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7860BF279E9A4600532E1D /* ForumCatalog.ViewModel.swift */; };
+		2A7860D2279FEB7600532E1D /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7860D1279FEB7600532E1D /* Topic.swift */; };
 		2A7A8524279D3C83003579FF /* lodesmanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7A8523279D3C83003579FF /* lodesmanApp.swift */; };
 		2A7A8526279D3C83003579FF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7A8525279D3C83003579FF /* ContentView.swift */; };
 		2A7A8528279D3C84003579FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A7A8527279D3C84003579FF /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		2A7860BB279E982800532E1D /* FetchingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingError.swift; sourceTree = "<group>"; };
 		2A7860BD279E998C00532E1D /* ForumCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumCatalogView.swift; sourceTree = "<group>"; };
 		2A7860BF279E9A4600532E1D /* ForumCatalog.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumCatalog.ViewModel.swift; sourceTree = "<group>"; };
+		2A7860D1279FEB7600532E1D /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		2A7A8520279D3C83003579FF /* lodesman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lodesman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A7A8523279D3C83003579FF /* lodesmanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lodesmanApp.swift; sourceTree = "<group>"; };
 		2A7A8525279D3C83003579FF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			children = (
 				2A786071279D5EB900532E1D /* Forum.swift */,
 				2A7860A3279E779A00532E1D /* Catalog.swift */,
+				2A7860D1279FEB7600532E1D /* Topic.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				2A7A8524279D3C83003579FF /* lodesmanApp.swift in Sources */,
 				2A786075279D5F6000532E1D /* ForumRow.swift in Sources */,
 				2A7860BA279E96B300532E1D /* ForumCatalogFetching.swift in Sources */,
+				2A7860D2279FEB7600532E1D /* Topic.swift in Sources */,
 				2A7860B5279E93F900532E1D /* CatalogRow.swift in Sources */,
 				2A7860C0279E9A4600532E1D /* ForumCatalog.ViewModel.swift in Sources */,
 				2A786077279D601D00532E1D /* ForumListView.swift in Sources */,
