@@ -16,7 +16,7 @@ extension TopicStub
                                     title: String = "untitled",
                                     lastUpdate: Date = Date()) -> TopicStub
     {
-        return TopicStub(topicId: topicId, pinned: pinned, title: title, lastUpdate: lastUpdate)
+        return TopicStub(topicId: topicId, title: title, lastUpdate: lastUpdate, pinned: pinned)
     }
 }
 

@@ -17,39 +17,69 @@ enum TopicStatus: String
 }
 
 
+protocol Attachment
+{
+    var link: URL { get }
+    /// Estimated content size in gigabytes.
+    var size: Float { get }
+    /// Content availability from 0 to 5 points.
+    var availability: Int { get }
+}
+
+
 protocol Topic
 {
     var topicId: Int { get }
-    var title: String { get }
     var status: TopicStatus { get }
-
-    /// Estimated content size in gigabytes.
-    var contentSize: Float { get }
-
-    /// Content availability from 0 to 5 points.
-    var availability: Int { get }
-
+    var title: String { get }
+    var synopsis: String { get }
+    var attachment: Attachment? { get }
     var lastUpdate: Date { get }
     var pinned: Bool { get }
 }
 
 
 #if DEBUG
+struct AttachmentStub: Attachment
+{
+    var link: URL = URL(string: "https://example.home.arpa/bigfile.dat")!
+    var size: Float = 12.5
+    var availability: Int = 5
+}
+
 struct TopicStub: Topic
 {
     var topicId: Int = 1
-    var pinned: Bool = false
-    var title: String = "untitled"
     var status: TopicStatus = .approved
-    var contentSize: Float = 34.5
-    var availability: Int = 5
+    var title: String = "untitled"
+    var synopsis: String = TopicStub.synopsis
+    var attachment: Attachment?
     var lastUpdate: Date = Date()
+    var pinned: Bool = false
 
     static let preview = [
-        TopicStub(topicId: 3, title: "first topic", lastUpdate: Date(timeIntervalSinceNow: -100_000)),
-        TopicStub(topicId: 2, pinned: true, title: "second topic", lastUpdate: Date(timeIntervalSinceNow: -50_000)),
-        TopicStub(topicId: 7, status: .duplicate, availability: 1),
-        TopicStub(topicId: 5, status: .consumed, contentSize: 0.45, availability: 3)
+        TopicStub(topicId: 3,
+                  title: "first topic",
+                  attachment: AttachmentStub(size: 0.45, availability: 3),
+                  lastUpdate: Date(timeIntervalSinceNow: -100_000)),
+        TopicStub(topicId: 2,
+                  title: "second topic",
+                  synopsis: "",
+                  attachment: AttachmentStub(size: 0.00045, availability: 3),
+                  lastUpdate: Date(timeIntervalSinceNow: -50_000),
+                  pinned: true),
+        TopicStub(topicId: 7, status: .duplicate, attachment: AttachmentStub(availability: 1)),
+        TopicStub(topicId: 5, status: .consumed)
     ]
+
+    static let synopsis = """
+        <h1>Lorem ipsum...</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore
+           et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis
+           suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit
+           in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat
+           cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        """
 }
 #endif

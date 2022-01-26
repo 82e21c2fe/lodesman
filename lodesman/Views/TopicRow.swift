@@ -13,7 +13,7 @@ extension TopicStatus
     var color: Color {
         switch self {
         case .approved:     return .green
-        case .duplicate:    return .blue
+        case .duplicate:    return .orange
         case .consumed:     return .gray
         }
     }
@@ -22,28 +22,26 @@ extension TopicStatus
 
 struct TopicRow: View
 {
-    private let viewModel: ViewModel
+    private let topic: Topic
 
     init(_ topic: Topic) {
-        viewModel = .init(topic)
+        self.topic = topic
     }
 
     var body: some View {
         HStack {
-            VStack(alignment: .trailing, spacing: 5) {
-                Text(viewModel.contentSize)
-                    .foregroundColor(.secondary)
+            VStack(alignment: .trailing) {
+                Text(topic.status.rawValue)
+                    .foregroundColor(topic.status.color)
                     .font(.title3)
-                Text(viewModel.status.rawValue)
-                    .foregroundColor(viewModel.status.color)
-                Text(viewModel.availability)
-                    .foregroundColor(.yellow)
-                Spacer()
+                if topic.attachment != nil {
+                    AttachmentView(topic.attachment!)
+                }
             }
             .padding(.leading)
-            .frame(width: 80)
+            .frame(width: 90)
             Divider()
-            Text(viewModel.title)
+            Text(topic.title)
                 .lineLimit(4)
                 .font(.title2)
                 .foregroundColor(.primary)
@@ -53,22 +51,28 @@ struct TopicRow: View
                 .labelStyle(.iconOnly)
                 .imageScale(.large)
                 .padding()
-                .opacity(viewModel.pinned ? 1 : 0)
+                .opacity(topic.pinned ? 1 : 0)
         }
         .fixedSize(horizontal: false, vertical: true)
     }
 }
 
 
-
 #if DEBUG
 struct TopicRow_Previews: PreviewProvider {
     static let longTitle = repeatElement("a", count: 85).joined().capitalized
+
     static var previews: some View {
         Group {
-            TopicRow(TopicStub(pinned: true, title: longTitle, status: .approved, availability: 5))
-            TopicRow(TopicStub(status: .duplicate, contentSize: 0.5, availability: 3))
-            TopicRow(TopicStub(status: .consumed, contentSize: 0.0004, availability: 0))
+            TopicRow(TopicStub(status: .approved,
+                               title: longTitle,
+                               attachment: AttachmentStub(availability: 5),
+                               pinned: true))
+
+            TopicRow(TopicStub(status: .duplicate,
+                               attachment: AttachmentStub(size: 0.5, availability: 3)))
+
+            TopicRow(TopicStub(status: .consumed))
         }
         .frame(width: 400)
     }
