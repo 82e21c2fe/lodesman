@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A53706127A427D8000ABBDA /* TopicSortOrderPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A53706027A427D8000ABBDA /* TopicSortOrderPicker.swift */; };
 		2A5B058C27A40AD300319826 /* ForumStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B058B27A40AD300319826 /* ForumStorage.swift */; };
 		2A5B058F27A40C0400319826 /* ToggleSidebarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B058E27A40C0400319826 /* ToggleSidebarButton.swift */; };
 		2A5B059127A40C6400319826 /* ForumSubscriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B059027A40C6400319826 /* ForumSubscriptionButton.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A53706027A427D8000ABBDA /* TopicSortOrderPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSortOrderPicker.swift; sourceTree = "<group>"; };
 		2A5B058B27A40AD300319826 /* ForumStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumStorage.swift; sourceTree = "<group>"; };
 		2A5B058E27A40C0400319826 /* ToggleSidebarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleSidebarButton.swift; sourceTree = "<group>"; };
 		2A5B059027A40C6400319826 /* ForumSubscriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumSubscriptionButton.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				2A5B058E27A40C0400319826 /* ToggleSidebarButton.swift */,
 				2A5B059027A40C6400319826 /* ForumSubscriptionButton.swift */,
 				2A5B059227A40CAB00319826 /* ForumUnsubscriptionButton.swift */,
+				2A53706027A427D8000ABBDA /* TopicSortOrderPicker.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				2AD1FDFB27A1B77000EE7778 /* AttributedTextView.swift in Sources */,
 				2A5B059127A40C6400319826 /* ForumSubscriptionButton.swift in Sources */,
 				2A5B059827A4222B00319826 /* TopicStorage.swift in Sources */,
+				2A53706127A427D8000ABBDA /* TopicSortOrderPicker.swift in Sources */,
 				2A7860DC279FF33F00532E1D /* TopicList.ViewModel.swift in Sources */,
 				2A7860D2279FEB7600532E1D /* Topic.swift in Sources */,
 				2A5B059627A40E3D00319826 /* SidebarView.swift in Sources */,
