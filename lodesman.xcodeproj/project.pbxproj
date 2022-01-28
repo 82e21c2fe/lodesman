@@ -12,6 +12,7 @@
 		2A5B059127A40C6400319826 /* ForumSubscriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B059027A40C6400319826 /* ForumSubscriptionButton.swift */; };
 		2A5B059327A40CAB00319826 /* ForumUnsubscriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B059227A40CAB00319826 /* ForumUnsubscriptionButton.swift */; };
 		2A5B059627A40E3D00319826 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B059527A40E3D00319826 /* SidebarView.swift */; };
+		2A5B059827A4222B00319826 /* TopicStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B059727A4222B00319826 /* TopicStorage.swift */; };
 		2A786072279D5EB900532E1D /* Forum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A786071279D5EB900532E1D /* Forum.swift */; };
 		2A786075279D5F6000532E1D /* ForumRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A786074279D5F6000532E1D /* ForumRow.swift */; };
 		2A786077279D601D00532E1D /* ForumListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A786076279D601D00532E1D /* ForumListView.swift */; };
@@ -56,6 +57,7 @@
 		2A5B059027A40C6400319826 /* ForumSubscriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumSubscriptionButton.swift; sourceTree = "<group>"; };
 		2A5B059227A40CAB00319826 /* ForumUnsubscriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumUnsubscriptionButton.swift; sourceTree = "<group>"; };
 		2A5B059527A40E3D00319826 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		2A5B059727A4222B00319826 /* TopicStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicStorage.swift; sourceTree = "<group>"; };
 		2A786071279D5EB900532E1D /* Forum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forum.swift; sourceTree = "<group>"; };
 		2A786074279D5F6000532E1D /* ForumRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumRow.swift; sourceTree = "<group>"; };
 		2A786076279D601D00532E1D /* ForumListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumListView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				2A7860A3279E779A00532E1D /* Catalog.swift */,
 				2A7860D1279FEB7600532E1D /* Topic.swift */,
 				2A5B058B27A40AD300319826 /* ForumStorage.swift */,
+				2A5B059727A4222B00319826 /* TopicStorage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				2AD1FDF727A1B1C200EE7778 /* AttachmentView.swift in Sources */,
 				2AD1FDFB27A1B77000EE7778 /* AttributedTextView.swift in Sources */,
 				2A5B059127A40C6400319826 /* ForumSubscriptionButton.swift in Sources */,
+				2A5B059827A4222B00319826 /* TopicStorage.swift in Sources */,
 				2A7860DC279FF33F00532E1D /* TopicList.ViewModel.swift in Sources */,
 				2A7860D2279FEB7600532E1D /* Topic.swift in Sources */,
 				2A5B059627A40E3D00319826 /* SidebarView.swift in Sources */,
