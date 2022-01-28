@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2A5B058C27A40AD300319826 /* ForumStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B058B27A40AD300319826 /* ForumStorage.swift */; };
+		2A5B058F27A40C0400319826 /* ToggleSidebarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B058E27A40C0400319826 /* ToggleSidebarButton.swift */; };
 		2A786072279D5EB900532E1D /* Forum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A786071279D5EB900532E1D /* Forum.swift */; };
 		2A786075279D5F6000532E1D /* ForumRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A786074279D5F6000532E1D /* ForumRow.swift */; };
 		2A786077279D601D00532E1D /* ForumListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A786076279D601D00532E1D /* ForumListView.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		2A5B058B27A40AD300319826 /* ForumStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumStorage.swift; sourceTree = "<group>"; };
+		2A5B058E27A40C0400319826 /* ToggleSidebarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleSidebarButton.swift; sourceTree = "<group>"; };
 		2A786071279D5EB900532E1D /* Forum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forum.swift; sourceTree = "<group>"; };
 		2A786074279D5F6000532E1D /* ForumRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumRow.swift; sourceTree = "<group>"; };
 		2A786076279D601D00532E1D /* ForumListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumListView.swift; sourceTree = "<group>"; };
@@ -97,6 +99,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A5B058D27A40BEB00319826 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				2A5B058E27A40C0400319826 /* ToggleSidebarButton.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
 		2A786070279D5EA200532E1D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +179,7 @@
 		2A7A8522279D3C83003579FF /* lodesman */ = {
 			isa = PBXGroup;
 			children = (
+				2A5B058D27A40BEB00319826 /* Controls */,
 				2A7860B8279E969900532E1D /* Network */,
 				2A786073279D5F4500532E1D /* Views */,
 				2A786070279D5EA200532E1D /* Model */,
@@ -312,6 +323,7 @@
 				2A7A8524279D3C83003579FF /* lodesmanApp.swift in Sources */,
 				2A786075279D5F6000532E1D /* ForumRow.swift in Sources */,
 				2A7860BA279E96B300532E1D /* ForumCatalogFetching.swift in Sources */,
+				2A5B058F27A40C0400319826 /* ToggleSidebarButton.swift in Sources */,
 				2AD1FDF727A1B1C200EE7778 /* AttachmentView.swift in Sources */,
 				2AD1FDFB27A1B77000EE7778 /* AttributedTextView.swift in Sources */,
 				2A7860DC279FF33F00532E1D /* TopicList.ViewModel.swift in Sources */,
