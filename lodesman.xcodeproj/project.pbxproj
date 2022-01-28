@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2A53706127A427D8000ABBDA /* TopicSortOrderPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A53706027A427D8000ABBDA /* TopicSortOrderPicker.swift */; };
+		2A53706327A4292D000ABBDA /* TopicPinButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A53706227A4292D000ABBDA /* TopicPinButton.swift */; };
 		2A5B058C27A40AD300319826 /* ForumStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B058B27A40AD300319826 /* ForumStorage.swift */; };
 		2A5B058F27A40C0400319826 /* ToggleSidebarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B058E27A40C0400319826 /* ToggleSidebarButton.swift */; };
 		2A5B059127A40C6400319826 /* ForumSubscriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B059027A40C6400319826 /* ForumSubscriptionButton.swift */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		2A53706027A427D8000ABBDA /* TopicSortOrderPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSortOrderPicker.swift; sourceTree = "<group>"; };
+		2A53706227A4292D000ABBDA /* TopicPinButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicPinButton.swift; sourceTree = "<group>"; };
 		2A5B058B27A40AD300319826 /* ForumStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumStorage.swift; sourceTree = "<group>"; };
 		2A5B058E27A40C0400319826 /* ToggleSidebarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleSidebarButton.swift; sourceTree = "<group>"; };
 		2A5B059027A40C6400319826 /* ForumSubscriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumSubscriptionButton.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				2A5B059027A40C6400319826 /* ForumSubscriptionButton.swift */,
 				2A5B059227A40CAB00319826 /* ForumUnsubscriptionButton.swift */,
 				2A53706027A427D8000ABBDA /* TopicSortOrderPicker.swift */,
+				2A53706227A4292D000ABBDA /* TopicPinButton.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				2A7A8526279D3C83003579FF /* ContentView.swift in Sources */,
 				2A7860BE279E998C00532E1D /* ForumCatalogView.swift in Sources */,
 				2AD1FDF927A1B1E500EE7778 /* Attachment.ViewModel.swift in Sources */,
+				2A53706327A4292D000ABBDA /* TopicPinButton.swift in Sources */,
 				2A7860D4279FF06500532E1D /* TopicRow.swift in Sources */,
 				2A7860A4279E779A00532E1D /* Catalog.swift in Sources */,
 				2A7860DA279FF32A00532E1D /* TopicListView.swift in Sources */,
