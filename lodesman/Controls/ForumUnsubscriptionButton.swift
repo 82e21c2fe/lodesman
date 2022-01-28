@@ -9,9 +9,9 @@ import SwiftUI
 
 
 
-struct ForumUnsubscriptionButton: View
+struct ForumUnsubscriptionButton<Storage: ForumStorage>: View
 {
-    let storage: ForumStorage
+    let storage: Storage
     @Binding var selection: Set<Int>
 
     var body: some View {

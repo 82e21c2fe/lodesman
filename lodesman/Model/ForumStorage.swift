@@ -9,7 +9,7 @@ import Foundation
 
 
 
-protocol ForumStorage
+protocol ForumStorage: ObservableObject
 {
     var forums: [Forum] { get }
     func insert(forums items: [(forumId: Int, title: String)])
@@ -41,6 +41,7 @@ final class ForumStorageStub: ForumStorage
     private(set) var forums: [Forum] = ForumStub.preview
 
     func insert(forums items: [(forumId: Int, title: String)]) {
+        objectWillChange.send()
         for item in items {
             let newValue = ForumStub(forumId: item.forumId, title: item.title)
             if let index = forums.firstIndex(where: { $0.forumId == item.forumId }) {
@@ -52,8 +53,9 @@ final class ForumStorageStub: ForumStorage
         }
     }
 
-    func remove(forums ids: Set<Int>) {
-        forums = forums.filter({ ids.contains($0.forumId) })
+    func remove(forums forumIds: Set<Int>) {
+        objectWillChange.send()
+        forums = forums.filter({ !forumIds.contains($0.forumId) })
     }
 }
 #endif
