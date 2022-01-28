@@ -19,6 +19,7 @@ enum TopicSortOrder: CaseIterable, Identifiable
 
 protocol TopicStorage: ObservableObject
 {
+    func topic(withId topicId: Int) -> Topic?
     func topics(fromForums: Set<Int>, whereTitleContains text: String, sortedBy: TopicSortOrder) -> [Topic]
     func togglePin(forTopics topicIds: Set<Int>)
 }
@@ -37,6 +38,10 @@ extension TopicSortOrder
 
 final class TopicStorageStub: TopicStorage
 {
+    func topic(withId topicId: Int) -> Topic? {
+        return topics.first(where: { $0.topicId == topicId })
+    }
+
     func topics(fromForums: Set<Int>, whereTitleContains text: String, sortedBy: TopicSortOrder) -> [Topic] {
         let result = !text.isEmpty ? topics.filter({ $0.title.localizedStandardContains(text) }) : topics
         return result.sorted(by: sortedBy.comparator)
