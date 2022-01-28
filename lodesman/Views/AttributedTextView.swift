@@ -9,56 +9,30 @@ import SwiftUI
 
 
 
-struct AttributedTextView: View
+struct AttributedTextView: NSViewRepresentable
 {
-    private let text: NSAttributedString
-    private let pageWidth: CGFloat
-    @State private var frameHeight: CGFloat = .zero
+    let text: NSAttributedString
 
-    init(_ text: NSAttributedString, pageWidth: CGFloat = .greatestFiniteMagnitude) {
-        self.text = text
-        self.pageWidth = pageWidth
+    func makeNSView(context: Context) -> some NSScrollView {
+        let textView = NSTextView()
+        textView.isEditable = false
+        textView.autoresizingMask = [.width]
+        textView.translatesAutoresizingMaskIntoConstraints = true
+        textView.isVerticallyResizable = true
+        textView.isHorizontallyResizable = false
+
+        let scroll = NSScrollView()
+        scroll.hasVerticalScroller = true
+        scroll.documentView = textView
+        scroll.drawsBackground = false
+
+        return scroll
     }
 
-    var body: some View {
-        TextRepresentable(text, pageWidth: pageWidth, frameHeight: $frameHeight)
-            .frame(width: pageWidth, height: frameHeight)
+    func updateNSView(_ nsView: NSViewType, context: Context) {
+        (nsView.documentView as? NSTextView)?.textStorage?.setAttributedString(text)
     }
-}
-
-
-extension AttributedTextView
-{
-    private struct TextRepresentable: NSViewRepresentable
-    {
-        private let text: NSAttributedString
-        private let pageSize: CGSize
-        @Binding private var frameHeight: CGFloat
-
-        init(_ text: NSAttributedString, pageWidth: CGFloat, frameHeight: Binding<CGFloat>) {
-            self.text = text
-            self.pageSize = CGSize(width: pageWidth, height: .greatestFiniteMagnitude)
-            self._frameHeight = frameHeight
-        }
-
-        func makeNSView(context: Context) -> NSTextView {
-            let textView = NSTextView()
-            textView.textContainer!.widthTracksTextView = false
-            textView.textContainer!.size = pageSize
-            textView.drawsBackground = false
-            textView.isEditable = false
-            return textView
-        }
-
-        func updateNSView(_ nsView: NSTextView, context: Context) {
-            nsView.textStorage?.setAttributedString(text)
-            DispatchQueue.main.async {
-                let rect = nsView.textStorage!.boundingRect(with: pageSize,
-                                                            options: .usesLineFragmentOrigin)
-                frameHeight = ceil(rect.height)
-            }
-        }
-    }
+    
 }
 
 
@@ -81,9 +55,9 @@ struct AttributedTextView_Previews: PreviewProvider {
     }()
 
     static var previews: some View {
-        return AttributedTextView(text, pageWidth: 300)
+        return AttributedTextView(text: text)
             .padding()
-            .frame(width: 350, height: 100)
+            .frame(width: 450)
     }
 }
 #endif
