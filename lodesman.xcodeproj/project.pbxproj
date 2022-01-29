@@ -39,6 +39,9 @@
 		2A7A852B279D3C84003579FF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A7A852A279D3C84003579FF /* Preview Assets.xcassets */; };
 		2A7A8533279D3D54003579FF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2A7A8532279D3D54003579FF /* README.md */; };
 		2A7A8535279D3D61003579FF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2A7A8534279D3D61003579FF /* LICENSE */; };
+		2A7B619C27A5393C00949123 /* CatalogPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B619B27A5393C00949123 /* CatalogPage.swift */; };
+		2A7B619E27A53B5100949123 /* XMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B619D27A53B5100949123 /* XMLNode.swift */; };
+		2A7B61A027A53FD100949123 /* CatalogPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B619F27A53FD100949123 /* CatalogPageTests.swift */; };
 		2AD1FDF727A1B1C200EE7778 /* AttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1FDF627A1B1C200EE7778 /* AttachmentView.swift */; };
 		2AD1FDF927A1B1E500EE7778 /* Attachment.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1FDF827A1B1E500EE7778 /* Attachment.ViewModel.swift */; };
 		2AD1FDFB27A1B77000EE7778 /* AttributedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1FDFA27A1B77000EE7778 /* AttributedTextView.swift */; };
@@ -90,6 +93,9 @@
 		2A7A852C279D3C84003579FF /* lodesman.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = lodesman.entitlements; sourceTree = "<group>"; };
 		2A7A8532279D3D54003579FF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2A7A8534279D3D61003579FF /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		2A7B619B27A5393C00949123 /* CatalogPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPage.swift; sourceTree = "<group>"; };
+		2A7B619D27A53B5100949123 /* XMLNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLNode.swift; sourceTree = "<group>"; };
+		2A7B619F27A53FD100949123 /* CatalogPageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPageTests.swift; sourceTree = "<group>"; };
 		2AD1FDF627A1B1C200EE7778 /* AttachmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentView.swift; sourceTree = "<group>"; };
 		2AD1FDF827A1B1E500EE7778 /* Attachment.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachment.ViewModel.swift; sourceTree = "<group>"; };
 		2AD1FDFA27A1B77000EE7778 /* AttributedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedTextView.swift; sourceTree = "<group>"; };
@@ -168,6 +174,7 @@
 		2A7860AA279E7C1F00532E1D /* lodesmanTests */ = {
 			isa = PBXGroup;
 			children = (
+				2A7B619F27A53FD100949123 /* CatalogPageTests.swift */,
 				2A7860DD279FF42C00532E1D /* TopicListViewModelTests.swift */,
 				2A7860D7279FF14700532E1D /* AttachmentViewModelTests.swift */,
 				2A7860B2279E7C3A00532E1D /* CatalogTests.swift */,
@@ -180,6 +187,8 @@
 			children = (
 				2A7860B9279E96B300532E1D /* ForumCatalogFetching.swift */,
 				2A7860BB279E982800532E1D /* FetchingError.swift */,
+				2A7B619B27A5393C00949123 /* CatalogPage.swift */,
+				2A7B619D27A53B5100949123 /* XMLNode.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -331,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A7B61A027A53FD100949123 /* CatalogPageTests.swift in Sources */,
 				2A7860B3279E7C3A00532E1D /* CatalogTests.swift in Sources */,
 				2A7860DE279FF42C00532E1D /* TopicListViewModelTests.swift in Sources */,
 				2A7860D8279FF14700532E1D /* AttachmentViewModelTests.swift in Sources */,
@@ -354,6 +364,7 @@
 				2A7A8524279D3C83003579FF /* lodesmanApp.swift in Sources */,
 				2A786075279D5F6000532E1D /* ForumRow.swift in Sources */,
 				2A7860BA279E96B300532E1D /* ForumCatalogFetching.swift in Sources */,
+				2A7B619E27A53B5100949123 /* XMLNode.swift in Sources */,
 				2A5B058F27A40C0400319826 /* ToggleSidebarButton.swift in Sources */,
 				2AD1FDF727A1B1C200EE7778 /* AttachmentView.swift in Sources */,
 				2AD1FDFB27A1B77000EE7778 /* AttributedTextView.swift in Sources */,
@@ -361,6 +372,7 @@
 				2A5B059827A4222B00319826 /* TopicStorage.swift in Sources */,
 				2A53706127A427D8000ABBDA /* TopicSortOrderPicker.swift in Sources */,
 				2A7860DC279FF33F00532E1D /* TopicList.ViewModel.swift in Sources */,
+				2A7B619C27A5393C00949123 /* CatalogPage.swift in Sources */,
 				2A7860D2279FEB7600532E1D /* Topic.swift in Sources */,
 				2A5B059627A40E3D00319826 /* SidebarView.swift in Sources */,
 				2A7860B5279E93F900532E1D /* CatalogRow.swift in Sources */,
