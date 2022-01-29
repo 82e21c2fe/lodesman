@@ -8,6 +8,16 @@
 import SwiftUI
 
 
+extension TopicGroupRule
+{
+    init(_ sortOrder: TopicSortOrder) {
+        switch sortOrder {
+        case .byLastUpdate: self = .byDay
+        case .byTitle:      self = .byAlphabet
+        }
+    }
+}
+
 
 struct TopicsView<Storage: TopicStorage>: View
 {
