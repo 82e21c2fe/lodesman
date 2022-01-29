@@ -43,6 +43,8 @@
 		2A7B619E27A53B5100949123 /* XMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B619D27A53B5100949123 /* XMLNode.swift */; };
 		2A7B61A027A53FD100949123 /* CatalogPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B619F27A53FD100949123 /* CatalogPageTests.swift */; };
 		2A7B61A227A5491100949123 /* NetworkFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61A127A5491100949123 /* NetworkFetching.swift */; };
+		2A7B61A427A54A8400949123 /* ServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61A327A54A8400949123 /* ServerConnection.swift */; };
+		2A7B61A627A5557300949123 /* ServerConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61A527A5557300949123 /* ServerConnectionTests.swift */; };
 		2AD1FDF727A1B1C200EE7778 /* AttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1FDF627A1B1C200EE7778 /* AttachmentView.swift */; };
 		2AD1FDF927A1B1E500EE7778 /* Attachment.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1FDF827A1B1E500EE7778 /* Attachment.ViewModel.swift */; };
 		2AD1FDFB27A1B77000EE7778 /* AttributedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1FDFA27A1B77000EE7778 /* AttributedTextView.swift */; };
@@ -98,6 +100,8 @@
 		2A7B619D27A53B5100949123 /* XMLNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLNode.swift; sourceTree = "<group>"; };
 		2A7B619F27A53FD100949123 /* CatalogPageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPageTests.swift; sourceTree = "<group>"; };
 		2A7B61A127A5491100949123 /* NetworkFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFetching.swift; sourceTree = "<group>"; };
+		2A7B61A327A54A8400949123 /* ServerConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConnection.swift; sourceTree = "<group>"; };
+		2A7B61A527A5557300949123 /* ServerConnectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConnectionTests.swift; sourceTree = "<group>"; };
 		2AD1FDF627A1B1C200EE7778 /* AttachmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentView.swift; sourceTree = "<group>"; };
 		2AD1FDF827A1B1E500EE7778 /* Attachment.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachment.ViewModel.swift; sourceTree = "<group>"; };
 		2AD1FDFA27A1B77000EE7778 /* AttributedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedTextView.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 		2A7860AA279E7C1F00532E1D /* lodesmanTests */ = {
 			isa = PBXGroup;
 			children = (
+				2A7B61A527A5557300949123 /* ServerConnectionTests.swift */,
 				2A7B619F27A53FD100949123 /* CatalogPageTests.swift */,
 				2A7860DD279FF42C00532E1D /* TopicListViewModelTests.swift */,
 				2A7860D7279FF14700532E1D /* AttachmentViewModelTests.swift */,
@@ -190,6 +195,7 @@
 				2A7860B9279E96B300532E1D /* ForumCatalogFetching.swift */,
 				2A7860BB279E982800532E1D /* FetchingError.swift */,
 				2A7B61A127A5491100949123 /* NetworkFetching.swift */,
+				2A7B61A327A54A8400949123 /* ServerConnection.swift */,
 				2A7B619B27A5393C00949123 /* CatalogPage.swift */,
 				2A7B619D27A53B5100949123 /* XMLNode.swift */,
 			);
@@ -346,6 +352,7 @@
 				2A7B61A027A53FD100949123 /* CatalogPageTests.swift in Sources */,
 				2A7860B3279E7C3A00532E1D /* CatalogTests.swift in Sources */,
 				2A7860DE279FF42C00532E1D /* TopicListViewModelTests.swift in Sources */,
+				2A7B61A627A5557300949123 /* ServerConnectionTests.swift in Sources */,
 				2A7860D8279FF14700532E1D /* AttachmentViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,6 +388,7 @@
 				2A7860B5279E93F900532E1D /* CatalogRow.swift in Sources */,
 				2A7B61A227A5491100949123 /* NetworkFetching.swift in Sources */,
 				2A5B059327A40CAB00319826 /* ForumUnsubscriptionButton.swift in Sources */,
+				2A7B61A427A54A8400949123 /* ServerConnection.swift in Sources */,
 				2A7860C0279E9A4600532E1D /* ForumCatalog.ViewModel.swift in Sources */,
 				2A786077279D601D00532E1D /* ForumListView.swift in Sources */,
 				2A786072279D5EB900532E1D /* Forum.swift in Sources */,
