@@ -88,7 +88,7 @@ class ServerConnectionTests: XCTestCase
                 XCTAssertEqual(error, expectedError)
                 expectation.fulfill()
             } receiveValue: { page in
-                XCTFail("Expected to fail receive IndexPage, successed with \(page)")
+                XCTFail("Expected to fail receive CatalogPage, successed with \(page)")
             }
             .store(in: &cancellable)
         wait(for: [expectation], timeout: 3)
