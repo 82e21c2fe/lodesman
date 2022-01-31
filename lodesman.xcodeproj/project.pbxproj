@@ -45,6 +45,13 @@
 		2A7B61A227A5491100949123 /* NetworkFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61A127A5491100949123 /* NetworkFetching.swift */; };
 		2A7B61A427A54A8400949123 /* ServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61A327A54A8400949123 /* ServerConnection.swift */; };
 		2A7B61A627A5557300949123 /* ServerConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61A527A5557300949123 /* ServerConnectionTests.swift */; };
+		2A7B61AA27A6C47B00949123 /* lodesman.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61A827A6C47B00949123 /* lodesman.xcdatamodeld */; };
+		2A7B61AF27A6C49F00949123 /* MOForum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61AB27A6C49F00949123 /* MOForum.swift */; };
+		2A7B61B027A6C49F00949123 /* MOTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61AC27A6C49F00949123 /* MOTopic.swift */; };
+		2A7B61B127A6C49F00949123 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61AD27A6C49F00949123 /* Persistent.swift */; };
+		2A7B61B227A6C49F00949123 /* MOAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61AE27A6C49F00949123 /* MOAttachment.swift */; };
+		2A7B61B427A6C9AF00949123 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61B327A6C9AF00949123 /* Storage.swift */; };
+		2A7B61B627A6C9E600949123 /* PersistentStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61B527A6C9E600949123 /* PersistentStorageTests.swift */; };
 		2AD1FDF727A1B1C200EE7778 /* AttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1FDF627A1B1C200EE7778 /* AttachmentView.swift */; };
 		2AD1FDF927A1B1E500EE7778 /* Attachment.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1FDF827A1B1E500EE7778 /* Attachment.ViewModel.swift */; };
 		2AD1FDFB27A1B77000EE7778 /* AttributedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1FDFA27A1B77000EE7778 /* AttributedTextView.swift */; };
@@ -102,6 +109,13 @@
 		2A7B61A127A5491100949123 /* NetworkFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFetching.swift; sourceTree = "<group>"; };
 		2A7B61A327A54A8400949123 /* ServerConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConnection.swift; sourceTree = "<group>"; };
 		2A7B61A527A5557300949123 /* ServerConnectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConnectionTests.swift; sourceTree = "<group>"; };
+		2A7B61A927A6C47B00949123 /* lodesman.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = lodesman.xcdatamodel; sourceTree = "<group>"; };
+		2A7B61AB27A6C49F00949123 /* MOForum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOForum.swift; sourceTree = "<group>"; };
+		2A7B61AC27A6C49F00949123 /* MOTopic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOTopic.swift; sourceTree = "<group>"; };
+		2A7B61AD27A6C49F00949123 /* Persistent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistent.swift; sourceTree = "<group>"; };
+		2A7B61AE27A6C49F00949123 /* MOAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOAttachment.swift; sourceTree = "<group>"; };
+		2A7B61B327A6C9AF00949123 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		2A7B61B527A6C9E600949123 /* PersistentStorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStorageTests.swift; sourceTree = "<group>"; };
 		2AD1FDF627A1B1C200EE7778 /* AttachmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentView.swift; sourceTree = "<group>"; };
 		2AD1FDF827A1B1E500EE7778 /* Attachment.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachment.ViewModel.swift; sourceTree = "<group>"; };
 		2AD1FDFA27A1B77000EE7778 /* AttributedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedTextView.swift; sourceTree = "<group>"; };
@@ -185,6 +199,7 @@
 				2A7860DD279FF42C00532E1D /* TopicListViewModelTests.swift */,
 				2A7860D7279FF14700532E1D /* AttachmentViewModelTests.swift */,
 				2A7860B2279E7C3A00532E1D /* CatalogTests.swift */,
+				2A7B61B527A6C9E600949123 /* PersistentStorageTests.swift */,
 			);
 			path = lodesmanTests;
 			sourceTree = "<group>";
@@ -230,6 +245,7 @@
 				2A7860B8279E969900532E1D /* Network */,
 				2A786073279D5F4500532E1D /* Views */,
 				2A786070279D5EA200532E1D /* Model */,
+				2A7B61A727A6C45300949123 /* Persistent */,
 				2A7A8523279D3C83003579FF /* lodesmanApp.swift */,
 				2A7A8525279D3C83003579FF /* ContentView.swift */,
 				2A7A8527279D3C84003579FF /* Assets.xcassets */,
@@ -245,6 +261,19 @@
 				2A7A852A279D3C84003579FF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2A7B61A727A6C45300949123 /* Persistent */ = {
+			isa = PBXGroup;
+			children = (
+				2A7B61A827A6C47B00949123 /* lodesman.xcdatamodeld */,
+				2A7B61AE27A6C49F00949123 /* MOAttachment.swift */,
+				2A7B61AB27A6C49F00949123 /* MOForum.swift */,
+				2A7B61AC27A6C49F00949123 /* MOTopic.swift */,
+				2A7B61B327A6C9AF00949123 /* Storage.swift */,
+				2A7B61AD27A6C49F00949123 /* Persistent.swift */,
+			);
+			path = Persistent;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,6 +380,7 @@
 			files = (
 				2A7B61A027A53FD100949123 /* CatalogPageTests.swift in Sources */,
 				2A7860B3279E7C3A00532E1D /* CatalogTests.swift in Sources */,
+				2A7B61B627A6C9E600949123 /* PersistentStorageTests.swift in Sources */,
 				2A7860DE279FF42C00532E1D /* TopicListViewModelTests.swift in Sources */,
 				2A7B61A627A5557300949123 /* ServerConnectionTests.swift in Sources */,
 				2A7860D8279FF14700532E1D /* AttachmentViewModelTests.swift in Sources */,
@@ -364,24 +394,30 @@
 				2A7A8526279D3C83003579FF /* ContentView.swift in Sources */,
 				2A7860BE279E998C00532E1D /* ForumCatalogView.swift in Sources */,
 				2AD1FDF927A1B1E500EE7778 /* Attachment.ViewModel.swift in Sources */,
+				2A7B61B427A6C9AF00949123 /* Storage.swift in Sources */,
 				2A53706327A4292D000ABBDA /* TopicPinButton.swift in Sources */,
 				2A53706527A42DE8000ABBDA /* TopicsView.swift in Sources */,
 				2A7860D4279FF06500532E1D /* TopicRow.swift in Sources */,
 				2A7860A4279E779A00532E1D /* Catalog.swift in Sources */,
+				2A7B61AF27A6C49F00949123 /* MOForum.swift in Sources */,
 				2A7860DA279FF32A00532E1D /* TopicListView.swift in Sources */,
 				2A7860BC279E982800532E1D /* FetchingError.swift in Sources */,
 				2A7860B7279E94E600532E1D /* CatalogView.swift in Sources */,
 				2A7A8524279D3C83003579FF /* lodesmanApp.swift in Sources */,
 				2A786075279D5F6000532E1D /* ForumRow.swift in Sources */,
+				2A7B61B027A6C49F00949123 /* MOTopic.swift in Sources */,
+				2A7B61AA27A6C47B00949123 /* lodesman.xcdatamodeld in Sources */,
 				2A7860BA279E96B300532E1D /* ForumCatalogFetching.swift in Sources */,
 				2A7B619E27A53B5100949123 /* XMLNode.swift in Sources */,
 				2A5B058F27A40C0400319826 /* ToggleSidebarButton.swift in Sources */,
 				2AD1FDF727A1B1C200EE7778 /* AttachmentView.swift in Sources */,
 				2AD1FDFB27A1B77000EE7778 /* AttributedTextView.swift in Sources */,
+				2A7B61B227A6C49F00949123 /* MOAttachment.swift in Sources */,
 				2A5B059127A40C6400319826 /* ForumSubscriptionButton.swift in Sources */,
 				2A5B059827A4222B00319826 /* TopicStorage.swift in Sources */,
 				2A53706127A427D8000ABBDA /* TopicSortOrderPicker.swift in Sources */,
 				2A7860DC279FF33F00532E1D /* TopicList.ViewModel.swift in Sources */,
+				2A7B61B127A6C49F00949123 /* Persistent.swift in Sources */,
 				2A7B619C27A5393C00949123 /* CatalogPage.swift in Sources */,
 				2A7860D2279FEB7600532E1D /* Topic.swift in Sources */,
 				2A5B059627A40E3D00319826 /* SidebarView.swift in Sources */,
@@ -635,6 +671,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2A7B61A827A6C47B00949123 /* lodesman.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2A7B61A927A6C47B00949123 /* lodesman.xcdatamodel */,
+			);
+			currentVersion = 2A7B61A927A6C47B00949123 /* lodesman.xcdatamodel */;
+			path = lodesman.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2A7A8518279D3C83003579FF /* Project object */;
 }

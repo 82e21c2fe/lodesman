@@ -19,7 +19,7 @@ enum TopicStatus: String
 
 protocol Attachment
 {
-    var link: URL { get }
+    var link: URL? { get }
     /// Estimated content size in gigabytes.
     var size: Float { get }
     /// Content availability from 0 to 5 points.
@@ -32,7 +32,7 @@ protocol Topic
     var topicId: Int { get }
     var status: TopicStatus { get }
     var title: String { get }
-    var synopsis: String { get }
+    var synopsis: String? { get }
     var attachment: Attachment? { get }
     var lastUpdate: Date { get }
     var pinned: Bool { get }
@@ -42,7 +42,7 @@ protocol Topic
 #if DEBUG
 struct AttachmentStub: Attachment
 {
-    var link: URL = URL(string: "https://example.home.arpa/bigfile.dat")!
+    var link: URL? = URL(string: "https://example.home.arpa/bigfile.dat")!
     var size: Float = 12.5
     var availability: Int = 5
 }
@@ -52,7 +52,7 @@ struct TopicStub: Topic
     var topicId: Int = 1
     var status: TopicStatus = .approved
     var title: String = "untitled"
-    var synopsis: String = TopicStub.synopsis
+    var synopsis: String? = TopicStub.synopsis
     var attachment: Attachment?
     var lastUpdate: Date = Date()
     var pinned: Bool = false

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20G415" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Attachment" representedClassName="MOAttachment" syncable="YES">
+        <attribute name="availability_" attributeType="Integer 16" minValueString="0" maxValueString="5" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="link" optional="YES" attributeType="URI"/>
+        <attribute name="size" attributeType="Float" minValueString="0" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="topic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Topic" inverseName="attachment_" inverseEntity="Topic"/>
+    </entity>
+    <entity name="Forum" representedClassName="MOForum" syncable="YES">
+        <attribute name="forumId" attributeType="Integer 64" minValueString="0" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastUpdate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String" minValueString="1" maxValueString="256" defaultValueString="untitled"/>
+        <relationship name="topics" toMany="YES" deletionRule="Cascade" destinationEntity="Topic" inverseName="forum" inverseEntity="Topic"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="forumId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="Topic" representedClassName="MOTopic" syncable="YES">
+        <attribute name="lastUpdate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="pinned" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="status_" attributeType="String" minValueString="1" maxValueString="16" defaultValueString="unknown"/>
+        <attribute name="synopsis" optional="YES" attributeType="String"/>
+        <attribute name="title" attributeType="String" minValueString="1" maxValueString="256" defaultValueString="untitled"/>
+        <attribute name="topicId" attributeType="Integer 64" minValueString="0" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="attachment_" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Attachment" inverseName="topic" inverseEntity="Attachment"/>
+        <relationship name="forum" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Forum" inverseName="topics" inverseEntity="Forum"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="topicId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="Forum" positionX="41.109619140625" positionY="48.350830078125" width="128" height="103"/>
+        <element name="Topic" positionX="237.189208984375" positionY="34.20916748046875" width="128" height="163"/>
+        <element name="Attachment" positionX="443.6258544921875" positionY="64.41192626953125" width="128" height="103"/>
+    </elements>
+</model>
