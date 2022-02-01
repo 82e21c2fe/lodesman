@@ -29,7 +29,7 @@ struct ForumPage
         var topicId: Int
         var title: String
         var status: TopicStatus
-        var contentSize: Double?
+        var contentSize: Float
         var availability: Int
         var lastUpdate: Date
     }
@@ -57,7 +57,7 @@ extension ForumPage
             }
 
             let topics = try document.nodes(forXPath: XPathNames.topic)
-                .compactMap({ Topic($0) })
+                .compactMap({ ForumPage.Topic($0) })
 
             self.init(forumId: forumId, header: header, topics: topics)
         }
@@ -171,7 +171,7 @@ fileprivate func getAvailability(fromTopic node: XMLNode) -> Int?
     return min(availability, 5)
 }
 
-fileprivate func getContentSize(fromTopic node: XMLNode) -> Double?
+fileprivate func getContentSize(fromTopic node: XMLNode) -> Float?
 {
     guard let text = try? node.nodes(forXPath: XPathNames.contentSize).first?.textValue
     else {
@@ -180,14 +180,14 @@ fileprivate func getContentSize(fromTopic node: XMLNode) -> Double?
 
     let components = text.components(separatedBy: .whitespacesAndNewlines).filter({ !$0.isEmpty })
     guard components.count == 2
-        , let value = Double(components[0])
+        , let value = Float(components[0])
         , let scale = ["kb", "mb", "gb", "tb"].firstIndex(of: components[1].lowercased())
         , 0 < value && value.isFinite && !value.isNaN
     else {
         return nil
     }
 
-    return value * pow(1000, Double(scale) - 2)
+    return value * pow(1000, Float(scale) - 2)
 }
 
 fileprivate let timestampFormatter: DateFormatter = {
