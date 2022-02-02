@@ -13,6 +13,7 @@ protocol Forum
 {
     var forumId: Int { get }
     var title: String { get }
+    var lastUpdate: Date? { get }
     var numberOfTopics: Int { get }
 }
 
@@ -22,6 +23,7 @@ struct ForumStub: Forum
 {
     var forumId: Int = 0
     var title: String = "untitled"
+    var lastUpdate: Date?
     var numberOfTopics: Int = 12_345
 
     static let preview = "alpha beta gamma zeta"
