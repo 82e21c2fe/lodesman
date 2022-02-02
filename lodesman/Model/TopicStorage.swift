@@ -22,7 +22,7 @@ protocol TopicStorage: ObservableObject
     func topic(withId topicId: Int) -> Topic?
     func topics(fromForums: Set<Int>, whereTitleContains text: String, sortedBy: TopicSortOrder) -> [Topic]
     func togglePin(forTopics topicIds: Set<Int>)
-    func insert(topics: [Topic])
+    func insert(topics items: [Topic], toForum forumId: Int)
 }
 
 
@@ -56,7 +56,7 @@ final class TopicStorageStub: TopicStorage
         }
     }
 
-    func insert(topics items: [Topic]) {
+    func insert(topics items: [Topic], toForum: Int) {
         objectWillChange.send()
         for item in items {
             if let index = topics.firstIndex(where: { $0.topicId == item.topicId }) {

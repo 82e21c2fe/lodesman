@@ -57,7 +57,7 @@ extension ContentView
                         print("\(error.localizedDescription)")
                     }
                 } receiveValue: { [weak self] topics in
-                    self?.storage.insert(topics: topics)
+                    self?.storage.insert(topics: topics, toForum: forumId)
                 }
             jobs[forumId] = job
         }
