@@ -7,11 +7,18 @@
 
 import SwiftUI
 
+
+
 @main
-struct lodesmanApp: App {
+struct lodesmanApp: App
+{
+    let persistent = Persistent.shared
+    let fetcher = ServerConnection(hostname: "localhost")!
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(model: .init(storage: Storage(context: persistent.container.viewContext),
+                                     fetcher: fetcher))
         }
     }
 }

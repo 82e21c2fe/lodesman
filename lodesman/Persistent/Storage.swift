@@ -48,6 +48,15 @@ extension Storage: ForumStorage
 
         try? context.save()
     }
+
+    func setLastUpdate(forForum forumId: Int) {
+        objectWillChange.send()
+        let result = MOForum.with(forumId: forumId, context: context)
+        result.objectWillChange.send()
+        result.lastUpdate = Date()
+
+        try? context.save()
+    }
 }
 
 

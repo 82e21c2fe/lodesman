@@ -13,7 +13,7 @@ protocol Forum
 {
     var forumId: Int { get }
     var title: String { get }
-    var lastUpdate: Date? { get }
+    var lastUpdate: Date? { get set }
     var numberOfTopics: Int { get }
 }
 
