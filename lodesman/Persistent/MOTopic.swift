@@ -38,6 +38,23 @@ extension MOTopic: Topic
 
 extension MOTopic
 {
+    func update(from other: Topic) {
+        precondition(self.topicId == other.topicId)
+
+        objectWillChange.send()
+        self.title = other.title
+        self.status = other.status
+        self.lastUpdate = other.lastUpdate
+        if let synopsis = other.synopsis {
+            self.synopsis = synopsis
+        }
+        if let otherAttachment = other.attachment {
+            let attachment = self.attachment_ ?? MOAttachment(context: self.managedObjectContext!)
+            attachment.topic = self
+            attachment.update(from: otherAttachment)
+        }
+    }
+
     static func with(topicId id: Int, context: NSManagedObjectContext) -> MOTopic {
         let request = fetchRequest()
         request.predicate = NSPredicate(format: "topicId == %@", id as NSNumber)

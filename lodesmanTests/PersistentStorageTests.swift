@@ -9,8 +9,42 @@ import XCTest
 @testable import lodesman
 
 
+extension AttachmentStub
+{
+    static func fixture(link: URL? = URL(string: "https://example.home.arpa/bigfile.dat")!,
+                        size: Float = 12.5,
+                        availability: Int = 3) -> AttachmentStub
+    {
+        return AttachmentStub(link: link,
+                              size: size,
+                              availability: availability)
+    }
+}
+
+extension TopicStub
+{
+    static func fixture(topicId: Int = 10,
+                        status: TopicStatus = .approved,
+                        title: String = "test",
+                        synopsis: String? = "synopsis",
+                        attachment: AttachmentStub? = .fixture(),
+                        lastUpdate: Date = Date(),
+                        pinned: Bool = false) -> TopicStub
+    {
+        return TopicStub(topicId: topicId,
+                         status: status,
+                         title: title,
+                         synopsis: synopsis,
+                         attachment: attachment,
+                         lastUpdate: lastUpdate,
+                         pinned: pinned)
+    }
+}
+
+
 class PersistentStorageTests: XCTestCase
 {
+    //MARK: - forum
     func testContainerWithoutForums() throws {
         let persistent = Persistent(inMemory: true)
         let storage = Storage(context: persistent.container.viewContext)
@@ -77,5 +111,41 @@ class PersistentStorageTests: XCTestCase
         XCTAssertEqual(first.title, "beta")
         let last = try XCTUnwrap(storage.forums.last)
         XCTAssertEqual(last.title, "delta")
+    }
+
+    //MARK: - topic
+    func testInsertTopicWithTopicId() throws {
+        let persistent = Persistent(inMemory: true)
+        let storage = Storage(context: persistent.container.viewContext)
+        let topic = TopicStub.fixture(topicId: 10)
+        storage.insert(topics: [topic])
+        let result = try XCTUnwrap(storage.topic(withId:10))
+        XCTAssertEqual(result.topicId, 10)
+    }
+
+    func testUpdateTopicWithSynopsisNotNil() throws {
+        let persistent = Persistent(inMemory: true)
+        let storage = Storage(context: persistent.container.viewContext)
+        let topic = TopicStub.fixture(topicId: 10, synopsis: "test")
+        storage.insert(topics: [topic])
+        let result = try XCTUnwrap(storage.topic(withId:10))
+        XCTAssertEqual(result.synopsis, "test")
+        let secondTopic = TopicStub.fixture(topicId: 10, synopsis: "second")
+        storage.insert(topics: [secondTopic])
+        let second = try XCTUnwrap(storage.topic(withId:10))
+        XCTAssertEqual(second.synopsis, "second")
+    }
+
+    func testUpdateTopicWithSynopsisNil() throws {
+        let persistent = Persistent(inMemory: true)
+        let storage = Storage(context: persistent.container.viewContext)
+        let topic = TopicStub.fixture(topicId: 10, synopsis: "test")
+        storage.insert(topics: [topic])
+        let result = try XCTUnwrap(storage.topic(withId:10))
+        XCTAssertEqual(result.synopsis, "test")
+        let secondTopic = TopicStub.fixture(topicId: 10, synopsis: nil)
+        storage.insert(topics: [secondTopic])
+        let second = try XCTUnwrap(storage.topic(withId:10))
+        XCTAssertEqual(second.synopsis, "test")
     }
 }

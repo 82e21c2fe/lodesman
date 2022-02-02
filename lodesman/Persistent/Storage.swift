@@ -55,6 +55,16 @@ extension Storage: ForumStorage
 
 extension Storage: TopicStorage
 {
+    func insert(topics items: [Topic]) {
+        objectWillChange.send()
+        for item in items {
+            let temp = MOTopic.with(topicId: item.topicId, context: context)
+            temp.update(from: item)
+        }
+
+        try? context.save()
+    }
+
     func topic(withId topicId: Int) -> Topic? {
         return MOTopic.with(topicId: topicId, context: context)
     }

@@ -26,3 +26,16 @@ extension MOAttachment: Attachment
         set { availability_ = Int16(newValue) }
     }
 }
+
+
+extension MOAttachment
+{
+    func update(from other: Attachment) {
+        objectWillChange.send()
+        self.size = other.size
+        self.availability = other.availability
+        if let link = other.link {
+            self.link = link
+        }
+    }
+}

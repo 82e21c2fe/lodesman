@@ -22,6 +22,7 @@ protocol TopicStorage: ObservableObject
     func topic(withId topicId: Int) -> Topic?
     func topics(fromForums: Set<Int>, whereTitleContains text: String, sortedBy: TopicSortOrder) -> [Topic]
     func togglePin(forTopics topicIds: Set<Int>)
+    func insert(topics: [Topic])
 }
 
 
@@ -55,6 +56,40 @@ final class TopicStorageStub: TopicStorage
         }
     }
 
+    func insert(topics items: [Topic]) {
+        objectWillChange.send()
+        for item in items {
+            if let index = topics.firstIndex(where: { $0.topicId == item.topicId }) {
+                topics[index] = TopicStub(item)
+            } else {
+                topics.append(TopicStub(item))
+            }
+        }
+    }
+
     private var topics = TopicStub.preview
+}
+
+extension TopicStub
+{
+    init(_ other: Topic) {
+        self.init(topicId: other.topicId,
+                  status: other.status,
+                  title: other.title,
+                  synopsis: other.synopsis,
+                  attachment: AttachmentStub(other.attachment),
+                  lastUpdate: other.lastUpdate,
+                  pinned: other.pinned)
+    }
+}
+
+extension AttachmentStub
+{
+    init?(_ other: Attachment?) {
+        guard let other = other else {
+            return nil
+        }
+        self.init(link: other.link, size: other.size, availability: other.availability)
+    }
 }
 #endif
