@@ -29,6 +29,9 @@ struct SidebarView<Storage: ForumStorage>: View
             .padding()
         }
         .frame(minWidth: 250)
+        .toolbar {
+            ToggleSidebarButton()
+        }
     }
 }
 
