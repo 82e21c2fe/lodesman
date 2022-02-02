@@ -93,4 +93,76 @@ class ServerConnectionTests: XCTestCase
             .store(in: &cancellable)
         wait(for: [expectation], timeout: 3)
     }
+
+    //MARK: - Forum page
+    func testForumPageRequestURL() throws {
+        let hostname = "myhost"
+        var called = false
+        let networkStub = NetworkFetchingStub(returning: .failure(.unknown)) { request in
+            XCTAssertEqual(request.url?.absoluteString, "https://\(hostname)/forum/viewforum.php?f=12&start=500")
+            called = true
+        }
+        let fetcher = try XCTUnwrap(ServerConnection(hostname: hostname, fetcher: networkStub))
+        _ = fetcher.fetchForumPage(forumId: 12, pageIndex: 10)
+        XCTAssert(called)
+    }
+
+    func testForumPageRequestSuccess() throws {
+        let pageIndices = """
+            <b>2</b>,
+            <a class="pg" href="">3</a> ...
+            <a class="pg" href="">36</a>
+            <a class="pg" href="">След.</a>
+            """
+        let testData = ForumPage.htmlFixture(header: ForumPage.Header.xmlFixture(href: "viewforum.php?f=15",
+                                                                                 title: "main title",
+                                                                                 description: nil,
+                                                                                 pageIndices: pageIndices),
+                                             topics: [ForumPage.Topic.xmlFixture(id: "00001",
+                                                                                 status: .approved,
+                                                                                 title: "topic title",
+                                                                                 seeds: "2",
+                                                                                 size: "79.1 GB",
+                                                                                 date: "2019-12-15 20:33")])
+        let networkStub = NetworkFetchingStub(returning: .success(testData))
+        let fetcher = try XCTUnwrap(ServerConnection(hostname: "hostname", fetcher: networkStub))
+
+        let expectation = XCTestExpectation(description: "Publishes decoded ForumPage")
+
+        fetcher.fetchForumPage(forumId: 15, pageIndex: 1)
+            .sink { completion in
+                guard case .failure(let error) = completion else { return }
+                XCTFail("Expected to success decode ForumPage, fail with \(error.localizedDescription)")
+            } receiveValue: { page in
+                XCTAssertEqual(page.header.currentPageIndex, 2)
+                XCTAssertEqual(page.forumId, 15)
+                XCTAssertEqual(page.header.lastPageIndex, 36)
+                XCTAssertEqual(page.header.title, "main title")
+                XCTAssertEqual(page.topics.count, 1)
+                XCTAssertEqual(page.topics.first?.title, "topic title")
+
+                expectation.fulfill()
+            }
+            .store(in: &cancellable)
+
+        wait(for: [expectation], timeout: 5)
+    }
+
+    func testForumPageRequestFailure() throws {
+        let expectedError = FetchingError.network
+        let networkStub = NetworkFetchingStub(returning: .failure(expectedError))
+        let fetcher = try XCTUnwrap(ServerConnection(hostname: "hostname", fetcher: networkStub))
+        let expectation = XCTestExpectation(description: "Publishes received FetchingError")
+        fetcher.fetchForumPage(forumId: 10, pageIndex: 6)
+            .sink { completion in
+                guard case .failure(let error) = completion else { return }
+                XCTAssertEqual(error, expectedError)
+
+                expectation.fulfill()
+            } receiveValue: { page in
+                XCTFail("Expected to fail receive ForumPage, successed with \(page)")
+            }
+            .store(in: &cancellable)
+        wait(for: [expectation], timeout: 3)
+    }
 }
