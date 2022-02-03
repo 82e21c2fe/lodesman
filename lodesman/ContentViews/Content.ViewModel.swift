@@ -24,7 +24,6 @@ extension ContentView
         init(storage: Storage, fetcher: ServerConnection) {
             self.storage = storage
             self.fetcher = fetcher
-            updateForums()
         }
 
         //MARK: -
