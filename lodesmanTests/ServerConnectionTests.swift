@@ -109,21 +109,19 @@ class ServerConnectionTests: XCTestCase
 
     func testForumPageRequestSuccess() throws {
         let pageIndices = """
+            <span class="pg-jump-menu"><a class="menu-root" href="#pg-jump">Страница</a> :  </span>
+            <a class="pg" href="">Пред.</a>
+            <a class="pg" href="">1</a>,
             <b>2</b>,
             <a class="pg" href="">3</a> ...
+            <a class="pg" href="">34</a>,
+            <a class="pg" href="">35</a>,
             <a class="pg" href="">36</a>
             <a class="pg" href="">След.</a>
             """
-        let testData = ForumPage.htmlFixture(header: ForumPage.Header.xmlFixture(href: "viewforum.php?f=15",
-                                                                                 title: "main title",
-                                                                                 description: nil,
+        let testData = ForumPage.htmlFixture(header: ForumPage.Header.xmlFixture(title: "main title",
                                                                                  pageIndices: pageIndices),
-                                             topics: [ForumPage.Topic.xmlFixture(id: "00001",
-                                                                                 status: .approved,
-                                                                                 title: "topic title",
-                                                                                 seeds: "2",
-                                                                                 size: "79.1 GB",
-                                                                                 date: "2019-12-15 20:33")])
+                                             topics: [ForumPage.Topic.xmlFixture(title: "topic title")])
         let networkStub = NetworkFetchingStub(returning: .success(testData))
         let fetcher = try XCTUnwrap(ServerConnection(hostname: "hostname", fetcher: networkStub))
 
@@ -135,7 +133,6 @@ class ServerConnectionTests: XCTestCase
                 XCTFail("Expected to success decode ForumPage, fail with \(error.localizedDescription)")
             } receiveValue: { page in
                 XCTAssertEqual(page.header.currentPageIndex, 2)
-                XCTAssertEqual(page.forumId, 15)
                 XCTAssertEqual(page.header.lastPageIndex, 36)
                 XCTAssertEqual(page.header.title, "main title")
                 XCTAssertEqual(page.topics.count, 1)

@@ -14,10 +14,10 @@ extension ForumPage.Header
     static func xmlFixture(href: String = "viewforum.php?f=1600",
                            title: String = "forum title",
                            description: String? = nil,
-                           pageIndices: String = "Страница: 1") -> XMLElement
+                           pageIndices: String = "Страница: 1") -> String
     {
         let descriptionNode = description != nil ? "<div class='forum-desc-in-title'>\(description!)</div>" : ""
-        let test = """
+        return """
             <td>
                 <h1 class="maintitle"><a href="\(href)">\(title)</a></h1>
                 \(descriptionNode)
@@ -26,7 +26,6 @@ extension ForumPage.Header
                 </div>
             </td>
             """
-        return try! XMLElement(xmlString: test)
     }
 }
 

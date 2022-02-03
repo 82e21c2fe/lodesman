@@ -11,7 +11,6 @@ import Foundation
 
 struct ForumPage
 {
-    var forumId: Int
     var header: Header
     var topics: [ForumPage.Topic]
 
@@ -45,21 +44,19 @@ extension ForumPage
     init(data: Data) throws {
         do {
             let text = String(data: data, encoding: .windowsCP1251)!
-            let document = try XMLDocument(xmlString: text, options: [.documentTidyXML,
-                                                                      .nodeLoadExternalEntitiesNever])
 
-            guard let header = try document.nodes(forXPath: XPathNames.header).compactMap({ Header($0) }).first
-                , header.href.hasPrefix("viewforum.php?f=")
-                , let forumId = Int(header.href.dropFirst(16))
-                , 0 < forumId
+            guard let header = ForumPage.Header(text)
             else {
                 throw FetchingError.parsing
             }
 
-            let topics = try document.nodes(forXPath: XPathNames.topic)
+            let document = try XMLDocument(xmlString: text, options: [.documentTidyHTML,
+                                                                      .nodePreserveAll,
+                                                                      .nodeLoadExternalEntitiesNever])
+            let topics = try document.nodes(forXPath: XPathName.topic)
                 .compactMap({ ForumPage.Topic($0) })
 
-            self.init(forumId: forumId, header: header, topics: topics)
+            self.init(header: header, topics: topics)
         }
         catch {
             throw FetchingError.parsing
@@ -70,20 +67,22 @@ extension ForumPage
 
 extension ForumPage.Header
 {
-    init?(_ node: XMLNode) {
-        guard let maintitleNode = try? node.nodes(forXPath: XPathNames.maintitle).first as? XMLElement
+    init?(_ xmlString: String) {
+        guard let document = try? XMLDocument(xmlString: xmlString, options: [.documentTidyXML,
+                                                                        .nodeLoadExternalEntitiesNever])
+            , let maintitleNode = try? document.nodes(forXPath: XPathName.maintitle).first as? XMLElement
             , let title = maintitleNode.textValue
             , (1...256).contains(title.count)
             , let href = maintitleNode.attribute(forName: "href")?.textValue
-            , let indicesNode = try? node.nodes(forXPath: XPathNames.indices).first as? XMLElement
         else {
             return nil
         }
-        let description = try? node.nodes(forXPath: XPathNames.description).first?.textValue
-        let currentPage = (try? indicesNode.nodes(forXPath: XPathNames.currentPage)
+        let description = try? document.nodes(forXPath: XPathName.description).first?.textValue
+
+        let currentPage = (try? document.nodes(forXPath: XPathName.currentPage)
                             .compactMap({ Int($0.textValue!) })
                             .first) ?? 1
-        let lastPage = (try? indicesNode.nodes(forXPath: XPathNames.lastPage)
+        let lastPage = (try? document.nodes(forXPath: XPathName.otherPage)
                             .compactMap({ Int($0.textValue!) })
                             .sorted()
                             .last) ?? 1
@@ -120,7 +119,7 @@ extension ForumPage.Topic
 
 fileprivate func getStatus(fromTopic node: XMLNode) -> TopicStatus?
 {
-    guard let text = try? node.nodes(forXPath: XPathNames.status).first?.textValue
+    guard let text = try? node.nodes(forXPath: XPathName.status).first?.textValue
     else {
         return nil
     }
@@ -134,12 +133,18 @@ fileprivate func getStatus(fromTopic node: XMLNode) -> TopicStatus?
     else if text.contains("tor-consumed") {
         return .consumed
     }
-    return nil
+    else if text.contains("tor-not-approved") {
+        return .unknown
+    }
+    else {
+        print("WARNING: the topic has an unexpected status '\(text)'.")
+    }
+    return .unknown
 }
 
 fileprivate func getId(fromTopic node: XMLNode) -> Int?
 {
-    guard let text = try? node.nodes(forXPath: XPathNames.topicId).first?.stringValue
+    guard let text = try? node.nodes(forXPath: XPathName.topicId).first?.stringValue
         , let id = Int(text)
         , 0 < id
     else {
@@ -150,7 +155,7 @@ fileprivate func getId(fromTopic node: XMLNode) -> Int?
 
 fileprivate func getTitle(fromTopic node: XMLNode) -> String?
 {
-    guard let title = try? node.nodes(forXPath: XPathNames.topicTitle).first?.textValue
+    guard let title = try? node.nodes(forXPath: XPathName.topicTitle).first?.textValue
         , (1...256).contains(title.count)
     else {
         return nil
@@ -160,7 +165,7 @@ fileprivate func getTitle(fromTopic node: XMLNode) -> String?
 
 fileprivate func getAvailability(fromTopic node: XMLNode) -> Int?
 {
-    guard let text = try? node.nodes(forXPath: XPathNames.seedmed).first?.textValue
+    guard let text = try? node.nodes(forXPath: XPathName.seedmed).first?.textValue
         , let seeders = Int(text)
         , 0 < seeders
     else {
@@ -173,7 +178,7 @@ fileprivate func getAvailability(fromTopic node: XMLNode) -> Int?
 
 fileprivate func getContentSize(fromTopic node: XMLNode) -> Float?
 {
-    guard let text = try? node.nodes(forXPath: XPathNames.contentSize).first?.textValue
+    guard let text = try? node.nodes(forXPath: XPathName.contentSize).first?.textValue
     else {
         return nil
     }
@@ -199,7 +204,7 @@ fileprivate let timestampFormatter: DateFormatter = {
 
 fileprivate func getLastUpdate(fromTopic node: XMLNode) -> Date?
 {
-    return try? node.nodes(forXPath: XPathNames.lastUpdate)
+    return try? node.nodes(forXPath: XPathName.lastUpdate)
         .compactMap { $0.textValue }
         .compactMap(timestampFormatter.date(from:))
         .first
@@ -208,17 +213,15 @@ fileprivate func getLastUpdate(fromTopic node: XMLNode) -> Date?
 
 //MARK: -
 
-fileprivate struct XPathNames
+fileprivate struct XPathName
 {
-    //Header
-    static let header = "//table[@class='w100']/tr/td"
-    static let maintitle = "./h1[@class='maintitle']/a"
-    static let description = "./div[@class='forum-desc-in-title']"
-    static let indices = "./div[@class='small']/b"
-    static let currentPage = "./b"
-    static let lastPage = "./a[@class='pg']"
+    // Header
+    static let maintitle = "//h1[@class='maintitle']/a"
+    static let description = "//div[@class='forum-desc-in-title']"
+    static let currentPage = "//span[@class='pg-jump-menu']/../b"
+    static let otherPage = "//span[@class='pg-jump-menu']/../a[@class='pg']"
 
-    //Topic
+    // Topic
     static let topic = "//tr[@data-topic_id]"
     static let topicId = "./@data-topic_id"
     static let status = "./td/div[@class='torTopic']/span/@class"

@@ -11,7 +11,7 @@ import XCTest
 
 extension ForumPage
 {
-    static func htmlFixture(header: XMLElement = ForumPage.Header.xmlFixture(),
+    static func htmlFixture(header: String = ForumPage.Header.xmlFixture(),
                             topics: [XMLElement] = [ForumPage.Topic.xmlFixture()]) -> Data
     {
         let temp = """
@@ -21,7 +21,7 @@ extension ForumPage
                 <body>
                     <table class="w100">
                         <tr>
-                            \(header.xmlString)
+                            \(header)
                         </tr>
                     </table>
                     <table>
@@ -37,28 +37,6 @@ extension ForumPage
 
 class ForumPageTests: XCTestCase
 {
-    //MARK: - forum id
-    func testEmptyForumId() throws {
-        let test = ForumPage.htmlFixture(header: ForumPage.Header.xmlFixture(href: " "))
-        XCTAssertThrowsError(try ForumPage(data: test))
-    }
-
-    func testZeroForumId() throws {
-        let test = ForumPage.htmlFixture(header: ForumPage.Header.xmlFixture(href: "viewforum.php?f=0"))
-        XCTAssertThrowsError(try ForumPage(data: test))
-    }
-
-    func testNegativeForumId() throws {
-        let test = ForumPage.htmlFixture(header: ForumPage.Header.xmlFixture(href: "viewforum.php?f=-12"))
-        XCTAssertThrowsError(try ForumPage(data: test))
-    }
-
-    func testPositiveForumId() throws {
-        let test = ForumPage.htmlFixture(header: ForumPage.Header.xmlFixture(href: "viewforum.php?f=12"))
-        let page = try ForumPage(data: test)
-        XCTAssertEqual(page.forumId, 12)
-    }
-
     //MARK: - topics
     func testPageWithoutTopics() throws {
         let test = ForumPage.htmlFixture(topics: [])
@@ -78,5 +56,4 @@ class ForumPageTests: XCTestCase
     func testPageWithEmptyData() throws {
         XCTAssertThrowsError(try ForumPage(data: Data()))
     }
-
 }

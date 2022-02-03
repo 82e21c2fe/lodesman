@@ -9,17 +9,22 @@ import XCTest
 @testable import lodesman
 
 
+extension TopicStatus
+{
+    var xmlCode: String {
+        switch self {
+        case .unknown:      return "tor-not-approved"
+        case .approved:     return "tor-approved"
+        case .duplicate:    return "tor-dup"
+        case .consumed:     return "tor-consumed"
+        }
+    }
+}
+
 extension ForumPage.Topic
 {
-    enum Status: String
-    {
-        case approved = "tor-approved"
-        case duplication = "tor-dup"
-        case consumed = "tor-consumed"
-    }
-
     static func xmlFixture(id: String = "22",
-                           status: Status = .approved,
+                           status: String = TopicStatus.approved.xmlCode,
                            title: String = "title",
                            seeds: String = "2",
                            size: String = "79.1 GB",
@@ -28,7 +33,7 @@ extension ForumPage.Topic
         let test = """
             <tr data-topic_id="\(id)">
                 <td><div class="torTopic">
-                    <span class="tor-icon \(status.rawValue)"></span>
+                    <span class="tor-icon \(status)">x</span>
                     <a href="">\(title)</a>
                 </div></td>
                 <td><div>
@@ -140,14 +145,30 @@ class ForumPageTopicTests: XCTestCase
 
     //MARK: - status
     func testTopicWithStatusApproved() throws {
-        let node = ForumPage.Topic.xmlFixture(status: .approved)
+        let status = TopicStatus.approved
+        let node = ForumPage.Topic.xmlFixture(status: status.xmlCode)
         let topic = try XCTUnwrap(ForumPage.Topic(node))
-        XCTAssertEqual(topic.status, .approved)
+        XCTAssertEqual(topic.status, status)
     }
 
     func testTopicWithStatusDuplication() throws {
-        let node = ForumPage.Topic.xmlFixture(status: .duplication)
+        let status = TopicStatus.duplicate
+        let node = ForumPage.Topic.xmlFixture(status: status.xmlCode)
         let topic = try XCTUnwrap(ForumPage.Topic(node))
-        XCTAssertEqual(topic.status, .duplicate)
+        XCTAssertEqual(topic.status, status)
+    }
+
+    func testTopicWithStatusConsumed() throws {
+        let status = TopicStatus.consumed
+        let node = ForumPage.Topic.xmlFixture(status: status.xmlCode)
+        let topic = try XCTUnwrap(ForumPage.Topic(node))
+        XCTAssertEqual(topic.status, status)
+    }
+
+    func testTopicWithStatusUnknown() throws {
+        let status = TopicStatus.unknown
+        let node = ForumPage.Topic.xmlFixture(status: status.xmlCode)
+        let topic = try XCTUnwrap(ForumPage.Topic(node))
+        XCTAssertEqual(topic.status, status)
     }
 }
