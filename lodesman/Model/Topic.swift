@@ -11,6 +11,7 @@ import Foundation
 
 enum TopicStatus: String
 {
+    case unknown
     case approved
     case duplicate
     case consumed

@@ -12,6 +12,7 @@ extension TopicStatus
 {
     var color: Color {
         switch self {
+        case .unknown:      return .orange
         case .approved:     return .green
         case .duplicate:    return .orange
         case .consumed:     return .gray
@@ -68,6 +69,9 @@ struct TopicRow_Previews: PreviewProvider {
                                title: longTitle,
                                attachment: AttachmentStub(availability: 5),
                                pinned: true))
+
+            TopicRow(TopicStub(status: .unknown,
+                               attachment: AttachmentStub(size: 0.00043, availability: 1)))
 
             TopicRow(TopicStub(status: .duplicate,
                                attachment: AttachmentStub(size: 0.5, availability: 3)))
