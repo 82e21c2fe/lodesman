@@ -14,11 +14,20 @@ struct ForumRow: View
     let forum: Forum
 
     var body: some View {
-        HStack {
+        HStack(alignment: .firstTextBaseline) {
             Image(systemName: "dot.radiowaves.left.and.right")
                 .foregroundColor(.accentColor)
-            Text(forum.title)
-                .foregroundColor(.primary)
+            VStack(alignment: .leading) {
+                Text(forum.title)
+                    .lineLimit(4)
+                    .foregroundColor(.primary)
+                    .font(.title2)
+                if forum.lastUpdate != nil {
+                    Text(dateFmt.string(from: forum.lastUpdate!))
+                        .foregroundColor(.secondary)
+                        .font(.callout)
+                }
+            }
             Spacer()
             Text("\(forum.numberOfTopics)")
                 .foregroundColor(.secondary)
@@ -26,11 +35,18 @@ struct ForumRow: View
     }
 }
 
+fileprivate let dateFmt: DateFormatter = {
+    var result = DateFormatter()
+    result.dateStyle = .short
+    result.timeStyle = .short
+    return result
+}()
+
 
 #if DEBUG
 struct ForumRow_Previews: PreviewProvider {
     static var previews: some View {
-        ForumRow(forum: ForumStub())
+        ForumRow(forum: ForumStub(lastUpdate: Date()))
             .frame(width: 400)
     }
 }
