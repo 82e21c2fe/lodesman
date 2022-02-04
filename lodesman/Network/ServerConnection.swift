@@ -98,6 +98,7 @@ struct NetworkScheduler {
             .scan(0) { acc, _ in acc + 1 }
             .prepend(0)
             .map(NetworkScheduler.timeRamp)
+            .prefix(while: { $0 < 1000 })
             .removeDuplicates()
             .eraseToAnyPublisher()
     }
