@@ -36,6 +36,10 @@ struct ForumPage
     var lastUpdate: Date {
         return topics.map(\.lastUpdate).max() ?? Date.distantPast
     }
+
+    var isLastPage: Bool {
+        return header.currentPageIndex == header.lastPageIndex
+    }
 }
 
 

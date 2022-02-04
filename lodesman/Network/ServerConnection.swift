@@ -53,15 +53,15 @@ extension ServerConnection: TopicFetching
     func fetchTopics(from forumId: Int, modifiedAfter earlyDate: Date) -> AnyPublisher<[Topic], FetchingError> {
         let isDone = PassthroughSubject<Void, Never>()
         return NetworkScheduler.pageIndexPublisher
+            .prefix(untilOutputFrom: isDone)
             .flatMap { (index: Int) -> AnyPublisher<ForumPage, FetchingError>  in
                 fetchForumPage(forumId: forumId, pageIndex: index)
                     .retry(2)
                     .eraseToAnyPublisher()
             }
             .prefix(while: { page in !page.topics.isEmpty && earlyDate < page.lastUpdate })
-            .prefix(untilOutputFrom: isDone)
             .handleEvents(receiveOutput: { page in
-                if page.header.currentPageIndex == page.header.lastPageIndex {
+                if page.isLastPage {
                     isDone.send()
                 }
             })

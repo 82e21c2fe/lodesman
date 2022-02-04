@@ -162,4 +162,29 @@ class ServerConnectionTests: XCTestCase
             .store(in: &cancellable)
         wait(for: [expectation], timeout: 3)
     }
+
+    func testFetchTopicsWithSingleForumPage() throws {
+        let page = ForumPage.htmlFixture(header: ForumPage.Header.xmlFixture(pageIndices: "Страница: 1"),
+                                         topics: [ForumPage.Topic.xmlFixture(title: "topic 1")])
+        let networkStub = NetworkFetchingStub(returning: .success(page))
+        let fetcher = try XCTUnwrap(ServerConnection(hostname: "hostname", fetcher: networkStub))
+        let expectation = XCTestExpectation(description: "Publishes decoded topics")
+        var called = false
+        fetcher.fetchTopics(from: 1, modifiedAfter: .distantPast)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    XCTFail("Expected to success decode topics, fail with \(error.localizedDescription)")
+                case .finished:
+                    expectation.fulfill()
+                }
+            } receiveValue: { topics in
+                XCTAssertEqual(topics.count, 1)
+                XCTAssertEqual(topics.first!.title, "topic 1")
+                called = true
+            }
+            .store(in: &cancellable)
+        wait(for: [expectation], timeout: 3)
+        XCTAssertTrue(called)
+    }
 }
