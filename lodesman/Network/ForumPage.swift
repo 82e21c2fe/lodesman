@@ -140,6 +140,9 @@ fileprivate func getStatus(fromTopic node: XMLNode) -> TopicStatus?
     else if text.contains("tor-not-approved") {
         return .unknown
     }
+    else if text.contains("tor-need-edit") {
+        return .unknown
+    }
     else {
         print("WARNING: the topic has an unexpected status '\(text)'.")
     }
