@@ -27,15 +27,17 @@ extension Storage: ForumStorage
 {
     var forums: [Forum] {
         let request = MOForum.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \MOForum.title, ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \MOForum.section, ascending: true),
+                                   NSSortDescriptor(keyPath: \MOForum.title, ascending: true)]
         return (try? context.fetch(request)) ?? []
     }
 
-    func insert(forums items: [(forumId: Int, title: String)]) {
+    func insert(forums items: [(section: String, forumId: Int, title: String)]) {
         objectWillChange.send()
         for item in items {
             let forum = MOForum.with(forumId: item.forumId, context: context)
             forum.title = item.title
+            forum.section = item.section
         }
 
         try? context.save()

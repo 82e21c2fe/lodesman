@@ -21,6 +21,7 @@ protocol Forum
 {
     var forumId: Int { get }
     var title: String { get }
+    var section: String { get }
     var lastUpdate: Date? { get set }
     var state: UpdationState? { get set }
     var numberOfTopics: Int { get }
@@ -32,6 +33,7 @@ struct ForumStub: Forum
 {
     var forumId: Int = 0
     var title: String = "untitled"
+    var section: String = ""
     var lastUpdate: Date?
     var state: UpdationState?
     var numberOfTopics: Int = 12_345

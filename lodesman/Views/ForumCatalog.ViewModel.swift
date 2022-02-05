@@ -22,14 +22,29 @@ extension ForumCatalogView
             return result
         }
 
-        var selectedItems: [CatalogItem] {
-            var result = [CatalogItem]()
-            catalog?.forEach { item in
-                if selection.contains(item.id) {
-                    result.append(item)
+        var selectedItems: [(section: String, forumId: Int, title: String)] {
+            var temp = [Int:(section: String, title: String)]()
+            for section in catalog?.root ?? [] {
+                if selection.contains(section.id) {
+                    section.forEachChildren { item in
+                        assert(item.kind == .forum)
+                        temp[item.id] = (section: section.title, title: item.title)
+                    }
+                }
+                else {
+                    section.forEachChildren { item in
+                        if selection.contains(item.id) {
+                            temp[item.id] = (section: section.title, title: item.title)
+                            item.forEachChildren { subitem in
+                                temp[subitem.id] = (section: section.title, title: subitem.title)
+                            }
+                        }
+                    }
                 }
             }
-            return result
+            return temp.map { element in
+                (section: element.value.section, forumId: element.key, title: element.value.title)
+            }
         }
 
         init(fetcher: ForumCatalogFetching) {

@@ -14,6 +14,7 @@ import CoreData
 {
     @NSManaged var forumId: Int
     @NSManaged var title: String
+    @NSManaged var section: String
     @NSManaged var lastUpdate: Date?
     @NSManaged var state_: String?
     @NSManaged var topics: Set<MOTopic>
