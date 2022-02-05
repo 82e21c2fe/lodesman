@@ -9,6 +9,7 @@
     <entity name="Forum" representedClassName="MOForum" syncable="YES">
         <attribute name="forumId" attributeType="Integer 64" minValueString="0" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lastUpdate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="state_" optional="YES" transient="YES" attributeType="String"/>
         <attribute name="title" attributeType="String" minValueString="1" maxValueString="256" defaultValueString="untitled"/>
         <relationship name="topics" toMany="YES" deletionRule="Cascade" destinationEntity="Topic" inverseName="forum" inverseEntity="Topic"/>
         <uniquenessConstraints>
@@ -33,8 +34,8 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Forum" positionX="41.109619140625" positionY="48.350830078125" width="128" height="103"/>
-        <element name="Topic" positionX="237.189208984375" positionY="34.20916748046875" width="128" height="163"/>
         <element name="Attachment" positionX="443.6258544921875" positionY="64.41192626953125" width="128" height="103"/>
+        <element name="Forum" positionX="41.109619140625" positionY="48.350830078125" width="128" height="104"/>
+        <element name="Topic" positionX="237.189208984375" positionY="34.20916748046875" width="128" height="163"/>
     </elements>
 </model>

@@ -15,6 +15,7 @@ protocol ForumStorage: ObservableObject
     func insert(forums items: [(forumId: Int, title: String)])
     func remove(forums forumIds: Set<Int>)
     func setLastUpdate(forForum forumId: Int)
+    func setState(forForum forumId: Int, state: UpdationState?)
 }
 
 
@@ -62,6 +63,12 @@ final class ForumStorageStub: ForumStorage
     func setLastUpdate(forForum forumId: Int) {
         if let index = forums.firstIndex(where: { $0.forumId == forumId }) {
             forums[index].lastUpdate = Date()
+        }
+    }
+
+    func setState(forForum forumId: Int, state: UpdationState?) {
+        if let index = forums.firstIndex(where: { $0.forumId == forumId }) {
+            forums[index].state = state
         }
     }
 }

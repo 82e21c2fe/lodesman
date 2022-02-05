@@ -15,6 +15,7 @@ import CoreData
     @NSManaged var forumId: Int
     @NSManaged var title: String
     @NSManaged var lastUpdate: Date?
+    @NSManaged var state_: String?
     @NSManaged var topics: Set<MOTopic>
 }
 
@@ -23,6 +24,11 @@ extension MOForum: Forum
 {
     var numberOfTopics: Int {
         return topics.count
+    }
+
+    var state: UpdationState? {
+        get { UpdationState(rawValue: state_ ?? "") }
+        set { state_ = newValue?.rawValue }
     }
 }
 

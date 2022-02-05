@@ -57,6 +57,13 @@ extension Storage: ForumStorage
 
         try? context.save()
     }
+
+    func setState(forForum forumId: Int, state: UpdationState?) {
+        objectWillChange.send()
+        let result = MOForum.with(forumId: forumId, context: context)
+        result.objectWillChange.send()
+        result.state = state
+    }
 }
 
 

@@ -15,8 +15,23 @@ struct ForumRow: View
 
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
-            Image(systemName: "dot.radiowaves.left.and.right")
-                .foregroundColor(.accentColor)
+            switch forum.state {
+            case .loading:
+                ProgressView()
+                    .progressViewStyle(.circular)
+                    .controlSize(.small)
+                    .alignmentGuide(.firstTextBaseline) { x in x.height - 3 }
+                    .padding(.horizontal, 2)
+            case .waiting:
+                Image(systemName: "clock.arrow.2.circlepath")
+                    .foregroundColor(.secondary)
+            case .failure:
+                Image(systemName: "exclamationmark.triangle")
+                    .foregroundColor(.orange)
+            case .success, .none:
+                Image(systemName: "dot.radiowaves.left.and.right")
+                    .foregroundColor(.accentColor)
+            }
             VStack(alignment: .leading) {
                 Text(forum.title)
                     .lineLimit(4)
@@ -46,8 +61,18 @@ fileprivate let dateFmt: DateFormatter = {
 #if DEBUG
 struct ForumRow_Previews: PreviewProvider {
     static var previews: some View {
-        ForumRow(forum: ForumStub(lastUpdate: Date()))
-            .frame(width: 400)
+        Group {
+            ForumRow(forum: ForumStub(lastUpdate: Date(), state: nil))
+
+            ForumRow(forum: ForumStub(lastUpdate: Date(), state: .failure))
+
+            ForumRow(forum: ForumStub(lastUpdate: Date(), state: .loading))
+
+            ForumRow(forum: ForumStub(lastUpdate: Date(), state: .waiting))
+
+            ForumRow(forum: ForumStub(lastUpdate: Date(), state: .success))
+        }
+        .frame(width: 400)
     }
 }
 #endif
