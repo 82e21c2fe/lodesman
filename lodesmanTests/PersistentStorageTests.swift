@@ -12,7 +12,7 @@ import XCTest
 extension AttachmentStub
 {
     static func fixture(link: URL? = URL(string: "https://example.home.arpa/bigfile.dat")!,
-                        size: Float = 12.5,
+                        size: ContentSize = 12.5,
                         availability: Availability = 3) -> AttachmentStub
     {
         return AttachmentStub(link: link,

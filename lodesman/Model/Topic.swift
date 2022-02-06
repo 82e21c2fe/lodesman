@@ -21,8 +21,7 @@ enum TopicStatus: String
 protocol Attachment
 {
     var link: URL? { get }
-    /// Estimated content size in gigabytes.
-    var size: Float { get }
+    var size: ContentSize { get }
     var availability: Availability { get }
 }
 
@@ -43,7 +42,7 @@ protocol Topic
 struct AttachmentStub: Attachment
 {
     var link: URL? = URL(string: "https://example.home.arpa/bigfile.dat")!
-    var size: Float = 12.5
+    var size: ContentSize = 12.5
     var availability: Availability = 5
 }
 

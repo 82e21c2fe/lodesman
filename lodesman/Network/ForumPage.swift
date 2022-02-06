@@ -28,7 +28,7 @@ struct ForumPage
         var topicId: Int
         var title: String
         var status: TopicStatus
-        var contentSize: Float
+        var contentSize: ContentSize
         var availability: Availability
         var lastUpdate: Date
     }
@@ -180,23 +180,13 @@ fileprivate func getAvailability(fromTopic node: XMLNode) -> Availability?
     return Availability(numberOfSeeders: seeders)
 }
 
-fileprivate func getContentSize(fromTopic node: XMLNode) -> Float?
+fileprivate func getContentSize(fromTopic node: XMLNode) -> ContentSize?
 {
     guard let text = try? node.nodes(forXPath: XPathName.contentSize).first?.textValue
     else {
         return nil
     }
-
-    let components = text.components(separatedBy: .whitespacesAndNewlines).filter({ !$0.isEmpty })
-    guard components.count == 2
-        , let value = Float(components[0])
-        , let scale = ["kb", "mb", "gb", "tb"].firstIndex(of: components[1].lowercased())
-        , 0 < value && value.isFinite && !value.isNaN
-    else {
-        return nil
-    }
-
-    return value * pow(1000, Float(scale) - 2)
+    return ContentSize(text)
 }
 
 fileprivate let timestampFormatter: DateFormatter = {

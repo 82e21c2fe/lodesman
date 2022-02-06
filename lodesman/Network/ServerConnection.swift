@@ -44,7 +44,7 @@ extension ForumPage.Topic: Topic, Attachment
     var pinned: Bool { false }
     // Attachment
     var link: URL? { nil }
-    var size: Float { contentSize }
+    var size: ContentSize { contentSize }
 }
 
 

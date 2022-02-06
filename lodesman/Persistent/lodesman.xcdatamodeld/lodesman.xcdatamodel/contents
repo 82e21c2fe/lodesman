@@ -3,7 +3,7 @@
     <entity name="Attachment" representedClassName="MOAttachment" syncable="YES">
         <attribute name="availability_" attributeType="Integer 16" minValueString="0" maxValueString="5" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="link" optional="YES" attributeType="URI"/>
-        <attribute name="size" attributeType="Float" minValueString="0" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="size_" attributeType="Float" minValueString="0" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="topic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Topic" inverseName="attachment_" inverseEntity="Topic"/>
     </entity>
     <entity name="Forum" representedClassName="MOForum" syncable="YES">
@@ -35,7 +35,7 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Attachment" positionX="443.6258544921875" positionY="64.41192626953125" width="128" height="103"/>
+        <element name="Attachment" positionX="443.6258544921875" positionY="64.41192626953125" width="128" height="89"/>
         <element name="Forum" positionX="41.109619140625" positionY="48.350830078125" width="128" height="119"/>
         <element name="Topic" positionX="237.189208984375" positionY="34.20916748046875" width="128" height="163"/>
     </elements>

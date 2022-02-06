@@ -121,12 +121,6 @@ class ForumPageTopicTests: XCTestCase
         XCTAssertEqual(topic.contentSize, 20)
     }
 
-    func testTopicWithApproximate500MB() throws {
-        let node = ForumPage.Topic.xmlFixture(size: "500 MB")
-        let topic = try XCTUnwrap(ForumPage.Topic(node))
-        XCTAssertEqual(topic.contentSize, 0.5)
-    }
-
     //MARK: - last update
     func testTopicWithEmptyDate() throws {
         let node = ForumPage.Topic.xmlFixture(date: "")

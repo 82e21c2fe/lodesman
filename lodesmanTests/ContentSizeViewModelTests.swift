@@ -1,5 +1,5 @@
 //
-//  AttachmentViewModelTests.swift
+//  ContentSizeViewModelTests.swift
 //  lodesmanTests
 //
 //  Created by Dmitri Shuvalov on 25.01.2022.
@@ -10,18 +10,15 @@ import XCTest
 
 
 
-class AttachmentViewModelTests: XCTestCase
+class ContentSizeViewModelTests: XCTestCase
 {
-    //MARK: - ContentSize
     func testAttachmentWithContentSizeInGB() throws {
-        let attachment = AttachmentStub(size: 15.2)
-        let model = AttachmentView.ViewModel(attachment)
+        let model = ContentSizeView.ViewModel(15.2)
         XCTAssertEqual(model.contentSize, "15.2 GB")
     }
 
     func testAttachmentWithContentSizeInMB() throws {
-        let attachment = AttachmentStub(size: 0.3)
-        let model = AttachmentView.ViewModel(attachment)
+        let model = ContentSizeView.ViewModel(0.3)
         XCTAssertEqual(model.contentSize, "300 MB")
     }
 }

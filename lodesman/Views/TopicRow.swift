@@ -35,9 +35,9 @@ struct TopicRow: View
                 Text(topic.status.rawValue)
                     .foregroundColor(topic.status.color)
                     .font(.title3)
-                if topic.attachment != nil {
-                    AttachmentView(topic.attachment!)
-                    AvailabilityView(topic.attachment!.availability)
+                if let attachment = topic.attachment {
+                    ContentSizeView(attachment.size)
+                    AvailabilityView(attachment.availability)
                 }
             }
             .padding(.leading)
