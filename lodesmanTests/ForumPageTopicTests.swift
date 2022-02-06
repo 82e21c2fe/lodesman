@@ -88,13 +88,14 @@ class ForumPageTopicTests: XCTestCase
     //MARK: - availability
     func testTopicWithZeroSeedmed() throws {
         let node = ForumPage.Topic.xmlFixture(seeds: "0")
-        XCTAssertNil(ForumPage.Topic(node))
+        let topic = try XCTUnwrap(ForumPage.Topic(node))
+        XCTAssertEqual(topic.availability, 0)
     }
 
     func testTopicWithTwoSeed() throws {
         let node = ForumPage.Topic.xmlFixture(seeds: "2")
         let topic = try XCTUnwrap(ForumPage.Topic(node))
-        XCTAssertEqual(topic.availability, 1)
+        XCTAssertEqual(topic.availability, 2)
     }
 
     func testTopicWithHundredSeeds() throws {

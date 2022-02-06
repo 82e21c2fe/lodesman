@@ -29,7 +29,7 @@ struct ForumPage
         var title: String
         var status: TopicStatus
         var contentSize: Float
-        var availability: Int
+        var availability: Availability
         var lastUpdate: Date
     }
 
@@ -170,17 +170,14 @@ fileprivate func getTitle(fromTopic node: XMLNode) -> String?
     return title
 }
 
-fileprivate func getAvailability(fromTopic node: XMLNode) -> Int?
+fileprivate func getAvailability(fromTopic node: XMLNode) -> Availability?
 {
     guard let text = try? node.nodes(forXPath: XPathName.seedmed).first?.textValue
         , let seeders = Int(text)
-        , 0 < seeders
     else {
         return nil
     }
-    let availability = Int(log(Float(seeders)).rounded(.up))
-
-    return min(availability, 5)
+    return Availability(numberOfSeeders: seeders)
 }
 
 fileprivate func getContentSize(fromTopic node: XMLNode) -> Float?

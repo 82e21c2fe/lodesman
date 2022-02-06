@@ -37,6 +37,7 @@ struct TopicRow: View
                     .font(.title3)
                 if topic.attachment != nil {
                     AttachmentView(topic.attachment!)
+                    AvailabilityView(topic.attachment!.availability)
                 }
             }
             .padding(.leading)

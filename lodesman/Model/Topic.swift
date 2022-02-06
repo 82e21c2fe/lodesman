@@ -23,8 +23,7 @@ protocol Attachment
     var link: URL? { get }
     /// Estimated content size in gigabytes.
     var size: Float { get }
-    /// Content availability from 0 to 5 points.
-    var availability: Int { get }
+    var availability: Availability { get }
 }
 
 
@@ -45,7 +44,7 @@ struct AttachmentStub: Attachment
 {
     var link: URL? = URL(string: "https://example.home.arpa/bigfile.dat")!
     var size: Float = 12.5
-    var availability: Int = 5
+    var availability: Availability = 5
 }
 
 struct TopicStub: Topic

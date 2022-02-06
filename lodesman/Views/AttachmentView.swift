@@ -22,8 +22,6 @@ struct AttachmentView: View
             Text(model.contentSize)
                 .foregroundColor(.secondary)
                 .font(.title3)
-            Text(model.availability)
-                .foregroundColor(.yellow)
         }
     }
 }

@@ -13,7 +13,7 @@ extension AttachmentStub
 {
     static func fixture(link: URL? = URL(string: "https://example.home.arpa/bigfile.dat")!,
                         size: Float = 12.5,
-                        availability: Int = 3) -> AttachmentStub
+                        availability: Availability = 3) -> AttachmentStub
     {
         return AttachmentStub(link: link,
                               size: size,

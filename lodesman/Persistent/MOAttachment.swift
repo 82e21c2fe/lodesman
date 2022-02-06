@@ -21,9 +21,9 @@ import CoreData
 
 extension MOAttachment: Attachment
 {
-    var availability: Int {
-        get { Int(availability_) }
-        set { availability_ = Int16(newValue) }
+    var availability: Availability {
+        get { Availability(rawValue: availability_)! }
+        set { availability_ = newValue.rawValue }
     }
 }
 
