@@ -11,7 +11,7 @@ import XCTest
 
 extension TopicStub
 {
-    fileprivate static func fixture(topicId: Int = 0,
+    fileprivate static func fixture(topicId: TopicId = 0,
                                     pinned: Bool = false,
                                     title: String = "untitled",
                                     lastUpdate: Date = Date()) -> TopicStub

@@ -23,7 +23,7 @@ extension AttachmentStub
 
 extension TopicStub
 {
-    static func fixture(topicId: Int = 10,
+    static func fixture(topicId: TopicId = 10,
                         status: TopicStatus = .approved,
                         title: String = "test",
                         synopsis: String? = "synopsis",

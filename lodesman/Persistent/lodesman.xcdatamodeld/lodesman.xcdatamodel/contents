@@ -20,23 +20,23 @@
         </uniquenessConstraints>
     </entity>
     <entity name="Topic" representedClassName="MOTopic" syncable="YES">
+        <attribute name="id" attributeType="Integer 64" minValueString="0" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lastUpdate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="pinned" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="status_" attributeType="String" minValueString="1" maxValueString="16" defaultValueString="unknown"/>
         <attribute name="synopsis" optional="YES" attributeType="String"/>
         <attribute name="title" attributeType="String" minValueString="1" maxValueString="256" defaultValueString="untitled"/>
-        <attribute name="topicId" attributeType="Integer 64" minValueString="0" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="attachment_" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Attachment" inverseName="topic" inverseEntity="Attachment"/>
         <relationship name="forum" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Forum" inverseName="topics" inverseEntity="Forum"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="topicId"/>
+                <constraint value="id"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
     <elements>
         <element name="Attachment" positionX="443.6258544921875" positionY="64.41192626953125" width="128" height="89"/>
         <element name="Forum" positionX="41.109619140625" positionY="48.350830078125" width="128" height="119"/>
-        <element name="Topic" positionX="237.189208984375" positionY="34.20916748046875" width="128" height="163"/>
+        <element name="Topic" positionX="237.189208984375" positionY="34.20916748046875" width="128" height="149"/>
     </elements>
 </model>

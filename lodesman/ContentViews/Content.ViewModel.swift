@@ -16,7 +16,7 @@ extension ContentView
     {
         @Published var showForumCatalog = false
         @Published var selectedForums = Set<Int>()
-        @Published var selectedTopics = Set<Int>()
+        @Published var selectedTopics = Set<TopicId>()
 
         @ObservedObject var storage: Storage
         let fetcher: ServerConnection

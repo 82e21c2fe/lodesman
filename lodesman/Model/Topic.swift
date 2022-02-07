@@ -28,7 +28,7 @@ protocol Attachment
 
 protocol Topic
 {
-    var topicId: Int { get }
+    var topicId: TopicId { get }
     var status: TopicStatus { get }
     var title: String { get }
     var synopsis: String? { get }
@@ -48,7 +48,7 @@ struct AttachmentStub: Attachment
 
 struct TopicStub: Topic
 {
-    var topicId: Int = 1
+    var topicId: TopicId = 1
     var status: TopicStatus = .approved
     var title: String = "untitled"
     var synopsis: String? = TopicStub.synopsis

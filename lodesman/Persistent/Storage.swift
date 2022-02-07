@@ -86,11 +86,11 @@ extension Storage: TopicStorage
         try? context.save()
     }
 
-    func topic(withId topicId: Int) -> Topic? {
+    func topic(withId topicId: TopicId) -> Topic? {
         return MOTopic.with(topicId: topicId, context: context)
     }
 
-    func togglePin(forTopics topicIds: Set<Int>) {
+    func togglePin(forTopics topicIds: Set<TopicId>) {
         objectWillChange.send()
         let topics = MOTopic.allWith(topicIds: topicIds, context: context)
         for topic in topics {
@@ -100,7 +100,7 @@ extension Storage: TopicStorage
         try? context.save()
     }
 
-    func topics(withIds topicIds: Set<Int>) -> [Topic] {
+    func topics(withIds topicIds: Set<TopicId>) -> [Topic] {
         return MOTopic.allWith(topicIds: topicIds, context: context)
     }
 

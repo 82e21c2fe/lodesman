@@ -16,9 +16,9 @@ enum TopicGroupRule {
 struct TopicListView: View
 {
     private let viewModel: ViewModel
-    @Binding private var selected: Set<Int>
+    @Binding private var selected: Set<TopicId>
 
-    init(_ topics: [Topic], groupRule: TopicGroupRule, selection: Binding<Set<Int>>) {
+    init(_ topics: [Topic], groupRule: TopicGroupRule, selection: Binding<Set<TopicId>>) {
         self.viewModel = .init(topics, groupRule: groupRule)
         self._selected = selection
     }

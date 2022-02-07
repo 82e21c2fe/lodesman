@@ -19,9 +19,9 @@ enum TopicSortOrder: CaseIterable, Identifiable
 
 protocol TopicStorage: ObservableObject
 {
-    func topic(withId topicId: Int) -> Topic?
+    func topic(withId topicId: TopicId) -> Topic?
     func topics(fromForums: Set<Int>, whereTitleContains text: String, sortedBy: TopicSortOrder) -> [Topic]
-    func togglePin(forTopics topicIds: Set<Int>)
+    func togglePin(forTopics topicIds: Set<TopicId>)
     func insert(topics items: [Topic], toForum forumId: Int)
 }
 
@@ -39,7 +39,7 @@ extension TopicSortOrder
 
 final class TopicStorageStub: TopicStorage
 {
-    func topic(withId topicId: Int) -> Topic? {
+    func topic(withId topicId: TopicId) -> Topic? {
         return topics.first(where: { $0.topicId == topicId })
     }
 
@@ -48,7 +48,7 @@ final class TopicStorageStub: TopicStorage
         return result.sorted(by: sortedBy.comparator)
     }
 
-    func togglePin(forTopics topicIds: Set<Int>) {
+    func togglePin(forTopics topicIds: Set<TopicId>) {
         objectWillChange.send()
         for topicId in topicIds {
             guard let index = topics.firstIndex(where: { $0.topicId == topicId }) else { continue }

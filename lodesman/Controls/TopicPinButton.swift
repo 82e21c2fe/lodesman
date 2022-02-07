@@ -12,7 +12,7 @@ import SwiftUI
 struct TopicPinButton<Storage: TopicStorage>: View
 {
     let storage: Storage
-    let selectedTopics: Set<Int>
+    let selectedTopics: Set<TopicId>
 
     var body: some View {
         Button {

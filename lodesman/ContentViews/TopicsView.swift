@@ -23,7 +23,7 @@ struct TopicsView<Storage: TopicStorage>: View
 {
     @ObservedObject var storage: Storage
     let forums: Set<Int>
-    @Binding var selection: Set<Int>
+    @Binding var selection: Set<TopicId>
 
     @State private var filterText: String = ""
     @State private var sortOrder: TopicSortOrder = .byLastUpdate

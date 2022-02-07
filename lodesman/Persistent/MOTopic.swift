@@ -12,7 +12,7 @@ import CoreData
 
 @objc(MOTopic) final class MOTopic: NSManagedObject
 {
-    @NSManaged var topicId: Int
+    @NSManaged var id: Int
     @NSManaged var title: String
     @NSManaged var status_: String
     @NSManaged var synopsis: String?
@@ -25,6 +25,10 @@ import CoreData
 
 extension MOTopic: Topic
 {
+    var topicId: TopicId {
+        return TopicId(rawValue: id)!
+    }
+
     var attachment: Attachment? {
         return attachment_
     }
@@ -55,22 +59,22 @@ extension MOTopic
         }
     }
 
-    static func with(topicId id: Int, context: NSManagedObjectContext) -> MOTopic {
+    static func with(topicId id: TopicId, context: NSManagedObjectContext) -> MOTopic {
         let request = fetchRequest()
-        request.predicate = NSPredicate(format: "topicId == %@", id as NSNumber)
+        request.predicate = NSPredicate(format: "id == %@", id.rawValue as NSNumber)
         guard let result = try? context.fetch(request).first
         else {
             let result = MOTopic(context: context)
-            result.topicId = id
+            result.id = id.rawValue
             return result
         }
         return result
     }
 
-    static func allWith(topicIds: Set<Int>, context: NSManagedObjectContext) -> [MOTopic]
+    static func allWith(topicIds: Set<TopicId>, context: NSManagedObjectContext) -> [MOTopic]
     {
         let request = MOTopic.fetchRequest()
-        request.predicate = NSPredicate(format: "topicId IN %@", topicIds as CVarArg)
+        request.predicate = NSPredicate(format: "id IN %@", topicIds.map(\.rawValue) as CVarArg)
         return (try? context.fetch(request)) ?? []
     }
 
