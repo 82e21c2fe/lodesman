@@ -12,7 +12,7 @@ import SwiftUI
 struct ForumUnsubscriptionButton<Storage: ForumStorage>: View
 {
     let storage: Storage
-    @Binding var selection: Set<Int>
+    @Binding var selection: Set<ForumId>
 
     var body: some View {
         Button {

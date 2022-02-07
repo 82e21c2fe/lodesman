@@ -22,7 +22,7 @@ extension ForumCatalogView
             return result
         }
 
-        var selectedItems: [(section: String, forumId: Int, title: String)] {
+        var selectedItems: [(section: String, forumId: ForumId, title: String)] {
             var temp = [Int:(section: String, title: String)]()
             for section in catalog?.root ?? [] {
                 if selection.contains(section.id) {
@@ -43,7 +43,7 @@ extension ForumCatalogView
                 }
             }
             return temp.map { element in
-                (section: element.value.section, forumId: element.key, title: element.value.title)
+                (section: element.value.section, forumId: ForumId(rawValue: element.key)!, title: element.value.title)
             }
         }
 

@@ -67,6 +67,8 @@
 		2AC15F8C27B04B0F000F1DCB /* ContentSizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F8B27B04B0F000F1DCB /* ContentSizeTests.swift */; };
 		2AC15F8E27B0FC75000F1DCB /* TopicId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F8D27B0FC75000F1DCB /* TopicId.swift */; };
 		2AC15F9027B10697000F1DCB /* TopicIdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F8F27B10697000F1DCB /* TopicIdTests.swift */; };
+		2AC15F9227B10C95000F1DCB /* ForumId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F9127B10C95000F1DCB /* ForumId.swift */; };
+		2AC15F9427B11582000F1DCB /* ForumIdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F9327B11582000F1DCB /* ForumIdTests.swift */; };
 		2AD1FDF727A1B1C200EE7778 /* ContentSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1FDF627A1B1C200EE7778 /* ContentSizeView.swift */; };
 		2AD1FDFB27A1B77000EE7778 /* AttributedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1FDFA27A1B77000EE7778 /* AttributedTextView.swift */; };
 /* End PBXBuildFile section */
@@ -145,6 +147,8 @@
 		2AC15F8B27B04B0F000F1DCB /* ContentSizeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizeTests.swift; sourceTree = "<group>"; };
 		2AC15F8D27B0FC75000F1DCB /* TopicId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicId.swift; sourceTree = "<group>"; };
 		2AC15F8F27B10697000F1DCB /* TopicIdTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicIdTests.swift; sourceTree = "<group>"; };
+		2AC15F9127B10C95000F1DCB /* ForumId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumId.swift; sourceTree = "<group>"; };
+		2AC15F9327B11582000F1DCB /* ForumIdTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumIdTests.swift; sourceTree = "<group>"; };
 		2AD1FDF627A1B1C200EE7778 /* ContentSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizeView.swift; sourceTree = "<group>"; };
 		2AD1FDFA27A1B77000EE7778 /* AttributedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -197,6 +201,7 @@
 				2A7860A3279E779A00532E1D /* Catalog.swift */,
 				2A7860D1279FEB7600532E1D /* Topic.swift */,
 				2AC15F8D27B0FC75000F1DCB /* TopicId.swift */,
+				2AC15F9127B10C95000F1DCB /* ForumId.swift */,
 				2AC15F8127B00E58000F1DCB /* Availability.swift */,
 				2AC15F8927B02F93000F1DCB /* ContentSize.swift */,
 				2A5B058B27A40AD300319826 /* ForumStorage.swift */,
@@ -228,6 +233,7 @@
 		2A7860AA279E7C1F00532E1D /* lodesmanTests */ = {
 			isa = PBXGroup;
 			children = (
+				2AC15F9327B11582000F1DCB /* ForumIdTests.swift */,
 				2AC15F8F27B10697000F1DCB /* TopicIdTests.swift */,
 				2A7860D7279FF14700532E1D /* ContentSizeViewModelTests.swift */,
 				2AC15F8B27B04B0F000F1DCB /* ContentSizeTests.swift */,
@@ -428,6 +434,7 @@
 				2A7860DE279FF42C00532E1D /* TopicListViewModelTests.swift in Sources */,
 				2A7B61BC27A8359E00949123 /* ForumPageTests.swift in Sources */,
 				2AC15F8C27B04B0F000F1DCB /* ContentSizeTests.swift in Sources */,
+				2AC15F9427B11582000F1DCB /* ForumIdTests.swift in Sources */,
 				2A7B61A627A5557300949123 /* ServerConnectionTests.swift in Sources */,
 				2A7860D8279FF14700532E1D /* ContentSizeViewModelTests.swift in Sources */,
 				2AC15F8627B0196D000F1DCB /* AvailabilityTests.swift in Sources */,
@@ -452,6 +459,7 @@
 				2A7B61AF27A6C49F00949123 /* MOForum.swift in Sources */,
 				2A7860DA279FF32A00532E1D /* TopicListView.swift in Sources */,
 				2A7860BC279E982800532E1D /* FetchingError.swift in Sources */,
+				2AC15F9227B10C95000F1DCB /* ForumId.swift in Sources */,
 				2A7860B7279E94E600532E1D /* CatalogView.swift in Sources */,
 				2A7A8524279D3C83003579FF /* lodesmanApp.swift in Sources */,
 				2A786075279D5F6000532E1D /* ForumRow.swift in Sources */,

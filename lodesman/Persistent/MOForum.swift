@@ -12,7 +12,7 @@ import CoreData
 
 @objc(MOForum) final class MOForum: NSManagedObject
 {
-    @NSManaged var forumId: Int
+    @NSManaged var id: Int
     @NSManaged var title: String
     @NSManaged var section: String
     @NSManaged var lastUpdate: Date?
@@ -23,6 +23,10 @@ import CoreData
 
 extension MOForum: Forum
 {
+    var forumId: ForumId {
+        return ForumId(rawValue: id)!
+    }
+
     var numberOfTopics: Int {
         return topics.count
     }
@@ -36,23 +40,23 @@ extension MOForum: Forum
 
 extension MOForum
 {
-    static func with(forumId id: Int, context: NSManagedObjectContext) -> MOForum
+    static func with(forumId id: ForumId, context: NSManagedObjectContext) -> MOForum
     {
         let request = fetchRequest()
-        request.predicate = NSPredicate(format: "forumId == %@", id as NSNumber)
+        request.predicate = NSPredicate(format: "id == %@", id.rawValue as NSNumber)
         guard let result = try? context.fetch(request).first
         else {
             let result = MOForum(context: context)
-            result.forumId = id
+            result.id = id.rawValue
             return result
         }
         return result
     }
 
-    static func allWith(forumIds: Set<Int>, context: NSManagedObjectContext) -> [MOForum]
+    static func allWith(forumIds: Set<ForumId>, context: NSManagedObjectContext) -> [MOForum]
     {
         let request = MOForum.fetchRequest()
-        request.predicate = NSPredicate(format: "forumId IN %@", forumIds as CVarArg)
+        request.predicate = NSPredicate(format: "id IN %@", forumIds.map(\.rawValue) as CVarArg)
         return (try? context.fetch(request)) ?? []
     }
 

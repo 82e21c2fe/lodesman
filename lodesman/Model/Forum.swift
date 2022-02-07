@@ -19,7 +19,7 @@ enum UpdationState: String
 
 protocol Forum
 {
-    var forumId: Int { get }
+    var forumId: ForumId { get }
     var title: String { get }
     var section: String { get }
     var lastUpdate: Date? { get set }
@@ -31,7 +31,7 @@ protocol Forum
 #if DEBUG
 struct ForumStub: Forum
 {
-    var forumId: Int = 0
+    var forumId: ForumId = 0
     var title: String = "untitled"
     var section: String = ""
     var lastUpdate: Date?
@@ -42,7 +42,7 @@ struct ForumStub: Forum
         .components(separatedBy: " ")
         .enumerated()
         .map{ (index, title) in
-            ForumStub(forumId: index, title: title, numberOfTopics: index * 9_876)
+            ForumStub(forumId: ForumId(rawValue: index + 1)!, title: title, numberOfTopics: index * 9_876)
         }
 }
 #endif

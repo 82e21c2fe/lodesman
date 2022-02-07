@@ -22,7 +22,7 @@ extension TopicGroupRule
 struct TopicsView<Storage: TopicStorage>: View
 {
     @ObservedObject var storage: Storage
-    let forums: Set<Int>
+    let forums: Set<ForumId>
     @Binding var selection: Set<TopicId>
 
     @State private var filterText: String = ""

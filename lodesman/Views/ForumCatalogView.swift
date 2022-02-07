@@ -13,10 +13,10 @@ struct ForumCatalogView: View
 {
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject private var model: ViewModel
-    private let action: ([(section: String, forumId: Int, title: String)]) -> Void
+    private let action: ([(section: String, forumId: ForumId, title: String)]) -> Void
 
     init(fetcher: ForumCatalogFetching,
-         onCompletion: @escaping ([(section: String, forumId: Int, title: String)]) -> Void)
+         onCompletion: @escaping ([(section: String, forumId: ForumId, title: String)]) -> Void)
     {
         self.model = ViewModel(fetcher: fetcher)
         self.action = onCompletion

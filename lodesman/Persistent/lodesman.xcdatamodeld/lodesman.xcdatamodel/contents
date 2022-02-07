@@ -7,7 +7,7 @@
         <relationship name="topic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Topic" inverseName="attachment_" inverseEntity="Topic"/>
     </entity>
     <entity name="Forum" representedClassName="MOForum" syncable="YES">
-        <attribute name="forumId" attributeType="Integer 64" minValueString="0" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="Integer 64" minValueString="0" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lastUpdate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="section" attributeType="String" maxValueString="256" defaultValueString=""/>
         <attribute name="state_" optional="YES" transient="YES" attributeType="String"/>
@@ -15,7 +15,7 @@
         <relationship name="topics" toMany="YES" deletionRule="Cascade" destinationEntity="Topic" inverseName="forum" inverseEntity="Topic"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="forumId"/>
+                <constraint value="id"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>

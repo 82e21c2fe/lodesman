@@ -21,7 +21,7 @@ struct CatalogPage
 
     struct Forum
     {
-        var forumId: Int
+        var forumId: ForumId
         var title: String
         var subforums: [CatalogPage.Forum]
     }
@@ -54,7 +54,7 @@ extension CatalogPage.Section: CatalogItem
 extension CatalogPage.Forum: CatalogItem
 {
     var id: Int {
-        forumId
+        forumId.rawValue
     }
 
     var kind: CatalogItemKind {
@@ -115,8 +115,7 @@ extension CatalogPage.Forum
         precondition(node.name == "li")
 
         guard let href = try? node.nodes(forXPath: XPathName.forumId).first?.textValue
-            , let forumId = Int(href)
-            , 0 < forumId
+            , let forumId = ForumId(href)
         else {
             return nil
         }

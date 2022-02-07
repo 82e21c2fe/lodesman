@@ -15,7 +15,7 @@ extension ContentView
     final class ViewModel: ObservableObject
     {
         @Published var showForumCatalog = false
-        @Published var selectedForums = Set<Int>()
+        @Published var selectedForums = Set<ForumId>()
         @Published var selectedTopics = Set<TopicId>()
 
         @ObservedObject var storage: Storage
@@ -27,7 +27,7 @@ extension ContentView
         }
 
         //MARK: -
-        func subscribe(to items: [(section: String, forumId: Int, title: String)]) {
+        func subscribe(to items: [(section: String, forumId: ForumId, title: String)]) {
             storage.insert(forums: items)
             updateForums()
         }
@@ -44,7 +44,7 @@ extension ContentView
             }
         }
 
-        private func updateForum(from forumId: Int, modifiedAfter earlyDate: Date) {
+        private func updateForum(from forumId: ForumId, modifiedAfter earlyDate: Date) {
             guard jobs.index(forKey: forumId) == nil else { return }
             DispatchQueue.main.async {
                 self.storage.setState(forForum: forumId, state: .loading)
@@ -68,6 +68,6 @@ extension ContentView
         }
 
         private var queue = DispatchQueue(label: "ee.82e21c2fe.lodesman.network", qos: .utility)
-        private var jobs = [Int: AnyCancellable]()
+        private var jobs = [ForumId: AnyCancellable]()
     }
 }

@@ -12,10 +12,10 @@ import Foundation
 protocol ForumStorage: ObservableObject
 {
     var forums: [Forum] { get }
-    func insert(forums items: [(section: String, forumId: Int, title: String)])
-    func remove(forums forumIds: Set<Int>)
-    func setLastUpdate(forForum forumId: Int)
-    func setState(forForum forumId: Int, state: UpdationState?)
+    func insert(forums items: [(section: String, forumId: ForumId, title: String)])
+    func remove(forums forumIds: Set<ForumId>)
+    func setLastUpdate(forForum forumId: ForumId)
+    func setState(forForum forumId: ForumId, state: UpdationState?)
 }
 
 
@@ -24,7 +24,7 @@ final class ForumStorageStub: ForumStorage
 {
     private(set) var forums: [Forum] = ForumStub.preview
 
-    func insert(forums items: [(section: String, forumId: Int, title: String)]) {
+    func insert(forums items: [(section: String, forumId: ForumId, title: String)]) {
         objectWillChange.send()
         for item in items {
             let newValue = ForumStub(forumId: item.forumId, title: item.title, section: item.section)
@@ -37,18 +37,18 @@ final class ForumStorageStub: ForumStorage
         }
     }
 
-    func remove(forums forumIds: Set<Int>) {
+    func remove(forums forumIds: Set<ForumId>) {
         objectWillChange.send()
         forums = forums.filter({ !forumIds.contains($0.forumId) })
     }
 
-    func setLastUpdate(forForum forumId: Int) {
+    func setLastUpdate(forForum forumId: ForumId) {
         if let index = forums.firstIndex(where: { $0.forumId == forumId }) {
             forums[index].lastUpdate = Date()
         }
     }
 
-    func setState(forForum forumId: Int, state: UpdationState?) {
+    func setState(forForum forumId: ForumId, state: UpdationState?) {
         if let index = forums.firstIndex(where: { $0.forumId == forumId }) {
             forums[index].state = state
         }

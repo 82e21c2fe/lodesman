@@ -12,9 +12,9 @@ import SwiftUI
 struct ForumListView: View
 {
     private let model: ViewModel
-    @Binding private var selected: Set<Int>
+    @Binding private var selected: Set<ForumId>
 
-    init(forums: [Forum], selection: Binding<Set<Int>>) {
+    init(forums: [Forum], selection: Binding<Set<ForumId>>) {
         self.model = .init(forums: forums)
         self._selected = selection
     }

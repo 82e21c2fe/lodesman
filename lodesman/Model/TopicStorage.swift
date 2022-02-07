@@ -20,9 +20,9 @@ enum TopicSortOrder: CaseIterable, Identifiable
 protocol TopicStorage: ObservableObject
 {
     func topic(withId topicId: TopicId) -> Topic?
-    func topics(fromForums: Set<Int>, whereTitleContains text: String, sortedBy: TopicSortOrder) -> [Topic]
+    func topics(fromForums: Set<ForumId>, whereTitleContains text: String, sortedBy: TopicSortOrder) -> [Topic]
     func togglePin(forTopics topicIds: Set<TopicId>)
-    func insert(topics items: [Topic], toForum forumId: Int)
+    func insert(topics items: [Topic], toForum forumId: ForumId)
 }
 
 
@@ -43,7 +43,7 @@ final class TopicStorageStub: TopicStorage
         return topics.first(where: { $0.topicId == topicId })
     }
 
-    func topics(fromForums: Set<Int>, whereTitleContains text: String, sortedBy: TopicSortOrder) -> [Topic] {
+    func topics(fromForums: Set<ForumId>, whereTitleContains text: String, sortedBy: TopicSortOrder) -> [Topic] {
         let result = !text.isEmpty ? topics.filter({ $0.title.localizedStandardContains(text) }) : topics
         return result.sorted(by: sortedBy.comparator)
     }
@@ -56,7 +56,7 @@ final class TopicStorageStub: TopicStorage
         }
     }
 
-    func insert(topics items: [Topic], toForum: Int) {
+    func insert(topics items: [Topic], toForum: ForumId) {
         objectWillChange.send()
         for item in items {
             if let index = topics.firstIndex(where: { $0.topicId == item.topicId }) {

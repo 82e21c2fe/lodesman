@@ -32,7 +32,7 @@ extension Storage: ForumStorage
         return (try? context.fetch(request)) ?? []
     }
 
-    func insert(forums items: [(section: String, forumId: Int, title: String)]) {
+    func insert(forums items: [(section: String, forumId: ForumId, title: String)]) {
         objectWillChange.send()
         for item in items {
             let forum = MOForum.with(forumId: item.forumId, context: context)
@@ -43,7 +43,7 @@ extension Storage: ForumStorage
         try? context.save()
     }
 
-    func remove(forums forumIds: Set<Int>) {
+    func remove(forums forumIds: Set<ForumId>) {
         objectWillChange.send()
         let result = MOForum.allWith(forumIds: forumIds, context: context)
         result.forEach { context.delete($0) }
@@ -51,7 +51,7 @@ extension Storage: ForumStorage
         try? context.save()
     }
 
-    func setLastUpdate(forForum forumId: Int) {
+    func setLastUpdate(forForum forumId: ForumId) {
         objectWillChange.send()
         let result = MOForum.with(forumId: forumId, context: context)
         result.objectWillChange.send()
@@ -60,7 +60,7 @@ extension Storage: ForumStorage
         try? context.save()
     }
 
-    func setState(forForum forumId: Int, state: UpdationState?) {
+    func setState(forForum forumId: ForumId, state: UpdationState?) {
         objectWillChange.send()
         let result = MOForum.with(forumId: forumId, context: context)
         result.objectWillChange.send()
@@ -73,7 +73,7 @@ extension Storage: ForumStorage
 
 extension Storage: TopicStorage
 {
-    func insert(topics items: [Topic], toForum forumId: Int) {
+    func insert(topics items: [Topic], toForum forumId: ForumId) {
         objectWillChange.send()
         let forum = MOForum.with(forumId: forumId, context: context)
         forum.objectWillChange.send()
@@ -104,11 +104,11 @@ extension Storage: TopicStorage
         return MOTopic.allWith(topicIds: topicIds, context: context)
     }
 
-    func topics(fromForums forumIds: Set<Int>, whereTitleContains text: String, sortedBy: TopicSortOrder) -> [Topic] {
+    func topics(fromForums forumIds: Set<ForumId>, whereTitleContains text: String, sortedBy: TopicSortOrder) -> [Topic] {
         let request = MOTopic.fetchRequest()
 
-        var fmt = "forum.forumId IN %@"
-        var args: [Any] = [forumIds]
+        var fmt = "forum.id IN %@"
+        var args: [Any] = [forumIds.map(\.rawValue)]
         if !text.isEmpty {
             fmt += " AND title CONTAINS[CD] %@"
             args.append(text as NSString)

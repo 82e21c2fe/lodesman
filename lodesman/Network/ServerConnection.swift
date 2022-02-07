@@ -50,7 +50,7 @@ extension ForumPage.Topic: Topic, Attachment
 
 extension ServerConnection: TopicFetching
 {
-    func fetchTopics(from forumId: Int, modifiedAfter earlyDate: Date) -> AnyPublisher<[Topic], FetchingError> {
+    func fetchTopics(from forumId: ForumId, modifiedAfter earlyDate: Date) -> AnyPublisher<[Topic], FetchingError> {
         let isDone = PassthroughSubject<Void, Never>()
         return NetworkScheduler.pageIndexPublisher
             .prefix(untilOutputFrom: isDone)
@@ -69,8 +69,8 @@ extension ServerConnection: TopicFetching
             .eraseToAnyPublisher()
     }
 
-    func fetchForumPage(forumId: Int, pageIndex: Int) -> AnyPublisher<ForumPage, FetchingError> {
-        let url = URL(string: "viewforum.php?f=\(forumId)&start=\(pageIndex * 50)", relativeTo: baseURL)!
+    func fetchForumPage(forumId: ForumId, pageIndex: Int) -> AnyPublisher<ForumPage, FetchingError> {
+        let url = URL(string: "viewforum.php?f=\(forumId.rawValue)&start=\(pageIndex * 50)", relativeTo: baseURL)!
 
         return fetcher.load(URLRequest(url: url))
             .tryMap { try ForumPage(data: $0) }

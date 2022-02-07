@@ -12,7 +12,7 @@ import SwiftUI
 struct SidebarView<Storage: ForumStorage>: View
 {
     @ObservedObject var storage: Storage
-    @Binding var selection: Set<Int>
+    @Binding var selection: Set<ForumId>
     @Binding var showForumCatalog: Bool
     @State private var listId = 0
 

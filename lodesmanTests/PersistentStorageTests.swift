@@ -41,6 +41,7 @@ extension TopicStub
     }
 }
 
+typealias ForumRec = (section: String, forumId: ForumId, title: String)
 
 class PersistentStorageTests: XCTestCase
 {
@@ -54,8 +55,8 @@ class PersistentStorageTests: XCTestCase
     func testInsertForumsInContainer() throws {
         let persistent = Persistent(inMemory: true)
         let storage = Storage(context: persistent.container.viewContext)
-        let forums = [(section: "main", forumId: 1, title: "beta"),
-                      (section: "main", forumId: 2, title: "alpha")]
+        let forums: [ForumRec] = [(section: "main", forumId: 1, title: "beta"),
+                                  (section: "main", forumId: 2, title: "alpha")]
         storage.insert(forums: forums)
         XCTAssertEqual(storage.forums.count, 2)
         let first = try XCTUnwrap(storage.forums.first)
@@ -71,12 +72,12 @@ class PersistentStorageTests: XCTestCase
     func testUpdateForumsInContainer() throws {
         let persistent = Persistent(inMemory: true)
         let storage = Storage(context: persistent.container.viewContext)
-        let forums = [(section: "main", forumId: 1, title: "beta"),
-                      (section: "main", forumId: 2, title: "alpha")]
+        let forums: [ForumRec] = [(section: "main", forumId: 1, title: "beta"),
+                                  (section: "main", forumId: 2, title: "alpha")]
         storage.insert(forums: forums)
         XCTAssertEqual(storage.forums.count, 2)
-        let newForums = [(section: "main", forumId: 2, title: "gamma"),
-                         (section: "main", forumId: 3, title: "zeta")]
+        let newForums: [ForumRec] = [(section: "main", forumId: 2, title: "gamma"),
+                                     (section: "main", forumId: 3, title: "zeta")]
         storage.insert(forums: newForums)
         XCTAssertEqual(storage.forums.count, 3)
         let first = try XCTUnwrap(storage.forums.first)
@@ -99,10 +100,10 @@ class PersistentStorageTests: XCTestCase
     func testRemoveForumsFromContainer() throws {
         let persistent = Persistent(inMemory: true)
         let storage = Storage(context: persistent.container.viewContext)
-        let forums = [(section: "main", forumId: 1, title: "beta"),
-                      (section: "main", forumId: 2, title: "alpha"),
-                      (section: "main", forumId: 5, title: "gamma"),
-                      (section: "main", forumId: 12, title: "delta")]
+        let forums: [ForumRec] = [(section: "main", forumId: 1, title: "beta"),
+                                  (section: "main", forumId: 2, title: "alpha"),
+                                  (section: "main", forumId: 5, title: "gamma"),
+                                  (section: "main", forumId: 12, title: "delta")]
         storage.insert(forums: forums)
         XCTAssertEqual(storage.forums.count, 4)
         storage.remove(forums: [5, 2])
