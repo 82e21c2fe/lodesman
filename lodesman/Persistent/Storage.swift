@@ -110,13 +110,13 @@ extension Storage: TopicStorage
         var fmt = "forum.id IN %@"
         var args: [Any] = [forumIds.map(\.rawValue)]
         if !text.isEmpty {
-            fmt += " AND title CONTAINS[CD] %@"
+            fmt += " AND title_ CONTAINS[CD] %@"
             args.append(text as NSString)
         }
         request.predicate = NSPredicate(format: fmt, argumentArray: args)
 
         var sortDescriptors = [NSSortDescriptor(keyPath: \MOTopic.pinned, ascending: false),
-                               NSSortDescriptor(keyPath: \MOTopic.title, ascending: true)]
+                               NSSortDescriptor(keyPath: \MOTopic.title_, ascending: true)]
         if sortedBy == .byLastUpdate {
             sortDescriptors.insert(NSSortDescriptor(keyPath: \MOTopic.lastUpdate, ascending: false), at: 1)
         }

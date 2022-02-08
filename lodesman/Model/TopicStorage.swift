@@ -32,7 +32,7 @@ extension TopicSortOrder
     var comparator: (TopicStub, TopicStub) -> Bool {
         switch self {
         case .byLastUpdate: return { lhs, rhs in lhs.lastUpdate > rhs.lastUpdate }
-        case .byTitle:      return { lhs, rhs in lhs.title.localizedStandardContains(rhs.title) }
+        case .byTitle:      return { lhs, rhs in lhs.title < rhs.title }
         }
     }
 }
@@ -44,7 +44,7 @@ final class TopicStorageStub: TopicStorage
     }
 
     func topics(fromForums: Set<ForumId>, whereTitleContains text: String, sortedBy: TopicSortOrder) -> [Topic] {
-        let result = !text.isEmpty ? topics.filter({ $0.title.localizedStandardContains(text) }) : topics
+        let result = !text.isEmpty ? topics.filter({ $0.title.rawValue.localizedStandardContains(text) }) : topics
         return result.sorted(by: sortedBy.comparator)
     }
 

@@ -30,7 +30,7 @@ protocol Topic
 {
     var topicId: TopicId { get }
     var status: TopicStatus { get }
-    var title: String { get }
+    var title: TopicTitle { get }
     var synopsis: String? { get }
     var attachment: Attachment? { get }
     var lastUpdate: Date { get }
@@ -50,7 +50,7 @@ struct TopicStub: Topic
 {
     var topicId: TopicId = 1
     var status: TopicStatus = .approved
-    var title: String = "untitled"
+    var title: TopicTitle = "untitled"
     var synopsis: String? = TopicStub.synopsis
     var attachment: Attachment?
     var lastUpdate: Date = Date()

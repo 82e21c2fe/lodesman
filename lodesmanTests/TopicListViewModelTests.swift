@@ -13,7 +13,7 @@ extension TopicStub
 {
     fileprivate static func fixture(topicId: TopicId = 0,
                                     pinned: Bool = false,
-                                    title: String = "untitled",
+                                    title: TopicTitle = "untitled",
                                     lastUpdate: Date = Date()) -> TopicStub
     {
         return TopicStub(topicId: topicId, title: title, lastUpdate: lastUpdate, pinned: pinned)

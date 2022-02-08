@@ -29,9 +29,9 @@ extension TopicListView
                     .map { (caption: dateFmt.string(from: $0.key), topics: $0.value) }
 
             case .byAlphabet:
-                temp += Dictionary(grouping: other, by: { $0.title.localizedCapitalized.first ?? "-" })
+                temp += Dictionary(grouping: other, by: { $0.title.firstLetter })
                     .sorted(by: { lhs, rhs in lhs.key < rhs.key })
-                    .map { (caption: "\($0.key)", topics: $0.value) }
+                    .map { (caption: $0.key, topics: $0.value) }
             }
             section = temp
         }

@@ -43,7 +43,7 @@ struct TopicRow: View
             .padding(.leading)
             .frame(width: 90)
             Divider()
-            Text(topic.title)
+            Text(topic.title.rawValue)
                 .lineLimit(4)
                 .font(.title2)
                 .foregroundColor(.primary)
@@ -67,7 +67,7 @@ struct TopicRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             TopicRow(TopicStub(status: .approved,
-                               title: longTitle,
+                               title: TopicTitle(rawValue: longTitle)!,
                                attachment: AttachmentStub(availability: 5),
                                pinned: true))
 

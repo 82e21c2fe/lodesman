@@ -25,7 +25,7 @@ extension TopicStub
 {
     static func fixture(topicId: TopicId = 10,
                         status: TopicStatus = .approved,
-                        title: String = "test",
+                        title: TopicTitle = "test",
                         synopsis: String? = "synopsis",
                         attachment: AttachmentStub? = .fixture(),
                         lastUpdate: Date = Date(),

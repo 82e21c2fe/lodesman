@@ -26,7 +26,7 @@ struct ForumPage
     struct Topic
     {
         var topicId: TopicId
-        var title: String
+        var title: TopicTitle
         var status: TopicStatus
         var contentSize: ContentSize
         var availability: Availability
@@ -158,14 +158,13 @@ fileprivate func getId(fromTopic node: XMLNode) -> TopicId?
     return TopicId(text)
 }
 
-fileprivate func getTitle(fromTopic node: XMLNode) -> String?
+fileprivate func getTitle(fromTopic node: XMLNode) -> TopicTitle?
 {
     guard let title = try? node.nodes(forXPath: XPathName.topicTitle).first?.textValue
-        , (1...256).contains(title.count)
     else {
         return nil
     }
-    return title
+    return TopicTitle(rawValue: title)
 }
 
 fileprivate func getAvailability(fromTopic node: XMLNode) -> Availability?

@@ -13,7 +13,7 @@ import CoreData
 @objc(MOTopic) final class MOTopic: NSManagedObject
 {
     @NSManaged var id: Int
-    @NSManaged var title: String
+    @NSManaged var title_: String
     @NSManaged var status_: String
     @NSManaged var synopsis: String?
     @NSManaged var lastUpdate: Date
@@ -27,6 +27,11 @@ extension MOTopic: Topic
 {
     var topicId: TopicId {
         return TopicId(rawValue: id)!
+    }
+
+    var title: TopicTitle {
+        get { return TopicTitle(rawValue: title_)! }
+        set { title_ = newValue.rawValue }
     }
 
     var attachment: Attachment? {
