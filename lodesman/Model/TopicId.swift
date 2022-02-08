@@ -44,7 +44,7 @@ extension TopicId: LosslessStringConvertible
 
 
 //MARK: - Adopts `ExpressibleByIntegerLiteral` protocol
-
+#if DEBUG
 extension TopicId: ExpressibleByIntegerLiteral
 {
     init(integerLiteral value: Int) {
@@ -52,3 +52,4 @@ extension TopicId: ExpressibleByIntegerLiteral
         self.rawValue = value
     }
 }
+#endif

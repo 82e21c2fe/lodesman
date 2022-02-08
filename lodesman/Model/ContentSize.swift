@@ -67,7 +67,7 @@ extension ContentSize: Comparable
 }
 
 //MARK: - Adopts `ExpressibleByFloatLiteral` and `ExpressibleByIntegerLiteral` protocols
-
+#if DEBUG
 extension ContentSize: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral
 {
     init(floatLiteral value: Float) {
@@ -81,3 +81,4 @@ extension ContentSize: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral
         self.rawValue = value
     }
 }
+#endif

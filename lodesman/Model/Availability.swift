@@ -44,7 +44,7 @@ extension Availability: Comparable
 
 
 //MARK: - Adopts `ExpressibleByIntegerLiteral` protocol
-
+#if DEBUG
 extension Availability: ExpressibleByIntegerLiteral
 {
     init(integerLiteral value: Int16) {
@@ -52,3 +52,4 @@ extension Availability: ExpressibleByIntegerLiteral
         self.rawValue = value
     }
 }
+#endif
