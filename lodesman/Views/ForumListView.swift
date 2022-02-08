@@ -22,7 +22,7 @@ struct ForumListView: View
     var body: some View {
         List(selection: $selected) {
             ForEach(model.sections, id: \.caption) { section in
-                Section(header: Text(section.caption)) {
+                Section(header: Text(section.caption.rawValue)) {
                     ForEach(section.forums, id: \.forumId) { forum in
                         ForumRow(forum: forum)
                     }

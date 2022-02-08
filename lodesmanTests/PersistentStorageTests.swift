@@ -41,7 +41,7 @@ extension TopicStub
     }
 }
 
-typealias ForumRec = (section: String, forumId: ForumId, title: String)
+typealias ForumRec = (section: ForumTitle, forumId: ForumId, title: ForumTitle)
 
 class PersistentStorageTests: XCTestCase
 {

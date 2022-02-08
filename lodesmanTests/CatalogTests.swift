@@ -13,7 +13,7 @@ fileprivate struct ItemStub: CatalogItem
 {
     var id: Int = 0
     var kind: CatalogItemKind = .section
-    var title: String = "untitled"
+    var title: ForumTitle = "Untitled"
     var children: [CatalogItem]?
 }
 

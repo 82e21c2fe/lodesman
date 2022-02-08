@@ -33,7 +33,7 @@ struct ForumRow: View
                     .foregroundColor(.accentColor)
             }
             VStack(alignment: .leading) {
-                Text(forum.title)
+                Text(forum.title.rawValue)
                     .lineLimit(4)
                     .foregroundColor(.primary)
                     .font(.title2)

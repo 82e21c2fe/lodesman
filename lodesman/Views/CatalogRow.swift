@@ -28,7 +28,7 @@ struct CatalogRow: View
         HStack {
             Image(systemName: item.kind.systemImage)
                 .foregroundColor(.accentColor)
-            Text(item.title)
+            Text(item.title.rawValue)
                 .foregroundColor(.primary)
             Spacer()
         }

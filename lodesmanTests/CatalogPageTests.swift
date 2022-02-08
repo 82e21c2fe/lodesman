@@ -59,16 +59,16 @@ class CatalogPageTests: XCTestCase
     }
 
     func testForumInitFromXMLNodeWithTooLongAnchorText() throws {
-        let longname = repeatElement("a", count: 257).joined()
+        let longname = String(repeating: "a", count: 129)
         let node = CatalogPage.Forum.xmlFixture(title: longname)
         XCTAssertNil(CatalogPage.Forum(node))
     }
 
     func testForumInitFromXMLNodeWithMaximumLengthAnchorText() throws {
-        let longname = repeatElement("a", count: 256).joined()
+        let longname = String(repeating: "a", count: 128)
         let node = CatalogPage.Forum.xmlFixture(title: longname)
         let forum = try XCTUnwrap(CatalogPage.Forum(node))
-        XCTAssertEqual(forum.title, longname)
+        XCTAssertEqual(forum.title.rawValue, longname)
     }
 
     func testForumInitFromXMLNodeWithoutSubforums() throws {

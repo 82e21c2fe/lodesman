@@ -12,10 +12,10 @@ extension ForumListView
 {
     struct ViewModel
     {
-        let sections: [(caption: String, forums: [Forum])]
+        let sections: [(caption: ForumTitle, forums: [Forum])]
 
         init(forums: [Forum]) {
-            sections = Dictionary(grouping: forums, by: { $0.section.localizedCapitalized })
+            sections = Dictionary(grouping: forums, by: { $0.section })
                 .sorted(by: { lhs, rhs in lhs.key < rhs.key })
                 .map({ (caption: $0.key, forums: $0.value) })
         }

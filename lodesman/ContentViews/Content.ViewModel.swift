@@ -27,7 +27,7 @@ extension ContentView
         }
 
         //MARK: -
-        func subscribe(to items: [(section: String, forumId: ForumId, title: String)]) {
+        func subscribe(to items: [(section: ForumTitle, forumId: ForumId, title: ForumTitle)]) {
             storage.insert(forums: items)
             updateForums()
         }

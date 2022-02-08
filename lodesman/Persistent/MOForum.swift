@@ -13,8 +13,8 @@ import CoreData
 @objc(MOForum) final class MOForum: NSManagedObject
 {
     @NSManaged var id: Int
-    @NSManaged var title: String
-    @NSManaged var section: String
+    @NSManaged var title_: String
+    @NSManaged var section_: String
     @NSManaged var lastUpdate: Date?
     @NSManaged var state_: String?
     @NSManaged var topics: Set<MOTopic>
@@ -25,6 +25,16 @@ extension MOForum: Forum
 {
     var forumId: ForumId {
         return ForumId(rawValue: id)!
+    }
+
+    var title: ForumTitle {
+        get { ForumTitle(rawValue: title_)! }
+        set { title_ = newValue.rawValue }
+    }
+
+    var section: ForumTitle {
+        get { ForumTitle(rawValue: section_)! }
+        set { section_ = newValue.rawValue }
     }
 
     var numberOfTopics: Int {

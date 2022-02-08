@@ -12,7 +12,7 @@ import Foundation
 protocol ForumStorage: ObservableObject
 {
     var forums: [Forum] { get }
-    func insert(forums items: [(section: String, forumId: ForumId, title: String)])
+    func insert(forums items: [(section: ForumTitle, forumId: ForumId, title: ForumTitle)])
     func remove(forums forumIds: Set<ForumId>)
     func setLastUpdate(forForum forumId: ForumId)
     func setState(forForum forumId: ForumId, state: UpdationState?)
@@ -24,7 +24,7 @@ final class ForumStorageStub: ForumStorage
 {
     private(set) var forums: [Forum] = ForumStub.preview
 
-    func insert(forums items: [(section: String, forumId: ForumId, title: String)]) {
+    func insert(forums items: [(section: ForumTitle, forumId: ForumId, title: ForumTitle)]) {
         objectWillChange.send()
         for item in items {
             let newValue = ForumStub(forumId: item.forumId, title: item.title, section: item.section)

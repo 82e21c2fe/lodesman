@@ -18,7 +18,7 @@ protocol CatalogItem
 {
     var id: Int { get }
     var kind: CatalogItemKind { get }
-    var title: String { get }
+    var title: ForumTitle { get }
     var children: [CatalogItem]? { get }
 }
 
@@ -58,7 +58,7 @@ struct CatalogItemStub: CatalogItem
 {
     var id: Int
     var kind: CatalogItemKind { id < 0 ? .section : .forum }
-    var title: String
+    var title: ForumTitle
     var children: [CatalogItem]?
 }
 

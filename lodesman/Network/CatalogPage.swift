@@ -15,14 +15,14 @@ struct CatalogPage
 
     struct Section
     {
-        var title: String
+        var title: ForumTitle
         var forums: [CatalogPage.Forum]
     }
 
     struct Forum
     {
         var forumId: ForumId
-        var title: String
+        var title: ForumTitle
         var subforums: [CatalogPage.Forum]
     }
 }
@@ -91,8 +91,8 @@ extension CatalogPage.Section
         precondition(node.kind == .element)
         precondition(node.name == "li")
 
-        guard let title = try? node.nodes(forXPath: XPathName.sectionTitle).first?.textValue
-            , (1...256).contains(title.count)
+        guard let text = try? node.nodes(forXPath: XPathName.sectionTitle).first?.textValue
+            , let title = ForumTitle(rawValue: text)
         else {
             return nil
         }
@@ -120,8 +120,8 @@ extension CatalogPage.Forum
             return nil
         }
 
-        guard let title = try? node.nodes(forXPath: XPathName.forumTitle).first?.textValue
-            , (1...256).contains(title.count)
+        guard let text = try? node.nodes(forXPath: XPathName.forumTitle).first?.textValue
+            , let title = ForumTitle(rawValue: text)
         else {
             return nil
         }

@@ -22,8 +22,8 @@ extension ForumCatalogView
             return result
         }
 
-        var selectedItems: [(section: String, forumId: ForumId, title: String)] {
-            var temp = [Int:(section: String, title: String)]()
+        var selectedItems: [(section: ForumTitle, forumId: ForumId, title: ForumTitle)] {
+            var temp = [Int:(section: ForumTitle, title: ForumTitle)]()
             for section in catalog?.root ?? [] {
                 if selection.contains(section.id) {
                     section.forEachChildren { item in
@@ -42,8 +42,10 @@ extension ForumCatalogView
                     }
                 }
             }
-            return temp.map { element in
-                (section: element.value.section, forumId: ForumId(rawValue: element.key)!, title: element.value.title)
+            return temp.compactMap { element in
+                guard let forumId = ForumId(rawValue: element.key)
+                else { return nil }
+                return (section: element.value.section, forumId: forumId, title: element.value.title)
             }
         }
 
