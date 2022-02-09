@@ -15,7 +15,7 @@ struct ForumCatalogView: View
     @ObservedObject private var model: ViewModel
     private let action: ([(section: ForumTitle, forumId: ForumId, title: ForumTitle)]) -> Void
 
-    init(fetcher: ForumCatalogFetching,
+    init(fetcher: ServerConnecting,
          onCompletion: @escaping ([(section: ForumTitle, forumId: ForumId, title: ForumTitle)]) -> Void)
     {
         self.model = ViewModel(fetcher: fetcher)

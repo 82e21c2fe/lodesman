@@ -9,8 +9,19 @@ import Foundation
 import Combine
 
 
+extension ForumPage.Topic: Topic, Attachment
+{
+    // Topic
+    var synopsis: String? { nil }
+    var attachment: Attachment? { self }
+    var pinned: Bool { false }
+    // Attachment
+    var link: URL? { nil }
+    var size: ContentSize { contentSize }
+}
 
-struct ServerConnection: ForumCatalogFetching
+
+struct ServerConnection: ServerConnecting
 {
     private let fetcher: NetworkFetching
     private let baseURL: URL
@@ -33,23 +44,7 @@ struct ServerConnection: ForumCatalogFetching
             .mapError { $0 as? FetchingError ?? .unknown }
             .eraseToAnyPublisher()
     }
-}
 
-
-extension ForumPage.Topic: Topic, Attachment
-{
-    // Topic
-    var synopsis: String? { nil }
-    var attachment: Attachment? { self }
-    var pinned: Bool { false }
-    // Attachment
-    var link: URL? { nil }
-    var size: ContentSize { contentSize }
-}
-
-
-extension ServerConnection: TopicFetching
-{
     func fetchTopics(from forumId: ForumId, modifiedAfter earlyDate: Date) -> AnyPublisher<[Topic], FetchingError> {
         let isDone = PassthroughSubject<Void, Never>()
         return NetworkScheduler.pageIndexPublisher
@@ -77,7 +72,6 @@ extension ServerConnection: TopicFetching
             .mapError { $0 as? FetchingError ?? .unknown }
             .eraseToAnyPublisher()
     }
-
 }
 
 

@@ -49,7 +49,7 @@ extension ForumCatalogView
             }
         }
 
-        init(fetcher: ForumCatalogFetching) {
+        init(fetcher: ServerConnecting) {
             self.fetcher = fetcher
         }
 
@@ -66,6 +66,6 @@ extension ForumCatalogView
         }
 
         private var cancellation: AnyCancellable?
-        private var fetcher: ForumCatalogFetching
+        private var fetcher: ServerConnecting
     }
 }

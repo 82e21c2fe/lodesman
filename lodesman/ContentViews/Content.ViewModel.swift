@@ -19,9 +19,9 @@ extension ContentView
         @Published var selectedTopics = Set<TopicId>()
 
         @ObservedObject var storage: Storage
-        let fetcher: ServerConnection
+        let fetcher: ServerConnecting
 
-        init(storage: Storage, fetcher: ServerConnection) {
+        init(storage: Storage, fetcher: ServerConnecting) {
             self.storage = storage
             self.fetcher = fetcher
         }
