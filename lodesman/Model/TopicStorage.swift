@@ -27,69 +27,16 @@ protocol TopicStorage: ObservableObject
 
 
 #if DEBUG
-extension TopicSortOrder
-{
-    var comparator: (TopicStub, TopicStub) -> Bool {
-        switch self {
-        case .byLastUpdate: return { lhs, rhs in lhs.lastUpdate > rhs.lastUpdate }
-        case .byTitle:      return { lhs, rhs in lhs.title < rhs.title }
-        }
-    }
-}
-
 final class TopicStorageStub: TopicStorage
 {
     func topic(withId topicId: TopicId) -> Topic? {
-        return topics.first(where: { $0.topicId == topicId })
+        return TopicStub.preview.first
     }
-
     func topics(fromForums: Set<ForumId>, whereTitleContains text: String, sortedBy: TopicSortOrder) -> [Topic] {
-        let result = !text.isEmpty ? topics.filter({ $0.title.rawValue.localizedStandardContains(text) }) : topics
-        return result.sorted(by: sortedBy.comparator)
+        return TopicStub.preview
     }
-
-    func togglePin(forTopics topicIds: Set<TopicId>) {
-        objectWillChange.send()
-        for topicId in topicIds {
-            guard let index = topics.firstIndex(where: { $0.topicId == topicId }) else { continue }
-            topics[index].pinned.toggle()
-        }
-    }
-
-    func insert(topics items: [Topic], toForum: ForumId) {
-        objectWillChange.send()
-        for item in items {
-            if let index = topics.firstIndex(where: { $0.topicId == item.topicId }) {
-                topics[index] = TopicStub(item)
-            } else {
-                topics.append(TopicStub(item))
-            }
-        }
-    }
-
-    private var topics = TopicStub.preview
-}
-
-extension TopicStub
-{
-    init(_ other: Topic) {
-        self.init(topicId: other.topicId,
-                  status: other.status,
-                  title: other.title,
-                  synopsis: other.synopsis,
-                  attachment: AttachmentStub(other.attachment),
-                  lastUpdate: other.lastUpdate,
-                  pinned: other.pinned)
-    }
-}
-
-extension AttachmentStub
-{
-    init?(_ other: Attachment?) {
-        guard let other = other else {
-            return nil
-        }
-        self.init(link: other.link, size: other.size, availability: other.availability)
-    }
+    func togglePin(forTopics topicIds: Set<TopicId>) { assert(false) }
+    func insert(topics items: [Topic], toForum: ForumId) { assert(false) }
+    func remove(topics topicIds: Set<TopicId>) { assert(false) }
 }
 #endif

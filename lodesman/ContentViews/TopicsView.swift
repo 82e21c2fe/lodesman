@@ -51,6 +51,8 @@ struct TopicsView<Storage: TopicStorage>: View
     }
 }
 
+
+#if DEBUG
 struct TopicsView_Previews: PreviewProvider {
     static var previews: some View {
         TopicsView(storage: TopicStorageStub(),
@@ -58,3 +60,4 @@ struct TopicsView_Previews: PreviewProvider {
                    selection: .constant([]))
     }
 }
+#endif

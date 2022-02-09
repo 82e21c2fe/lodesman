@@ -31,7 +31,7 @@ protocol Forum
 #if DEBUG
 struct ForumStub: Forum
 {
-    var forumId: ForumId = 0
+    var forumId: ForumId = ForumId(rawValue: Int.max)!
     var title: ForumTitle = "Untitled"
     var section: ForumTitle = "Untitled"
     var lastUpdate: Date?
