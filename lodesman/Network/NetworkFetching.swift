@@ -25,6 +25,7 @@ extension URLSession: NetworkFetching
             .tryMap { (data, response) in
                 guard let statusCode = (response as? HTTPURLResponse)?.statusCode
                     , (200...299).contains(statusCode)
+                    , (50...500_000).contains(data.count)
                 else {
                     throw FetchingError.network
                 }
