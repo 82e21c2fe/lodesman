@@ -23,6 +23,7 @@ protocol TopicStorage: ObservableObject
     func topics(fromForums: Set<ForumId>, whereTitleContains text: String, sortedBy: TopicSortOrder) -> [Topic]
     func togglePin(forTopics topicIds: Set<TopicId>)
     func insert(topics items: [Topic], toForum forumId: ForumId)
+    func remove(topics topicIds: Set<TopicId>)
 }
 
 

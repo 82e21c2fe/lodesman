@@ -86,6 +86,14 @@ extension Storage: TopicStorage
         try? context.save()
     }
 
+    func remove(topics topicIds: Set<TopicId>) {
+        objectWillChange.send()
+        let result = MOTopic.allWith(topicIds: topicIds, context: context)
+        result.forEach { context.delete($0) }
+
+        try? context.save()
+    }
+
     func topic(withId topicId: TopicId) -> Topic? {
         return MOTopic.with(topicId: topicId, context: context)
     }
