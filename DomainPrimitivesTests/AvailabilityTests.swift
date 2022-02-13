@@ -1,12 +1,12 @@
 //
 //  AvailabilityTests.swift
-//  lodesmanTests
+//  DomainPrimitivesTests
 //
 //  Created by Dmitri Shuvalov on 06.02.2022.
 //
 
 import XCTest
-@testable import lodesman
+@testable import DomainPrimitives
 
 
 class AvailabilityTests: XCTestCase

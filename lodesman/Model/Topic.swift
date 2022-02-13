@@ -6,16 +6,8 @@
 //
 
 import Foundation
+import DomainPrimitives
 
-
-
-enum TopicStatus: String
-{
-    case unknown
-    case approved
-    case duplicate
-    case consumed
-}
 
 
 protocol Attachment

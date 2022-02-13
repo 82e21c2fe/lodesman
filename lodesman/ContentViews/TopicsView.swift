@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DomainPrimitives
 
 
 extension TopicGroupRule

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import DomainPrimitives
 
 
 enum CatalogItemKind {

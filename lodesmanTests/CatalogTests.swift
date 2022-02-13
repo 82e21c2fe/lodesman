@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import DomainPrimitives
 @testable import lodesman
 
 

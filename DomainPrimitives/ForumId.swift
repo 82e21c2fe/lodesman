@@ -1,6 +1,6 @@
 //
-//  TopicId.swift
-//  lodesman
+//  ForumId.swift
+//  DomainPrimitives
 //
 //  Created by Dmitri Shuvalov on 07.02.2022.
 //
@@ -9,12 +9,12 @@ import Foundation
 
 
 
-struct TopicId: RawRepresentable, Equatable, Hashable
+public struct ForumId: RawRepresentable, Equatable, Hashable
 {
-    let rawValue: Int
+    public let rawValue: Int
 
-    init?(rawValue value: Int) {
-        guard TopicId.isValid(value) else { return nil }
+    public init?(rawValue value: Int) {
+        guard ForumId.isValid(value) else { return nil }
         self.rawValue = value
     }
 
@@ -26,18 +26,18 @@ struct TopicId: RawRepresentable, Equatable, Hashable
 
 //MARK: - Adopts `LosslessStringConvertible` protocol
 
-extension TopicId: LosslessStringConvertible
+extension ForumId: LosslessStringConvertible
 {
-    init?(_ text: String) {
+    public init?(_ text: String) {
         guard !text.isEmpty
             , text.count < 20
-            , let _ = text.range(of: #"^\d+$"#, options: [.regularExpression])
+            , let _ = text.range(of: #"^\d+$"#, options: .regularExpression)
             , let value = Int(text)
         else { return nil }
         self.init(rawValue: value)
     }
 
-    var description: String {
+    public var description: String {
         return "\(rawValue)"
     }
 }
@@ -45,10 +45,10 @@ extension TopicId: LosslessStringConvertible
 
 //MARK: - Adopts `ExpressibleByIntegerLiteral` protocol
 #if DEBUG
-extension TopicId: ExpressibleByIntegerLiteral
+extension ForumId: ExpressibleByIntegerLiteral
 {
-    init(integerLiteral value: Int) {
-        precondition(TopicId.isValid(value))
+    public init(integerLiteral value: Int) {
+        precondition(ForumId.isValid(value))
         self.rawValue = value
     }
 }

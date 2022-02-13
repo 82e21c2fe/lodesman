@@ -1,6 +1,6 @@
 //
 //  ForumTitle.swift
-//  lodesman
+//  DomainPrimitives
 //
 //  Created by Dmitri Shuvalov on 08.02.2022.
 //
@@ -9,11 +9,11 @@ import Foundation
 
 
 
-struct ForumTitle: RawRepresentable, Equatable, Hashable
+public struct ForumTitle: RawRepresentable, Equatable, Hashable
 {
-    let rawValue: String
+    public let rawValue: String
 
-    init?(rawValue value: String) {
+    public init?(rawValue value: String) {
         let value = value.trimmingCharacters(in: .whitespacesAndNewlines)
         guard ForumTitle.isValid(value) else { return nil }
         self.rawValue = value
@@ -28,7 +28,7 @@ struct ForumTitle: RawRepresentable, Equatable, Hashable
 //MARK: - Adopts `Comparable` protocol
 extension ForumTitle: Comparable
 {
-    static func < (lhs: ForumTitle, rhs: ForumTitle) -> Bool {
+    public static func < (lhs: ForumTitle, rhs: ForumTitle) -> Bool {
         return lhs.rawValue.localizedStandardCompare(rhs.rawValue) == .orderedAscending
     }
 }
@@ -38,7 +38,7 @@ extension ForumTitle: Comparable
 #if DEBUG
 extension ForumTitle: ExpressibleByStringLiteral
 {
-    init(stringLiteral value: StringLiteralType) {
+    public init(stringLiteral value: StringLiteralType) {
         precondition(ForumTitle.isValid(value))
         self.rawValue = value
     }

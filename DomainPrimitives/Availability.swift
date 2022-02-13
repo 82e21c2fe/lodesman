@@ -1,6 +1,6 @@
 //
 //  Availability.swift
-//  lodesman
+//  DomainPrimitives
 //
 //  Created by Dmitri Shuvalov on 06.02.2022.
 //
@@ -10,16 +10,16 @@ import Foundation
 
 
 /// Content availability from 0 to 5 points.
-struct Availability: RawRepresentable, Equatable, Hashable
+public struct Availability: RawRepresentable, Equatable, Hashable
 {
-    let rawValue: Int16
+    public let rawValue: Int16
 
-    init?(rawValue value: Int16 = 0) {
+    public init?(rawValue value: Int16 = 0) {
         guard Availability.isValid(value) else { return nil }
         self.rawValue = value
     }
 
-    init?(numberOfSeeders seeders: Int) {
+    public init?(numberOfSeeders seeders: Int) {
         guard 0 <= seeders else { return nil }
 
         let availability = min(5, log(Float(seeders + 1)).rounded(.up))
@@ -37,7 +37,7 @@ struct Availability: RawRepresentable, Equatable, Hashable
 
 extension Availability: Comparable
 {
-    static func < (lhs: Availability, rhs: Availability) -> Bool {
+    public static func < (lhs: Availability, rhs: Availability) -> Bool {
         return lhs.rawValue < rhs.rawValue
     }
 }
@@ -47,7 +47,7 @@ extension Availability: Comparable
 #if DEBUG
 extension Availability: ExpressibleByIntegerLiteral
 {
-    init(integerLiteral value: Int16) {
+    public init(integerLiteral value: Int16) {
         precondition(Availability.isValid(value))
         self.rawValue = value
     }

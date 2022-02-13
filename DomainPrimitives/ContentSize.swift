@@ -1,6 +1,6 @@
 //
 //  ContentSize.swift
-//  lodesman
+//  DomainPrimitives
 //
 //  Created by Dmitri Shuvalov on 06.02.2022.
 //
@@ -9,16 +9,16 @@ import Foundation
 
 
 /// Estimated content size in gigabytes.
-struct ContentSize: RawRepresentable, Equatable, Hashable
+public struct ContentSize: RawRepresentable, Equatable, Hashable
 {
-    let rawValue: Float
+    public let rawValue: Float
 
-    init?(rawValue value: Float) {
+    public init?(rawValue value: Float) {
         guard ContentSize.isValid(value) else { return nil }
         self.rawValue = value
     }
 
-    init?(_ text: String) {
+    public init?(_ text: String) {
         guard !text.isEmpty
             , text.count < 16
             , let _ = text.range(of: #"^\d+(\.\d+)?\s+[KMGT]B$"#, options: [.regularExpression, .caseInsensitive])
@@ -39,7 +39,7 @@ struct ContentSize: RawRepresentable, Equatable, Hashable
         self.init(rawValue: Float(temp))
     }
 
-    var measurement: Measurement<UnitInformationStorage> {
+    public var measurement: Measurement<UnitInformationStorage> {
         return Measurement(value: Double(rawValue), unit: .gigabytes)
     }
 
@@ -61,7 +61,7 @@ struct ContentSize: RawRepresentable, Equatable, Hashable
 
 extension ContentSize: Comparable
 {
-    static func < (lhs: ContentSize, rhs: ContentSize) -> Bool {
+    public static func < (lhs: ContentSize, rhs: ContentSize) -> Bool {
         return lhs.rawValue < rhs.rawValue
     }
 }
@@ -70,12 +70,12 @@ extension ContentSize: Comparable
 #if DEBUG
 extension ContentSize: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral
 {
-    init(floatLiteral value: Float) {
+    public init(floatLiteral value: Float) {
         precondition(ContentSize.isValid(value))
         self.rawValue = value
     }
 
-    init(integerLiteral value: Int) {
+    public init(integerLiteral value: Int) {
         let value = Float(value)
         precondition(ContentSize.isValid(value))
         self.rawValue = value

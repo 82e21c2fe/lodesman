@@ -1,6 +1,6 @@
 //
 //  TopicTitle.swift
-//  lodesman
+//  DomainPrimitives
 //
 //  Created by Dmitri Shuvalov on 08.02.2022.
 //
@@ -9,17 +9,17 @@ import Foundation
 
 
 
-struct TopicTitle: RawRepresentable, Equatable, Hashable
+public struct TopicTitle: RawRepresentable, Equatable, Hashable
 {
-    let rawValue: String
+    public let rawValue: String
 
-    init?(rawValue value: String) {
+    public init?(rawValue value: String) {
         let value = value.trimmingCharacters(in: .whitespacesAndNewlines)
         guard TopicTitle.isValid(value) else { return nil }
         self.rawValue = value
     }
 
-    var firstLetter: String {
+    public var firstLetter: String {
         var level = 0
         for character in rawValue {
             switch Symbol(character) {
@@ -65,7 +65,7 @@ struct TopicTitle: RawRepresentable, Equatable, Hashable
 
 extension TopicTitle: Comparable
 {
-    static func < (lhs: TopicTitle, rhs: TopicTitle) -> Bool {
+    public static func < (lhs: TopicTitle, rhs: TopicTitle) -> Bool {
         return lhs.rawValue.localizedStandardCompare(rhs.rawValue) == .orderedAscending
     }
 }
@@ -75,7 +75,7 @@ extension TopicTitle: Comparable
 #if DEBUG
 extension TopicTitle: ExpressibleByStringLiteral
 {
-    init(stringLiteral value: StringLiteralType) {
+    public init(stringLiteral value: StringLiteralType) {
         precondition(TopicTitle.isValid(value))
         self.rawValue = value
     }
