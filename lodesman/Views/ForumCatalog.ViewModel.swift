@@ -8,14 +8,14 @@
 import SwiftUI
 import Combine
 import DomainPrimitives
-
+import ServerConnector
 
 
 extension ForumCatalogView
 {
     final class ViewModel: ObservableObject
     {
-        @Published private(set) var fetchedResult: Result<Catalog, FetchingError>?
+        @Published private(set) var fetchedResult: Result<Catalog, ConnectingError>?
         @Published var selection = Set<Int>()
 
         var catalog: Catalog? {

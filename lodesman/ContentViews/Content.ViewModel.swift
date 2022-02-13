@@ -50,6 +50,7 @@ extension ContentView
                 self.storage.setState(forForum: forumId, state: .loading)
             }
             let job = fetcher.fetchTopics(from: forumId, modifiedAfter: earlyDate)
+                .map(\.topics)
                 .receive(on: DispatchQueue.main)
                 .sink { [weak self] completion in
                     defer {self?.jobs.removeValue(forKey: forumId)}

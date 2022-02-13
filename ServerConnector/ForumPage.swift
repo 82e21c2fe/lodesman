@@ -1,6 +1,6 @@
 //
 //  ForumPage.swift
-//  lodesman
+//  ServerConnector
 //
 //  Created by Dmitri Shuvalov on 31.01.2022.
 //
@@ -10,35 +10,35 @@ import DomainPrimitives
 
 
 
-struct ForumPage
+public struct ForumPage
 {
-    var header: Header
-    var topics: [ForumPage.Topic]
+    public var header: Header
+    public var topics: [ForumPage.Topic]
 
-    struct Header
+    public struct Header
     {
-        var href: String
-        var title: String
-        var description: String?
-        var currentPageIndex: Int
-        var lastPageIndex: Int
+        public var href: String
+        public var title: String
+        public var description: String?
+        public var currentPageIndex: Int
+        public var lastPageIndex: Int
     }
 
-    struct Topic
+    public struct Topic
     {
-        var topicId: TopicId
-        var title: TopicTitle
-        var status: TopicStatus
-        var contentSize: ContentSize
-        var availability: Availability
-        var lastUpdate: Date
+        public var topicId: TopicId
+        public var title: TopicTitle
+        public var status: TopicStatus
+        public var contentSize: ContentSize
+        public var availability: Availability
+        public var lastUpdate: Date
     }
 
-    var lastUpdate: Date {
+    public var lastUpdate: Date {
         return topics.map(\.lastUpdate).max() ?? Date.distantPast
     }
 
-    var isLastPage: Bool {
+    public var isLastPage: Bool {
         return header.currentPageIndex == header.lastPageIndex
     }
 }
@@ -52,7 +52,7 @@ extension ForumPage
 
             guard let header = ForumPage.Header(text)
             else {
-                throw FetchingError.parsing
+                throw ConnectingError.parsing
             }
 
             let document = try XMLDocument(xmlString: text, options: [.documentTidyHTML,
@@ -64,7 +64,7 @@ extension ForumPage
             self.init(header: header, topics: topics)
         }
         catch {
-            throw FetchingError.parsing
+            throw ConnectingError.parsing
         }
     }
 }

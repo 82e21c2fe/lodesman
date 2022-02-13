@@ -1,13 +1,13 @@
 //
 //  ForumPageTopicTests.swift
-//  lodesmanTests
+//  ServerConnectorTests
 //
 //  Created by Dmitri Shuvalov on 01.02.2022.
 //
 
 import XCTest
 import DomainPrimitives
-@testable import lodesman
+@testable import ServerConnector
 
 
 extension TopicStatus

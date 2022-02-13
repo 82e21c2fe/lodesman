@@ -1,26 +1,26 @@
 //
 //  ServerConnectionTests.swift
-//  lodesmanTests
+//  ServerConnectorTests
 //
 //  Created by Dmitri Shuvalov on 29.01.2022.
 //
 
 import XCTest
 import Combine
-@testable import lodesman
+@testable import ServerConnector
 
 
 fileprivate struct NetworkFetchingStub: NetworkFetching
 {
-    private let result: Result<Data, FetchingError>
+    private let result: Result<Data, ConnectingError>
     private let onRequest: (URLRequest) -> Void
 
-    init(returning result: Result<Data, FetchingError>, onRequest: @escaping (URLRequest) -> Void = {_ in}) {
+    init(returning result: Result<Data, ConnectingError>, onRequest: @escaping (URLRequest) -> Void = {_ in}) {
         self.result = result
         self.onRequest = onRequest
     }
 
-    func load(_ request: URLRequest) -> AnyPublisher<Data, FetchingError> {
+    func load(_ request: URLRequest) -> AnyPublisher<Data, ConnectingError> {
         onRequest(request)
         return result.publisher
             .delay(for: 0.1, scheduler: RunLoop.main)
@@ -70,7 +70,7 @@ class ServerConnectionTests: XCTestCase
                 guard case .failure(let error) = completion else { return }
                 XCTFail("Expected to success decode CatalogPage, fail with \(error.localizedDescription)")
             } receiveValue: { catalog in
-                XCTAssertEqual(catalog.root.count, 1)
+                XCTAssertEqual(catalog.sections.count, 1)
                 expectation.fulfill()
             }
             .store(in: &cancellable)
@@ -78,10 +78,10 @@ class ServerConnectionTests: XCTestCase
     }
 
     func testCatalogPageRequestFailure() throws {
-        let expectedError = FetchingError.network
+        let expectedError = ConnectingError.network
         let networkStub = NetworkFetchingStub(returning: .failure(expectedError))
         let fetcher = try XCTUnwrap(ServerConnection(hostname: "localhost", fetcher: networkStub))
-        let expectation = XCTestExpectation(description: "Publishes received FetchingError")
+        let expectation = XCTestExpectation(description: "Publishes received ConnectingError")
         fetcher.fetchForumCatalog()
             .sink { completion in
                 guard case .failure(let error) = completion else { return }
@@ -146,10 +146,10 @@ class ServerConnectionTests: XCTestCase
     }
 
     func testForumPageRequestFailure() throws {
-        let expectedError = FetchingError.network
+        let expectedError = ConnectingError.network
         let networkStub = NetworkFetchingStub(returning: .failure(expectedError))
         let fetcher = try XCTUnwrap(ServerConnection(hostname: "hostname", fetcher: networkStub))
-        let expectation = XCTestExpectation(description: "Publishes received FetchingError")
+        let expectation = XCTestExpectation(description: "Publishes received ConnectingError")
         fetcher.fetchForumPage(forumId: 10, pageIndex: 6)
             .sink { completion in
                 guard case .failure(let error) = completion else { return }
@@ -178,9 +178,9 @@ class ServerConnectionTests: XCTestCase
                 case .finished:
                     expectation.fulfill()
                 }
-            } receiveValue: { topics in
-                XCTAssertEqual(topics.count, 1)
-                XCTAssertEqual(topics.first!.title, "topic 1")
+            } receiveValue: { page in
+                XCTAssertEqual(page.topics.count, 1)
+                XCTAssertEqual(page.topics.first!.title, "topic 1")
                 called = true
             }
             .store(in: &cancellable)

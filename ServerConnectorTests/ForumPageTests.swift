@@ -1,12 +1,12 @@
 //
 //  ForumPageTests.swift
-//  lodesmanTests
+//  ServerConnectorTests
 //
 //  Created by Dmitri Shuvalov on 31.01.2022.
 //
 
 import XCTest
-@testable import lodesman
+@testable import ServerConnector
 
 
 extension ForumPage

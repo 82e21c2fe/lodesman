@@ -1,12 +1,13 @@
 //
 //  CatalogPageTests.swift
-//  lodesmanTests
+//  ServerConnectorTests
 //
 //  Created by Dmitri Shuvalov on 29.01.2022.
 //
 
 import XCTest
-@testable import lodesman
+import DomainPrimitives
+@testable import ServerConnector
 
 
 extension CatalogPage.Forum

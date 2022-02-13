@@ -1,6 +1,6 @@
 //
 //  CatalogPage.swift
-//  lodesman
+//  ServerConnector
 //
 //  Created by Dmitri Shuvalov on 29.01.2022.
 //
@@ -10,60 +10,21 @@ import DomainPrimitives
 
 
 
-struct CatalogPage
+public struct CatalogPage
 {
-    var sections: [CatalogPage.Section]
+    public var sections: [CatalogPage.Section]
 
-    struct Section
+    public struct Section
     {
-        var title: ForumTitle
-        var forums: [CatalogPage.Forum]
+        public var title: ForumTitle
+        public var forums: [CatalogPage.Forum]
     }
 
-    struct Forum
+    public struct Forum
     {
-        var forumId: ForumId
-        var title: ForumTitle
-        var subforums: [CatalogPage.Forum]
-    }
-}
-
-//MARK: - Adoption of `Catalog`
-
-extension CatalogPage: Catalog
-{
-    var root: [CatalogItem] {
-        sections
-    }
-}
-
-extension CatalogPage.Section: CatalogItem
-{
-    var id: Int {
-        -abs(title.hashValue)
-    }
-
-    var kind: CatalogItemKind {
-        .section
-    }
-
-    var children: [CatalogItem]? {
-        forums
-    }
-}
-
-extension CatalogPage.Forum: CatalogItem
-{
-    var id: Int {
-        forumId.rawValue
-    }
-
-    var kind: CatalogItemKind {
-        .forum
-    }
-
-    var children: [CatalogItem]? {
-        !subforums.isEmpty ? subforums : nil
+        public var forumId: ForumId
+        public var title: ForumTitle
+        public var subforums: [CatalogPage.Forum]
     }
 }
 
@@ -81,7 +42,7 @@ extension CatalogPage
             sections = roots.compactMap { CatalogPage.Section($0) }
         }
         catch {
-            throw FetchingError.parsing
+            throw ConnectingError.parsing
         }
     }
 }

@@ -20,11 +20,9 @@
 		2A786075279D5F6000532E1D /* ForumRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A786074279D5F6000532E1D /* ForumRow.swift */; };
 		2A786077279D601D00532E1D /* ForumListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A786076279D601D00532E1D /* ForumListView.swift */; };
 		2A7860A4279E779A00532E1D /* Catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7860A3279E779A00532E1D /* Catalog.swift */; };
-		2A7860B3279E7C3A00532E1D /* CatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7860B2279E7C3A00532E1D /* CatalogTests.swift */; };
 		2A7860B5279E93F900532E1D /* CatalogRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7860B4279E93F900532E1D /* CatalogRow.swift */; };
 		2A7860B7279E94E600532E1D /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7860B6279E94E600532E1D /* CatalogView.swift */; };
 		2A7860BA279E96B300532E1D /* ServerConnecting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7860B9279E96B300532E1D /* ServerConnecting.swift */; };
-		2A7860BC279E982800532E1D /* FetchingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7860BB279E982800532E1D /* FetchingError.swift */; };
 		2A7860BE279E998C00532E1D /* ForumCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7860BD279E998C00532E1D /* ForumCatalogView.swift */; };
 		2A7860C0279E9A4600532E1D /* ForumCatalog.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7860BF279E9A4600532E1D /* ForumCatalog.ViewModel.swift */; };
 		2A7860D2279FEB7600532E1D /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7860D1279FEB7600532E1D /* Topic.swift */; };
@@ -39,12 +37,6 @@
 		2A7A852B279D3C84003579FF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A7A852A279D3C84003579FF /* Preview Assets.xcassets */; };
 		2A7A8533279D3D54003579FF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2A7A8532279D3D54003579FF /* README.md */; };
 		2A7A8535279D3D61003579FF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2A7A8534279D3D61003579FF /* LICENSE */; };
-		2A7B619C27A5393C00949123 /* CatalogPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B619B27A5393C00949123 /* CatalogPage.swift */; };
-		2A7B619E27A53B5100949123 /* XMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B619D27A53B5100949123 /* XMLNode.swift */; };
-		2A7B61A027A53FD100949123 /* CatalogPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B619F27A53FD100949123 /* CatalogPageTests.swift */; };
-		2A7B61A227A5491100949123 /* NetworkFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61A127A5491100949123 /* NetworkFetching.swift */; };
-		2A7B61A427A54A8400949123 /* ServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61A327A54A8400949123 /* ServerConnection.swift */; };
-		2A7B61A627A5557300949123 /* ServerConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61A527A5557300949123 /* ServerConnectionTests.swift */; };
 		2A7B61AA27A6C47B00949123 /* lodesman.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61A827A6C47B00949123 /* lodesman.xcdatamodeld */; };
 		2A7B61AF27A6C49F00949123 /* MOForum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61AB27A6C49F00949123 /* MOForum.swift */; };
 		2A7B61B027A6C49F00949123 /* MOTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61AC27A6C49F00949123 /* MOTopic.swift */; };
@@ -52,10 +44,6 @@
 		2A7B61B227A6C49F00949123 /* MOAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61AE27A6C49F00949123 /* MOAttachment.swift */; };
 		2A7B61B427A6C9AF00949123 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61B327A6C9AF00949123 /* Storage.swift */; };
 		2A7B61B627A6C9E600949123 /* PersistentStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61B527A6C9E600949123 /* PersistentStorageTests.swift */; };
-		2A7B61BA27A8346700949123 /* ForumPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61B927A8346700949123 /* ForumPage.swift */; };
-		2A7B61BC27A8359E00949123 /* ForumPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61BB27A8359E00949123 /* ForumPageTests.swift */; };
-		2A7B61BE27A931D600949123 /* ForumPageHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61BD27A931D600949123 /* ForumPageHeaderTests.swift */; };
-		2A7B61C027A941BB00949123 /* ForumPageTopicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61BF27A941BB00949123 /* ForumPageTopicTests.swift */; };
 		2A9D225927B90235009CFF96 /* ForumId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F9127B10C95000F1DCB /* ForumId.swift */; };
 		2A9D225A27B90280009CFF96 /* ForumTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F9927B2A7A6000F1DCB /* ForumTitle.swift */; };
 		2A9D225B27B90320009CFF96 /* TopicId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F8D27B0FC75000F1DCB /* TopicId.swift */; };
@@ -71,6 +59,22 @@
 		2A9D227627B90748009CFF96 /* TopicTitleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F9727B27B2E000F1DCB /* TopicTitleTests.swift */; };
 		2A9D227727B90771009CFF96 /* AvailabilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F8527B0196D000F1DCB /* AvailabilityTests.swift */; };
 		2A9D227827B9078E009CFF96 /* ContentSizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F8B27B04B0F000F1DCB /* ContentSizeTests.swift */; };
+		2A9D228627B91223009CFF96 /* XMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B619D27A53B5100949123 /* XMLNode.swift */; };
+		2A9D228727B91232009CFF96 /* ForumPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61B927A8346700949123 /* ForumPage.swift */; };
+		2A9D228827B9123B009CFF96 /* CatalogPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B619B27A5393C00949123 /* CatalogPage.swift */; };
+		2A9D228927B91243009CFF96 /* NetworkFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61A127A5491100949123 /* NetworkFetching.swift */; };
+		2A9D228A27B9124D009CFF96 /* ConnectingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7860BB279E982800532E1D /* ConnectingError.swift */; };
+		2A9D228B27B91253009CFF96 /* ServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61A327A54A8400949123 /* ServerConnection.swift */; };
+		2A9D228D27B914F2009CFF96 /* NetworkScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9D228C27B914F2009CFF96 /* NetworkScheduler.swift */; };
+		2A9D228E27B91568009CFF96 /* libServerConnector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9D227D27B911D2009CFF96 /* libServerConnector.a */; };
+		2A9D229927B91786009CFF96 /* libServerConnector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9D227D27B911D2009CFF96 /* libServerConnector.a */; };
+		2A9D22A027B917DF009CFF96 /* CatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7860B2279E7C3A00532E1D /* CatalogTests.swift */; };
+		2A9D22A127B91804009CFF96 /* CatalogPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B619F27A53FD100949123 /* CatalogPageTests.swift */; };
+		2A9D22A627B918FB009CFF96 /* libDomainPrimitives.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9D225027B90211009CFF96 /* libDomainPrimitives.a */; };
+		2A9D22A727B9191A009CFF96 /* ForumPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61BB27A8359E00949123 /* ForumPageTests.swift */; };
+		2A9D22A827B9193B009CFF96 /* ForumPageHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61BD27A931D600949123 /* ForumPageHeaderTests.swift */; };
+		2A9D22A927B9194C009CFF96 /* ForumPageTopicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61BF27A941BB00949123 /* ForumPageTopicTests.swift */; };
+		2A9D22AA27B91992009CFF96 /* ServerConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61A527A5557300949123 /* ServerConnectionTests.swift */; };
 		2AC15F7827AACD6A000F1DCB /* Content.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F7727AACD6A000F1DCB /* Content.ViewModel.swift */; };
 		2AC15F8027AEC145000F1DCB /* ForumList.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F7F27AEC145000F1DCB /* ForumList.ViewModel.swift */; };
 		2AC15F8427B0147F000F1DCB /* AvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F8327B0147F000F1DCB /* AvailabilityView.swift */; };
@@ -101,6 +105,34 @@
 			remoteGlobalIDString = 2A9D224F27B90211009CFF96;
 			remoteInfo = DomainPrimitives;
 		};
+		2A9D228F27B91568009CFF96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A7A8518279D3C83003579FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A9D227C27B911D2009CFF96;
+			remoteInfo = ServerConnector;
+		};
+		2A9D229A27B91786009CFF96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A7A8518279D3C83003579FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A9D227C27B911D2009CFF96;
+			remoteInfo = ServerConnector;
+		};
+		2A9D22A227B91843009CFF96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A7A8518279D3C83003579FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A9D224F27B90211009CFF96;
+			remoteInfo = DomainPrimitives;
+		};
+		2A9D22A427B91892009CFF96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A7A8518279D3C83003579FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A9D224F27B90211009CFF96;
+			remoteInfo = DomainPrimitives;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -123,7 +155,7 @@
 		2A7860B4279E93F900532E1D /* CatalogRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogRow.swift; sourceTree = "<group>"; };
 		2A7860B6279E94E600532E1D /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
 		2A7860B9279E96B300532E1D /* ServerConnecting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConnecting.swift; sourceTree = "<group>"; };
-		2A7860BB279E982800532E1D /* FetchingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingError.swift; sourceTree = "<group>"; };
+		2A7860BB279E982800532E1D /* ConnectingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectingError.swift; sourceTree = "<group>"; };
 		2A7860BD279E998C00532E1D /* ForumCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumCatalogView.swift; sourceTree = "<group>"; };
 		2A7860BF279E9A4600532E1D /* ForumCatalog.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumCatalog.ViewModel.swift; sourceTree = "<group>"; };
 		2A7860D1279FEB7600532E1D /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
@@ -160,6 +192,9 @@
 		2A9D225027B90211009CFF96 /* libDomainPrimitives.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDomainPrimitives.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A9D225F27B90436009CFF96 /* TopicStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicStatus.swift; sourceTree = "<group>"; };
 		2A9D226927B9060E009CFF96 /* DomainPrimitivesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomainPrimitivesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A9D227D27B911D2009CFF96 /* libServerConnector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libServerConnector.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A9D228C27B914F2009CFF96 /* NetworkScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkScheduler.swift; sourceTree = "<group>"; };
+		2A9D229527B91786009CFF96 /* ServerConnectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ServerConnectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AC15F7727AACD6A000F1DCB /* Content.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.ViewModel.swift; sourceTree = "<group>"; };
 		2AC15F7F27AEC145000F1DCB /* ForumList.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumList.ViewModel.swift; sourceTree = "<group>"; };
 		2AC15F8127B00E58000F1DCB /* Availability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Availability.swift; sourceTree = "<group>"; };
@@ -191,6 +226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A9D228E27B91568009CFF96 /* libServerConnector.a in Frameworks */,
 				2A9D226227B904C8009CFF96 /* libDomainPrimitives.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,6 +243,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A9D226D27B9060E009CFF96 /* libDomainPrimitives.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A9D227B27B911D2009CFF96 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A9D229227B91786009CFF96 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A9D22A627B918FB009CFF96 /* libDomainPrimitives.a in Frameworks */,
+				2A9D229927B91786009CFF96 /* libServerConnector.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +294,7 @@
 				2A786071279D5EB900532E1D /* Forum.swift */,
 				2A7860A3279E779A00532E1D /* Catalog.swift */,
 				2A7860D1279FEB7600532E1D /* Topic.swift */,
+				2A7860B9279E96B300532E1D /* ServerConnecting.swift */,
 				2A5B058B27A40AD300319826 /* ForumStorage.swift */,
 				2A5B059727A4222B00319826 /* TopicStorage.swift */,
 			);
@@ -273,30 +326,11 @@
 			children = (
 				2A7860D7279FF14700532E1D /* ContentSizeViewModelTests.swift */,
 				2AC15F8727B01EA7000F1DCB /* AvailabilityViewModelTests.swift */,
-				2A7B61BF27A941BB00949123 /* ForumPageTopicTests.swift */,
-				2A7B61BD27A931D600949123 /* ForumPageHeaderTests.swift */,
-				2A7B61BB27A8359E00949123 /* ForumPageTests.swift */,
-				2A7B61A527A5557300949123 /* ServerConnectionTests.swift */,
-				2A7B619F27A53FD100949123 /* CatalogPageTests.swift */,
-				2A7860DD279FF42C00532E1D /* TopicListViewModelTests.swift */,
 				2A7860B2279E7C3A00532E1D /* CatalogTests.swift */,
+				2A7860DD279FF42C00532E1D /* TopicListViewModelTests.swift */,
 				2A7B61B527A6C9E600949123 /* PersistentStorageTests.swift */,
 			);
 			path = lodesmanTests;
-			sourceTree = "<group>";
-		};
-		2A7860B8279E969900532E1D /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				2A7860B9279E96B300532E1D /* ServerConnecting.swift */,
-				2A7860BB279E982800532E1D /* FetchingError.swift */,
-				2A7B61A127A5491100949123 /* NetworkFetching.swift */,
-				2A7B61A327A54A8400949123 /* ServerConnection.swift */,
-				2A7B619B27A5393C00949123 /* CatalogPage.swift */,
-				2A7B61B927A8346700949123 /* ForumPage.swift */,
-				2A7B619D27A53B5100949123 /* XMLNode.swift */,
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		2A7A8517279D3C83003579FF = {
@@ -308,6 +342,8 @@
 				2A7860AA279E7C1F00532E1D /* lodesmanTests */,
 				2A9D225127B90211009CFF96 /* DomainPrimitives */,
 				2A9D226A27B9060E009CFF96 /* DomainPrimitivesTests */,
+				2A9D227E27B911D2009CFF96 /* ServerConnector */,
+				2A9D229627B91786009CFF96 /* ServerConnectorTests */,
 				2A7A8521279D3C83003579FF /* Products */,
 				2A9D226127B904C8009CFF96 /* Frameworks */,
 			);
@@ -320,6 +356,8 @@
 				2A7860A9279E7C1F00532E1D /* lodesmanTests.xctest */,
 				2A9D225027B90211009CFF96 /* libDomainPrimitives.a */,
 				2A9D226927B9060E009CFF96 /* DomainPrimitivesTests.xctest */,
+				2A9D227D27B911D2009CFF96 /* libServerConnector.a */,
+				2A9D229527B91786009CFF96 /* ServerConnectorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -329,7 +367,6 @@
 			children = (
 				2A5B059427A40E2500319826 /* ContentViews */,
 				2A5B058D27A40BEB00319826 /* Controls */,
-				2A7860B8279E969900532E1D /* Network */,
 				2A786073279D5F4500532E1D /* Views */,
 				2A786070279D5EA200532E1D /* Model */,
 				2A7B61A727A6C45300949123 /* Persistent */,
@@ -396,10 +433,43 @@
 			path = DomainPrimitivesTests;
 			sourceTree = "<group>";
 		};
+		2A9D227E27B911D2009CFF96 /* ServerConnector */ = {
+			isa = PBXGroup;
+			children = (
+				2A7B61A327A54A8400949123 /* ServerConnection.swift */,
+				2A7860BB279E982800532E1D /* ConnectingError.swift */,
+				2A9D228C27B914F2009CFF96 /* NetworkScheduler.swift */,
+				2A7B61A127A5491100949123 /* NetworkFetching.swift */,
+				2A7B619B27A5393C00949123 /* CatalogPage.swift */,
+				2A7B61B927A8346700949123 /* ForumPage.swift */,
+				2A7B619D27A53B5100949123 /* XMLNode.swift */,
+			);
+			path = ServerConnector;
+			sourceTree = "<group>";
+		};
+		2A9D229627B91786009CFF96 /* ServerConnectorTests */ = {
+			isa = PBXGroup;
+			children = (
+				2A7B61A527A5557300949123 /* ServerConnectionTests.swift */,
+				2A7B61BD27A931D600949123 /* ForumPageHeaderTests.swift */,
+				2A7B61BF27A941BB00949123 /* ForumPageTopicTests.swift */,
+				2A7B61BB27A8359E00949123 /* ForumPageTests.swift */,
+				2A7B619F27A53FD100949123 /* CatalogPageTests.swift */,
+			);
+			path = ServerConnectorTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
 		2A9D224C27B90211009CFF96 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A9D227927B911D2009CFF96 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -439,6 +509,7 @@
 			);
 			dependencies = (
 				2A9D226427B904C8009CFF96 /* PBXTargetDependency */,
+				2A9D229027B91568009CFF96 /* PBXTargetDependency */,
 			);
 			name = lodesman;
 			productName = lodesman;
@@ -480,6 +551,43 @@
 			productReference = 2A9D226927B9060E009CFF96 /* DomainPrimitivesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		2A9D227C27B911D2009CFF96 /* ServerConnector */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A9D228327B911D2009CFF96 /* Build configuration list for PBXNativeTarget "ServerConnector" */;
+			buildPhases = (
+				2A9D227927B911D2009CFF96 /* Headers */,
+				2A9D227A27B911D2009CFF96 /* Sources */,
+				2A9D227B27B911D2009CFF96 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A9D22A327B91843009CFF96 /* PBXTargetDependency */,
+			);
+			name = ServerConnector;
+			productName = ServerConnector;
+			productReference = 2A9D227D27B911D2009CFF96 /* libServerConnector.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		2A9D229427B91786009CFF96 /* ServerConnectorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A9D229C27B91786009CFF96 /* Build configuration list for PBXNativeTarget "ServerConnectorTests" */;
+			buildPhases = (
+				2A9D229127B91786009CFF96 /* Sources */,
+				2A9D229227B91786009CFF96 /* Frameworks */,
+				2A9D229327B91786009CFF96 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A9D22A527B91892009CFF96 /* PBXTargetDependency */,
+				2A9D229B27B91786009CFF96 /* PBXTargetDependency */,
+			);
+			name = ServerConnectorTests;
+			productName = ServerConnectorTests;
+			productReference = 2A9D229527B91786009CFF96 /* ServerConnectorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -503,6 +611,12 @@
 					2A9D226827B9060E009CFF96 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
+					2A9D227C27B911D2009CFF96 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					2A9D229427B91786009CFF96 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 				};
 			};
 			buildConfigurationList = 2A7A851B279D3C83003579FF /* Build configuration list for PBXProject "lodesman" */;
@@ -522,6 +636,8 @@
 				2A7860A8279E7C1F00532E1D /* lodesmanTests */,
 				2A9D224F27B90211009CFF96 /* DomainPrimitives */,
 				2A9D226827B9060E009CFF96 /* DomainPrimitivesTests */,
+				2A9D227C27B911D2009CFF96 /* ServerConnector */,
+				2A9D229427B91786009CFF96 /* ServerConnectorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -552,6 +668,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2A9D229327B91786009CFF96 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -559,16 +682,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A7B61C027A941BB00949123 /* ForumPageTopicTests.swift in Sources */,
-				2A7B61A027A53FD100949123 /* CatalogPageTests.swift in Sources */,
-				2A7860B3279E7C3A00532E1D /* CatalogTests.swift in Sources */,
 				2A7B61B627A6C9E600949123 /* PersistentStorageTests.swift in Sources */,
+				2A9D22A027B917DF009CFF96 /* CatalogTests.swift in Sources */,
 				2A7860DE279FF42C00532E1D /* TopicListViewModelTests.swift in Sources */,
-				2A7B61BC27A8359E00949123 /* ForumPageTests.swift in Sources */,
-				2A7B61A627A5557300949123 /* ServerConnectionTests.swift in Sources */,
 				2A7860D8279FF14700532E1D /* ContentSizeViewModelTests.swift in Sources */,
 				2AC15F8827B01EA7000F1DCB /* AvailabilityViewModelTests.swift in Sources */,
-				2A7B61BE27A931D600949123 /* ForumPageHeaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,7 +697,6 @@
 				2A7A8526279D3C83003579FF /* ContentView.swift in Sources */,
 				2AC15F7827AACD6A000F1DCB /* Content.ViewModel.swift in Sources */,
 				2A7860BE279E998C00532E1D /* ForumCatalogView.swift in Sources */,
-				2A7B61BA27A8346700949123 /* ForumPage.swift in Sources */,
 				2A7B61B427A6C9AF00949123 /* Storage.swift in Sources */,
 				2A53706327A4292D000ABBDA /* TopicPinButton.swift in Sources */,
 				2A53706527A42DE8000ABBDA /* TopicsView.swift in Sources */,
@@ -587,14 +704,12 @@
 				2A7860A4279E779A00532E1D /* Catalog.swift in Sources */,
 				2A7B61AF27A6C49F00949123 /* MOForum.swift in Sources */,
 				2A7860DA279FF32A00532E1D /* TopicListView.swift in Sources */,
-				2A7860BC279E982800532E1D /* FetchingError.swift in Sources */,
 				2A7860B7279E94E600532E1D /* CatalogView.swift in Sources */,
 				2A7A8524279D3C83003579FF /* lodesmanApp.swift in Sources */,
 				2A786075279D5F6000532E1D /* ForumRow.swift in Sources */,
 				2A7B61B027A6C49F00949123 /* MOTopic.swift in Sources */,
 				2A7B61AA27A6C47B00949123 /* lodesman.xcdatamodeld in Sources */,
 				2A7860BA279E96B300532E1D /* ServerConnecting.swift in Sources */,
-				2A7B619E27A53B5100949123 /* XMLNode.swift in Sources */,
 				2A5B058F27A40C0400319826 /* ToggleSidebarButton.swift in Sources */,
 				2AD1FDF727A1B1C200EE7778 /* ContentSizeView.swift in Sources */,
 				2AD1FDFB27A1B77000EE7778 /* AttributedTextView.swift in Sources */,
@@ -604,14 +719,11 @@
 				2A53706127A427D8000ABBDA /* TopicSortOrderPicker.swift in Sources */,
 				2A7860DC279FF33F00532E1D /* TopicList.ViewModel.swift in Sources */,
 				2A7B61B127A6C49F00949123 /* Persistent.swift in Sources */,
-				2A7B619C27A5393C00949123 /* CatalogPage.swift in Sources */,
 				2A7860D2279FEB7600532E1D /* Topic.swift in Sources */,
 				2A5B059627A40E3D00319826 /* SidebarView.swift in Sources */,
 				2A7860B5279E93F900532E1D /* CatalogRow.swift in Sources */,
 				2AC15F8427B0147F000F1DCB /* AvailabilityView.swift in Sources */,
-				2A7B61A227A5491100949123 /* NetworkFetching.swift in Sources */,
 				2A5B059327A40CAB00319826 /* ForumUnsubscriptionButton.swift in Sources */,
-				2A7B61A427A54A8400949123 /* ServerConnection.swift in Sources */,
 				2AC15F8027AEC145000F1DCB /* ForumList.ViewModel.swift in Sources */,
 				2A7860C0279E9A4600532E1D /* ForumCatalog.ViewModel.swift in Sources */,
 				2A786077279D601D00532E1D /* ForumListView.swift in Sources */,
@@ -647,6 +759,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2A9D227A27B911D2009CFF96 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A9D228D27B914F2009CFF96 /* NetworkScheduler.swift in Sources */,
+				2A9D228827B9123B009CFF96 /* CatalogPage.swift in Sources */,
+				2A9D228727B91232009CFF96 /* ForumPage.swift in Sources */,
+				2A9D228A27B9124D009CFF96 /* ConnectingError.swift in Sources */,
+				2A9D228927B91243009CFF96 /* NetworkFetching.swift in Sources */,
+				2A9D228B27B91253009CFF96 /* ServerConnection.swift in Sources */,
+				2A9D228627B91223009CFF96 /* XMLNode.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A9D229127B91786009CFF96 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A9D22A927B9194C009CFF96 /* ForumPageTopicTests.swift in Sources */,
+				2A9D22A827B9193B009CFF96 /* ForumPageHeaderTests.swift in Sources */,
+				2A9D22A727B9191A009CFF96 /* ForumPageTests.swift in Sources */,
+				2A9D22AA27B91992009CFF96 /* ServerConnectionTests.swift in Sources */,
+				2A9D22A127B91804009CFF96 /* CatalogPageTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -664,6 +802,26 @@
 			isa = PBXTargetDependency;
 			target = 2A9D224F27B90211009CFF96 /* DomainPrimitives */;
 			targetProxy = 2A9D226E27B9060E009CFF96 /* PBXContainerItemProxy */;
+		};
+		2A9D229027B91568009CFF96 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A9D227C27B911D2009CFF96 /* ServerConnector */;
+			targetProxy = 2A9D228F27B91568009CFF96 /* PBXContainerItemProxy */;
+		};
+		2A9D229B27B91786009CFF96 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A9D227C27B911D2009CFF96 /* ServerConnector */;
+			targetProxy = 2A9D229A27B91786009CFF96 /* PBXContainerItemProxy */;
+		};
+		2A9D22A327B91843009CFF96 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A9D224F27B90211009CFF96 /* DomainPrimitives */;
+			targetProxy = 2A9D22A227B91843009CFF96 /* PBXContainerItemProxy */;
+		};
+		2A9D22A527B91892009CFF96 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A9D224F27B90211009CFF96 /* DomainPrimitives */;
+			targetProxy = 2A9D22A427B91892009CFF96 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -915,6 +1073,56 @@
 			};
 			name = Release;
 		};
+		2A9D228427B911D2009CFF96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		2A9D228527B911D2009CFF96 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		2A9D229D27B91786009CFF96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ee.82e21c2fe.ServerConnectorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		2A9D229E27B91786009CFF96 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ee.82e21c2fe.ServerConnectorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -959,6 +1167,24 @@
 			buildConfigurations = (
 				2A9D227127B9060E009CFF96 /* Debug */,
 				2A9D227227B9060E009CFF96 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A9D228327B911D2009CFF96 /* Build configuration list for PBXNativeTarget "ServerConnector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A9D228427B911D2009CFF96 /* Debug */,
+				2A9D228527B911D2009CFF96 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A9D229C27B91786009CFF96 /* Build configuration list for PBXNativeTarget "ServerConnectorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A9D229D27B91786009CFF96 /* Debug */,
+				2A9D229E27B91786009CFF96 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

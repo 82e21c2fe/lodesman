@@ -1,6 +1,6 @@
 //
 //  NetworkFetching.swift
-//  lodesman
+//  ServerConnector
 //
 //  Created by Dmitri Shuvalov on 29.01.2022.
 //
@@ -10,16 +10,16 @@ import Combine
 
 
 
-protocol NetworkFetching
+public protocol NetworkFetching
 {
-    func load(_ request: URLRequest) -> AnyPublisher<Data, FetchingError>
+    func load(_ request: URLRequest) -> AnyPublisher<Data, ConnectingError>
 }
 
 
 
 extension URLSession: NetworkFetching
 {
-    func load(_ request: URLRequest) -> AnyPublisher<Data, FetchingError>
+    public func load(_ request: URLRequest) -> AnyPublisher<Data, ConnectingError>
     {
         return dataTaskPublisher(for: request)
             .tryMap { (data, response) in
@@ -27,14 +27,14 @@ extension URLSession: NetworkFetching
                     , (200...299).contains(statusCode)
                     , (50...500_000).contains(data.count)
                 else {
-                    throw FetchingError.network
+                    throw ConnectingError.network
                 }
                 return data
             }
-            .mapError { error -> FetchingError in
+            .mapError { error -> ConnectingError in
                 switch error {
                 case is URLError: return .network
-                case is FetchingError: return error as! FetchingError
+                case is ConnectingError: return error as! ConnectingError
                 default: return .unknown
                 }
             }

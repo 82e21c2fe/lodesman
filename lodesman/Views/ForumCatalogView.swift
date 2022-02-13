@@ -62,13 +62,3 @@ struct ForumCatalogView: View
         }
     }
 }
-
-
-#if DEBUG
-struct ForumCatalogView_Previews: PreviewProvider {
-    static var previews: some View {
-        ForumCatalogView(fetcher: ForumCatalogFetcherStub()) {_ in}
-            .frame(width: 500, height: 400)
-    }
-}
-#endif

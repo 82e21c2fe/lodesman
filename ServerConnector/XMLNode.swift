@@ -1,6 +1,6 @@
 //
 //  XMLNode.swift
-//  lodesman
+//  ServerConnector
 //
 //  Created by Dmitri Shuvalov on 29.01.2022.
 //
