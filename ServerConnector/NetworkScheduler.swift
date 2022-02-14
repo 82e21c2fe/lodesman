@@ -18,16 +18,16 @@ struct NetworkScheduler {
         return val <= 10 ? val : 10 + val / 10
     }
 
-    static var pageIndexPublisher: AnyPublisher<Int, Never> {
+    static var pageIndexPublisher: AnyPublisher<PageIndex, Never> {
         let jitter = Double.random(in: 0.1 ... 0.5)
 
         return NetworkScheduler.timer
             .delay(for: .seconds(jitter), tolerance: .seconds(0.1), scheduler: RunLoop.main)
             .scan(0) { acc, _ in acc + 1 }
-            .prepend(0)
             .map(NetworkScheduler.timeRamp)
-            .prefix(while: { $0 < 1000 })
+            .prefix(while: { $0 <= PageIndex.last.rawValue })
             .removeDuplicates()
+            .map({ PageIndex(rawValue: $0)! })
             .eraseToAnyPublisher()
     }
 }

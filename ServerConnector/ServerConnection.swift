@@ -39,7 +39,7 @@ public struct ServerConnection
         let isDone = PassthroughSubject<Void, Never>()
         return NetworkScheduler.pageIndexPublisher
             .prefix(untilOutputFrom: isDone)
-            .flatMap { (index: Int) -> AnyPublisher<ForumPage, ConnectingError>  in
+            .flatMap { (index: PageIndex) -> AnyPublisher<ForumPage, ConnectingError>  in
                 fetchForumPage(forumId: forumId, pageIndex: index)
                     .retry(2)
                     .eraseToAnyPublisher()
@@ -53,8 +53,8 @@ public struct ServerConnection
             .eraseToAnyPublisher()
     }
 
-    func fetchForumPage(forumId: ForumId, pageIndex: Int) -> AnyPublisher<ForumPage, ConnectingError> {
-        let url = URL(string: "viewforum.php?f=\(forumId.rawValue)&start=\(pageIndex * 50)", relativeTo: baseURL)!
+    func fetchForumPage(forumId: ForumId, pageIndex: PageIndex) -> AnyPublisher<ForumPage, ConnectingError> {
+        let url = URL(string: "viewforum.php?f=\(forumId.rawValue)&start=\(pageIndex.topicOffset)", relativeTo: baseURL)!
 
         return fetcher.load(URLRequest(url: url))
             .tryMap { try ForumPage(data: $0) }

@@ -75,6 +75,8 @@
 		2A9D22A827B9193B009CFF96 /* ForumPageHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61BD27A931D600949123 /* ForumPageHeaderTests.swift */; };
 		2A9D22A927B9194C009CFF96 /* ForumPageTopicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61BF27A941BB00949123 /* ForumPageTopicTests.swift */; };
 		2A9D22AA27B91992009CFF96 /* ServerConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61A527A5557300949123 /* ServerConnectionTests.swift */; };
+		2A9D22B027B98692009CFF96 /* PageIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9D22AF27B98692009CFF96 /* PageIndex.swift */; };
+		2A9D22B227BA3B7C009CFF96 /* PageIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9D22B127BA3B7C009CFF96 /* PageIndexTests.swift */; };
 		2AC15F7827AACD6A000F1DCB /* Content.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F7727AACD6A000F1DCB /* Content.ViewModel.swift */; };
 		2AC15F8027AEC145000F1DCB /* ForumList.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F7F27AEC145000F1DCB /* ForumList.ViewModel.swift */; };
 		2AC15F8427B0147F000F1DCB /* AvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F8327B0147F000F1DCB /* AvailabilityView.swift */; };
@@ -195,6 +197,8 @@
 		2A9D227D27B911D2009CFF96 /* libServerConnector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libServerConnector.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A9D228C27B914F2009CFF96 /* NetworkScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkScheduler.swift; sourceTree = "<group>"; };
 		2A9D229527B91786009CFF96 /* ServerConnectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ServerConnectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A9D22AF27B98692009CFF96 /* PageIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndex.swift; sourceTree = "<group>"; };
+		2A9D22B127BA3B7C009CFF96 /* PageIndexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndexTests.swift; sourceTree = "<group>"; };
 		2AC15F7727AACD6A000F1DCB /* Content.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.ViewModel.swift; sourceTree = "<group>"; };
 		2AC15F7F27AEC145000F1DCB /* ForumList.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumList.ViewModel.swift; sourceTree = "<group>"; };
 		2AC15F8127B00E58000F1DCB /* Availability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Availability.swift; sourceTree = "<group>"; };
@@ -443,6 +447,7 @@
 				2A7B619B27A5393C00949123 /* CatalogPage.swift */,
 				2A7B61B927A8346700949123 /* ForumPage.swift */,
 				2A7B619D27A53B5100949123 /* XMLNode.swift */,
+				2A9D22AF27B98692009CFF96 /* PageIndex.swift */,
 			);
 			path = ServerConnector;
 			sourceTree = "<group>";
@@ -450,6 +455,7 @@
 		2A9D229627B91786009CFF96 /* ServerConnectorTests */ = {
 			isa = PBXGroup;
 			children = (
+				2A9D22B127BA3B7C009CFF96 /* PageIndexTests.swift */,
 				2A7B61A527A5557300949123 /* ServerConnectionTests.swift */,
 				2A7B61BD27A931D600949123 /* ForumPageHeaderTests.swift */,
 				2A7B61BF27A941BB00949123 /* ForumPageTopicTests.swift */,
@@ -770,6 +776,7 @@
 				2A9D228927B91243009CFF96 /* NetworkFetching.swift in Sources */,
 				2A9D228B27B91253009CFF96 /* ServerConnection.swift in Sources */,
 				2A9D228627B91223009CFF96 /* XMLNode.swift in Sources */,
+				2A9D22B027B98692009CFF96 /* PageIndex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,6 +785,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A9D22A927B9194C009CFF96 /* ForumPageTopicTests.swift in Sources */,
+				2A9D22B227BA3B7C009CFF96 /* PageIndexTests.swift in Sources */,
 				2A9D22A827B9193B009CFF96 /* ForumPageHeaderTests.swift in Sources */,
 				2A9D22A727B9191A009CFF96 /* ForumPageTests.swift in Sources */,
 				2A9D22AA27B91992009CFF96 /* ServerConnectionTests.swift in Sources */,

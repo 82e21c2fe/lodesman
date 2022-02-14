@@ -20,8 +20,8 @@ public struct ForumPage
         public var href: String
         public var title: String
         public var description: String?
-        public var currentPageIndex: Int
-        public var lastPageIndex: Int
+        public var currentPageIndex: PageIndex
+        public var lastPageIndex: PageIndex
     }
 
     public struct Topic
@@ -85,10 +85,10 @@ extension ForumPage.Header
         let description = try? document.nodes(forXPath: XPathName.description).first?.textValue
 
         let currentPage = (try? document.nodes(forXPath: XPathName.currentPage)
-                            .compactMap({ Int($0.textValue!) })
+                            .compactMap({ PageIndex($0.textValue!) })
                             .first) ?? 1
         let lastPage = (try? document.nodes(forXPath: XPathName.otherPage)
-                            .compactMap({ Int($0.textValue!) })
+                            .compactMap({ PageIndex($0.textValue!) })
                             .sorted()
                             .last) ?? 1
 

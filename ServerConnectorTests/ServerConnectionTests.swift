@@ -99,7 +99,7 @@ class ServerConnectionTests: XCTestCase
         let hostname = "myhost"
         var called = false
         let networkStub = NetworkFetchingStub(returning: .failure(.unknown)) { request in
-            XCTAssertEqual(request.url?.absoluteString, "https://\(hostname)/forum/viewforum.php?f=12&start=500")
+            XCTAssertEqual(request.url?.absoluteString, "https://\(hostname)/forum/viewforum.php?f=12&start=450")
             called = true
         }
         let fetcher = try XCTUnwrap(ServerConnection(hostname: hostname, fetcher: networkStub))
