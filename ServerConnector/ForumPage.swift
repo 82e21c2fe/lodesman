@@ -12,17 +12,8 @@ import DomainPrimitives
 
 public struct ForumPage
 {
-    public var header: Header
+    public var header: ForumPage.Header
     public var topics: [ForumPage.Topic]
-
-    public struct Header
-    {
-        public var href: String
-        public var title: String
-        public var description: String?
-        public var currentPageIndex: PageIndex
-        public var lastPageIndex: PageIndex
-    }
 
     public struct Topic
     {
@@ -66,37 +57,6 @@ extension ForumPage
         catch {
             throw ConnectingError.parsing
         }
-    }
-}
-
-
-extension ForumPage.Header
-{
-    init?(_ xmlString: String) {
-        guard let document = try? XMLDocument(xmlString: xmlString, options: [.documentTidyXML,
-                                                                        .nodeLoadExternalEntitiesNever])
-            , let maintitleNode = try? document.nodes(forXPath: XPathName.maintitle).first as? XMLElement
-            , let title = maintitleNode.textValue
-            , (1...256).contains(title.count)
-            , let href = maintitleNode.attribute(forName: "href")?.textValue
-        else {
-            return nil
-        }
-        let description = try? document.nodes(forXPath: XPathName.description).first?.textValue
-
-        let currentPage = (try? document.nodes(forXPath: XPathName.currentPage)
-                            .compactMap({ PageIndex($0.textValue!) })
-                            .first) ?? 1
-        let lastPage = (try? document.nodes(forXPath: XPathName.otherPage)
-                            .compactMap({ PageIndex($0.textValue!) })
-                            .sorted()
-                            .last) ?? 1
-
-        self.init(href: href,
-                  title: title,
-                  description: description?.isEmpty == false ? description : nil,
-                  currentPageIndex: currentPage,
-                  lastPageIndex: max(currentPage, lastPage))
     }
 }
 
@@ -207,13 +167,6 @@ fileprivate func getLastUpdate(fromTopic node: XMLNode) -> Date?
 
 fileprivate struct XPathName
 {
-    // Header
-    static let maintitle = "//h1[@class='maintitle']/a"
-    static let description = "//div[@class='forum-desc-in-title']"
-    static let currentPage = "//span[@class='pg-jump-menu']/../b"
-    static let otherPage = "//span[@class='pg-jump-menu']/../a[@class='pg']"
-
-    // Topic
     static let topic = "//tr[@data-topic_id]"
     static let topicId = "./@data-topic_id"
     static let status = "./td/div[@class='torTopic']/span/@class"

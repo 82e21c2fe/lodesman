@@ -77,6 +77,7 @@
 		2A9D22AA27B91992009CFF96 /* ServerConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61A527A5557300949123 /* ServerConnectionTests.swift */; };
 		2A9D22B027B98692009CFF96 /* PageIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9D22AF27B98692009CFF96 /* PageIndex.swift */; };
 		2A9D22B227BA3B7C009CFF96 /* PageIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9D22B127BA3B7C009CFF96 /* PageIndexTests.swift */; };
+		2A9D22B427BA4490009CFF96 /* ForumPage.Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9D22B327BA4490009CFF96 /* ForumPage.Header.swift */; };
 		2AC15F7827AACD6A000F1DCB /* Content.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F7727AACD6A000F1DCB /* Content.ViewModel.swift */; };
 		2AC15F8027AEC145000F1DCB /* ForumList.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F7F27AEC145000F1DCB /* ForumList.ViewModel.swift */; };
 		2AC15F8427B0147F000F1DCB /* AvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F8327B0147F000F1DCB /* AvailabilityView.swift */; };
@@ -199,6 +200,7 @@
 		2A9D229527B91786009CFF96 /* ServerConnectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ServerConnectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A9D22AF27B98692009CFF96 /* PageIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndex.swift; sourceTree = "<group>"; };
 		2A9D22B127BA3B7C009CFF96 /* PageIndexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndexTests.swift; sourceTree = "<group>"; };
+		2A9D22B327BA4490009CFF96 /* ForumPage.Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumPage.Header.swift; sourceTree = "<group>"; };
 		2AC15F7727AACD6A000F1DCB /* Content.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.ViewModel.swift; sourceTree = "<group>"; };
 		2AC15F7F27AEC145000F1DCB /* ForumList.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumList.ViewModel.swift; sourceTree = "<group>"; };
 		2AC15F8127B00E58000F1DCB /* Availability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Availability.swift; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 				2A7B61A127A5491100949123 /* NetworkFetching.swift */,
 				2A7B619B27A5393C00949123 /* CatalogPage.swift */,
 				2A7B61B927A8346700949123 /* ForumPage.swift */,
+				2A9D22B327BA4490009CFF96 /* ForumPage.Header.swift */,
 				2A7B619D27A53B5100949123 /* XMLNode.swift */,
 				2A9D22AF27B98692009CFF96 /* PageIndex.swift */,
 			);
@@ -770,6 +773,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A9D228D27B914F2009CFF96 /* NetworkScheduler.swift in Sources */,
+				2A9D22B427BA4490009CFF96 /* ForumPage.Header.swift in Sources */,
 				2A9D228827B9123B009CFF96 /* CatalogPage.swift in Sources */,
 				2A9D228727B91232009CFF96 /* ForumPage.swift in Sources */,
 				2A9D228A27B9124D009CFF96 /* ConnectingError.swift in Sources */,

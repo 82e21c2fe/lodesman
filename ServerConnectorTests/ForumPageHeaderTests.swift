@@ -32,11 +32,11 @@ extension ForumPage.Header
 
 class ForumPageHeaderTests: XCTestCase
 {
-    //MARK: - forumId
+    //MARK: - href
     func testHeaderWithHREF() throws {
-        let node = ForumPage.Header.xmlFixture(href: "text")
+        let node = ForumPage.Header.xmlFixture(href: "viewforum.php?f=16")
         let header = try XCTUnwrap(ForumPage.Header(node))
-        XCTAssertEqual(header.href, "text")
+        XCTAssertEqual(header.href.absoluteString, "viewforum.php?f=16")
     }
     
     //MARK: - title
@@ -46,41 +46,22 @@ class ForumPageHeaderTests: XCTestCase
     }
 
     func testHeaderWithVeryLongTitle() throws {
-        let title = String(repeating: "a", count: 257)
+        let title = String(repeating: "a", count: 129)
         let node = ForumPage.Header.xmlFixture(title: title)
         XCTAssertNil(ForumPage.Header(node))
     }
 
     func testHeaderWithMaximumLengthTitle() throws {
-        let title = String(repeating: "a", count: 256)
+        let title = String(repeating: "a", count: 128)
         let node = ForumPage.Header.xmlFixture(title: title)
         let header = try XCTUnwrap(ForumPage.Header(node))
-        XCTAssertEqual(header.title, title)
+        XCTAssertEqual(header.title.rawValue, title)
     }
 
     func testHeaderWithTitle() throws {
         let node = ForumPage.Header.xmlFixture(title: "title")
         let header = try XCTUnwrap(ForumPage.Header(node))
         XCTAssertEqual(header.title, "title")
-    }
-
-    //MARK: - description
-    func testHeaderWithoutDescription() throws {
-        let node = ForumPage.Header.xmlFixture(description: nil)
-        let header = try XCTUnwrap(ForumPage.Header(node))
-        XCTAssertEqual(header.description, nil)
-    }
-
-    func testHeaderWithEmptyDescription() throws {
-        let node = ForumPage.Header.xmlFixture(description: " ")
-        let header = try XCTUnwrap(ForumPage.Header(node))
-        XCTAssertEqual(header.description, nil)
-    }
-
-    func testHeaderWithDescription() throws {
-        let node = ForumPage.Header.xmlFixture(description: "description")
-        let header = try XCTUnwrap(ForumPage.Header(node))
-        XCTAssertEqual(header.description, "description")
     }
 
     //MARK: - indices
@@ -139,4 +120,21 @@ class ForumPageHeaderTests: XCTestCase
         XCTAssertEqual(header.currentPageIndex, 3)
         XCTAssertEqual(header.lastPageIndex, 74)
     }
-}
+
+    func testHeaderWithoutPageIndex() throws {
+        let testPaginator = """
+            <span class="pg-jump-menu"><a class="menu-root" href="#pg-jump">Страница</a> :  </span>
+            <a class="pg" href="">Пред.</a>
+            <a class="pg" href="">1</a>,
+            <a class="pg" href="">2</a>,
+            <a class="pg" href="">4</a> ...
+            <a class="pg" href="">72</a>,
+            <a class="pg" href="">73</a>,
+            <a class="pg" href="">74</a>
+            <a class="pg" href="">След.</a>
+            """
+        let node = ForumPage.Header.xmlFixture(pageIndices: testPaginator)
+        let header = try XCTUnwrap(ForumPage.Header(node))
+        XCTAssertEqual(header.currentPageIndex, 74)
+        XCTAssertEqual(header.lastPageIndex, 74)
+    }}
