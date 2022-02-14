@@ -82,32 +82,31 @@ extension ForumPage.Topic
     }
 }
 
+extension TopicStatus
+{
+    fileprivate init?(_ text: String) {
+        guard (14...32).contains(text.count)
+            , let _ = text.range(of: #"^tor-icon\s+tor-[-a-z]+$"#, options: .regularExpression)
+        else {
+            return nil
+        }
+
+        if text.contains("tor-approved")            { self = .approved }
+        else if text.contains("tor-dup")            { self = .duplicate }
+        else if text.contains("tor-consumed")       { self = .consumed }
+        else if text.contains("tor-not-approved")   { self = .unknown }
+        else if text.contains("tor-need-edit")      { self = .unknown }
+        else                                        { self = .unknown }
+    }
+}
+
 fileprivate func getStatus(fromTopic node: XMLNode) -> TopicStatus?
 {
     guard let text = try? node.nodes(forXPath: XPathName.status).first?.textValue
     else {
         return nil
     }
-
-    if text.contains("tor-approved") {
-        return .approved
-    }
-    else if text.contains("tor-dup") {
-        return .duplicate
-    }
-    else if text.contains("tor-consumed") {
-        return .consumed
-    }
-    else if text.contains("tor-not-approved") {
-        return .unknown
-    }
-    else if text.contains("tor-need-edit") {
-        return .unknown
-    }
-    else {
-        print("WARNING: the topic has an unexpected status '\(text)'.")
-    }
-    return .unknown
+    return TopicStatus(text)
 }
 
 fileprivate func getId(fromTopic node: XMLNode) -> TopicId?
@@ -131,6 +130,11 @@ fileprivate func getTitle(fromTopic node: XMLNode) -> TopicTitle?
 fileprivate func getAvailability(fromTopic node: XMLNode) -> Availability?
 {
     guard let text = try? node.nodes(forXPath: XPathName.seedmed).first?.textValue
+    else {
+        return Availability(rawValue: 0)
+    }
+    guard (1...16).contains(text.count)
+        , let _ = text.range(of: #"\d+"#, options: .regularExpression)
         , let seeders = Int(text)
     else {
         return nil
@@ -142,7 +146,7 @@ fileprivate func getContentSize(fromTopic node: XMLNode) -> ContentSize?
 {
     guard let text = try? node.nodes(forXPath: XPathName.contentSize).first?.textValue
     else {
-        return nil
+        return ContentSize(rawValue: 0)
     }
     return ContentSize(text)
 }
@@ -158,6 +162,7 @@ fileprivate func getLastUpdate(fromTopic node: XMLNode) -> Date?
 {
     return try? node.nodes(forXPath: XPathName.lastUpdate)
         .compactMap { $0.textValue }
+        .filter({ $0.count == 16 })
         .compactMap(timestampFormatter.date(from:))
         .first
 }

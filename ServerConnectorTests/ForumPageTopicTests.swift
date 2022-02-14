@@ -31,16 +31,19 @@ extension ForumPage.Topic
                            size: String = "79.1 GB",
                            date: String = "2019-12-15 20:33") -> XMLElement
     {
+        let info = status == TopicStatus.consumed.xmlCode ? " " : """
+                <td><div>
+                    <div><span class="seedmed"><b>\(seeds)</b></span></div>
+                    <div class="small"><a href="">\(size)</a></div>
+                </div></td>
+            """
         let test = """
             <tr data-topic_id="\(id)">
                 <td><div class="torTopic">
                     <span class="tor-icon \(status)">x</span>
                     <a href="">\(title)</a>
                 </div></td>
-                <td><div>
-                    <div><span class="seedmed"><b>\(seeds)</b></span></div>
-                    <div class="small"><a href="">\(size)</a></div>
-                </div></td>
+                \(info)
                 <td><p>\(date)</p></td>
             </tr>
             """
@@ -87,6 +90,11 @@ class ForumPageTopicTests: XCTestCase
     }
 
     //MARK: - availability
+    func testTopicWithNonIntegerSeedmed() throws {
+        let node = ForumPage.Topic.xmlFixture(seeds: "test")
+        XCTAssertNil(ForumPage.Topic(node))
+    }
+
     func testTopicWithZeroSeedmed() throws {
         let node = ForumPage.Topic.xmlFixture(seeds: "0")
         let topic = try XCTUnwrap(ForumPage.Topic(node))
@@ -108,7 +116,8 @@ class ForumPageTopicTests: XCTestCase
     //MARK: - content size
     func testTopicWithEmptySize() throws {
         let node = ForumPage.Topic.xmlFixture(size: "")
-        XCTAssertNil(ForumPage.Topic(node))
+        let topic = try XCTUnwrap(ForumPage.Topic(node))
+        XCTAssertEqual(topic.contentSize, 0)
     }
 
     func testTopicWithNegativeSize() throws {
@@ -156,9 +165,12 @@ class ForumPageTopicTests: XCTestCase
 
     func testTopicWithStatusConsumed() throws {
         let status = TopicStatus.consumed
-        let node = ForumPage.Topic.xmlFixture(status: status.xmlCode)
+        let node = ForumPage.Topic.xmlFixture(id: "117", status: status.xmlCode)
         let topic = try XCTUnwrap(ForumPage.Topic(node))
         XCTAssertEqual(topic.status, status)
+        XCTAssertEqual(topic.topicId, 117)
+        XCTAssertEqual(topic.contentSize, 0)
+        XCTAssertEqual(topic.availability, 0)
     }
 
     func testTopicWithStatusUnknown() throws {
@@ -166,5 +178,10 @@ class ForumPageTopicTests: XCTestCase
         let node = ForumPage.Topic.xmlFixture(status: status.xmlCode)
         let topic = try XCTUnwrap(ForumPage.Topic(node))
         XCTAssertEqual(topic.status, status)
+    }
+
+    func testTopicWithEmptyStatus() throws {
+        let node = ForumPage.Topic.xmlFixture(status: "")
+        XCTAssertNil(ForumPage.Topic(node))
     }
 }
