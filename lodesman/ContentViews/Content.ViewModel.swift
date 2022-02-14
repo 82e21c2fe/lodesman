@@ -63,7 +63,13 @@ extension ContentView
                         self?.storage.setState(forForum: forumId, state: .failure)
                     }
                 } receiveValue: { [weak self] topics in
-                    self?.storage.insert(topics: topics, toForum: forumId)
+                    var items = topics
+                    let index = items.partition(by: { $0.status == .consumed })
+                    let normal = Array(items[..<index])
+                    let consumed = Set(items[index...].map(\.topicId))
+
+                    self?.storage.insert(topics: normal, toForum: forumId)
+                    self?.storage.remove(topics: consumed)
                 }
             jobs[forumId] = job
         }
