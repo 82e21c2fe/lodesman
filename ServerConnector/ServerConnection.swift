@@ -54,7 +54,12 @@ public struct ServerConnection
     }
 
     func fetchForumPage(forumId: ForumId, pageIndex: PageIndex) -> AnyPublisher<ForumPage, ConnectingError> {
-        let url = URL(string: "viewforum.php?f=\(forumId.rawValue)&start=\(pageIndex.topicOffset)", relativeTo: baseURL)!
+        var components = URLComponents(string: "viewforum.php")!
+        components.queryItems = [URLQueryItem(name: "f", value: "\(forumId.rawValue)")]
+        if pageIndex != .first {
+            components.queryItems?.append(URLQueryItem(name: "start", value: "\(pageIndex.topicOffset)"))
+        }
+        let url = components.url(relativeTo: baseURL)!
 
         return fetcher.load(URLRequest(url: url))
             .tryMap { try ForumPage(data: $0) }

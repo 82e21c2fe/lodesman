@@ -95,6 +95,30 @@ class ServerConnectionTests: XCTestCase
     }
 
     //MARK: - Forum page
+    func testForumPageRequestFirstURL() throws {
+        let hostname = "myhost"
+        var called = false
+        let networkStub = NetworkFetchingStub(returning: .failure(.unknown)) { request in
+            XCTAssertEqual(request.url?.absoluteString, "https://\(hostname)/forum/viewforum.php?f=12")
+            called = true
+        }
+        let fetcher = try XCTUnwrap(ServerConnection(hostname: hostname, fetcher: networkStub))
+        _ = fetcher.fetchForumPage(forumId: 12, pageIndex: .first)
+        XCTAssert(called)
+    }
+
+    func testForumPageRequestSecondURL() throws {
+        let hostname = "myhost"
+        var called = false
+        let networkStub = NetworkFetchingStub(returning: .failure(.unknown)) { request in
+            XCTAssertEqual(request.url?.absoluteString, "https://\(hostname)/forum/viewforum.php?f=12&start=50")
+            called = true
+        }
+        let fetcher = try XCTUnwrap(ServerConnection(hostname: hostname, fetcher: networkStub))
+        _ = fetcher.fetchForumPage(forumId: 12, pageIndex: 2)
+        XCTAssert(called)
+    }
+
     func testForumPageRequestURL() throws {
         let hostname = "myhost"
         var called = false
