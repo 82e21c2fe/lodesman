@@ -82,6 +82,8 @@
 		2AC15F8027AEC145000F1DCB /* ForumList.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F7F27AEC145000F1DCB /* ForumList.ViewModel.swift */; };
 		2AC15F8427B0147F000F1DCB /* AvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F8327B0147F000F1DCB /* AvailabilityView.swift */; };
 		2AC15F8827B01EA7000F1DCB /* AvailabilityViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F8727B01EA7000F1DCB /* AvailabilityViewModelTests.swift */; };
+		2AC1DA8727BCDE8500872676 /* NetworkSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC1DA8627BCDE8500872676 /* NetworkSettingsView.swift */; };
+		2AC1DA8927BCDF2000872676 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC1DA8827BCDF2000872676 /* SettingsView.swift */; };
 		2AD1FDF727A1B1C200EE7778 /* ContentSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1FDF627A1B1C200EE7778 /* ContentSizeView.swift */; };
 		2AD1FDFB27A1B77000EE7778 /* AttributedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1FDFA27A1B77000EE7778 /* AttributedTextView.swift */; };
 /* End PBXBuildFile section */
@@ -216,6 +218,8 @@
 		2AC15F9527B26A56000F1DCB /* TopicTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTitle.swift; sourceTree = "<group>"; };
 		2AC15F9727B27B2E000F1DCB /* TopicTitleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTitleTests.swift; sourceTree = "<group>"; };
 		2AC15F9927B2A7A6000F1DCB /* ForumTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumTitle.swift; sourceTree = "<group>"; };
+		2AC1DA8627BCDE8500872676 /* NetworkSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSettingsView.swift; sourceTree = "<group>"; };
+		2AC1DA8827BCDF2000872676 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2AD1FDF627A1B1C200EE7778 /* ContentSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizeView.swift; sourceTree = "<group>"; };
 		2AD1FDFA27A1B77000EE7778 /* AttributedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -371,6 +375,7 @@
 		2A7A8522279D3C83003579FF /* lodesman */ = {
 			isa = PBXGroup;
 			children = (
+				2AC1DA8527BCDE6600872676 /* SettingsViews */,
 				2A5B059427A40E2500319826 /* ContentViews */,
 				2A5B058D27A40BEB00319826 /* Controls */,
 				2A786073279D5F4500532E1D /* Views */,
@@ -466,6 +471,15 @@
 				2A7B619F27A53FD100949123 /* CatalogPageTests.swift */,
 			);
 			path = ServerConnectorTests;
+			sourceTree = "<group>";
+		};
+		2AC1DA8527BCDE6600872676 /* SettingsViews */ = {
+			isa = PBXGroup;
+			children = (
+				2AC1DA8627BCDE8500872676 /* NetworkSettingsView.swift */,
+				2AC1DA8827BCDF2000872676 /* SettingsView.swift */,
+			);
+			path = SettingsViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -709,6 +723,7 @@
 				2A7B61B427A6C9AF00949123 /* Storage.swift in Sources */,
 				2A53706327A4292D000ABBDA /* TopicPinButton.swift in Sources */,
 				2A53706527A42DE8000ABBDA /* TopicsView.swift in Sources */,
+				2AC1DA8927BCDF2000872676 /* SettingsView.swift in Sources */,
 				2A7860D4279FF06500532E1D /* TopicRow.swift in Sources */,
 				2A7860A4279E779A00532E1D /* Catalog.swift in Sources */,
 				2A7B61AF27A6C49F00949123 /* MOForum.swift in Sources */,
@@ -721,6 +736,7 @@
 				2A7860BA279E96B300532E1D /* ServerConnecting.swift in Sources */,
 				2A5B058F27A40C0400319826 /* ToggleSidebarButton.swift in Sources */,
 				2AD1FDF727A1B1C200EE7778 /* ContentSizeView.swift in Sources */,
+				2AC1DA8727BCDE8500872676 /* NetworkSettingsView.swift in Sources */,
 				2AD1FDFB27A1B77000EE7778 /* AttributedTextView.swift in Sources */,
 				2A7B61B227A6C49F00949123 /* MOAttachment.swift in Sources */,
 				2A5B059127A40C6400319826 /* ForumSubscriptionButton.swift in Sources */,
