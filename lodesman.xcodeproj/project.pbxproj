@@ -84,6 +84,7 @@
 		2AC15F8827B01EA7000F1DCB /* AvailabilityViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F8727B01EA7000F1DCB /* AvailabilityViewModelTests.swift */; };
 		2AC1DA8727BCDE8500872676 /* NetworkSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC1DA8627BCDE8500872676 /* NetworkSettingsView.swift */; };
 		2AC1DA8927BCDF2000872676 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC1DA8827BCDF2000872676 /* SettingsView.swift */; };
+		2AC1DA8B27BCE08600872676 /* UpdationStateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC1DA8A27BCE08600872676 /* UpdationStateModifier.swift */; };
 		2AD1FDF727A1B1C200EE7778 /* ContentSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1FDF627A1B1C200EE7778 /* ContentSizeView.swift */; };
 		2AD1FDFB27A1B77000EE7778 /* AttributedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1FDFA27A1B77000EE7778 /* AttributedTextView.swift */; };
 /* End PBXBuildFile section */
@@ -220,6 +221,7 @@
 		2AC15F9927B2A7A6000F1DCB /* ForumTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumTitle.swift; sourceTree = "<group>"; };
 		2AC1DA8627BCDE8500872676 /* NetworkSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSettingsView.swift; sourceTree = "<group>"; };
 		2AC1DA8827BCDF2000872676 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2AC1DA8A27BCE08600872676 /* UpdationStateModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdationStateModifier.swift; sourceTree = "<group>"; };
 		2AD1FDF627A1B1C200EE7778 /* ContentSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizeView.swift; sourceTree = "<group>"; };
 		2AD1FDFA27A1B77000EE7778 /* AttributedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -317,6 +319,7 @@
 				2A786076279D601D00532E1D /* ForumListView.swift */,
 				2AC15F7F27AEC145000F1DCB /* ForumList.ViewModel.swift */,
 				2A786074279D5F6000532E1D /* ForumRow.swift */,
+				2AC1DA8A27BCE08600872676 /* UpdationStateModifier.swift */,
 				2A7860BD279E998C00532E1D /* ForumCatalogView.swift */,
 				2A7860BF279E9A4600532E1D /* ForumCatalog.ViewModel.swift */,
 				2A7860B6279E94E600532E1D /* CatalogView.swift */,
@@ -751,6 +754,7 @@
 				2A5B059327A40CAB00319826 /* ForumUnsubscriptionButton.swift in Sources */,
 				2AC15F8027AEC145000F1DCB /* ForumList.ViewModel.swift in Sources */,
 				2A7860C0279E9A4600532E1D /* ForumCatalog.ViewModel.swift in Sources */,
+				2AC1DA8B27BCE08600872676 /* UpdationStateModifier.swift in Sources */,
 				2A786077279D601D00532E1D /* ForumListView.swift in Sources */,
 				2A786072279D5EB900532E1D /* Forum.swift in Sources */,
 				2A5B058C27A40AD300319826 /* ForumStorage.swift in Sources */,

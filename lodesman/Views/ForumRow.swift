@@ -15,23 +15,9 @@ struct ForumRow: View
 
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
-            switch forum.state {
-            case .loading:
-                ProgressView()
-                    .progressViewStyle(.circular)
-                    .controlSize(.small)
-                    .alignmentGuide(.firstTextBaseline) { x in x.height - 3 }
-                    .padding(.horizontal, 2)
-            case .waiting:
-                Image(systemName: "clock.arrow.2.circlepath")
-                    .foregroundColor(.secondary)
-            case .failure:
-                Image(systemName: "exclamationmark.triangle")
-                    .foregroundColor(.orange)
-            case .success, .none:
-                Image(systemName: "dot.radiowaves.left.and.right")
-                    .foregroundColor(.accentColor)
-            }
+            Image(systemName: "dot.radiowaves.left.and.right")
+                .foregroundColor(.accentColor)
+                .updationState(forum.state)
             VStack(alignment: .leading) {
                 Text(forum.title.rawValue)
                     .lineLimit(4)
