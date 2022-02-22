@@ -11,11 +11,11 @@ import DomainPrimitives
 
 extension ForumListView
 {
-    struct ViewModel
+    struct ViewModel<Item: Forum & ObservableObject & Identifiable>
     {
-        let sections: [(caption: ForumTitle, forums: [Forum])]
+        let sections: [(caption: ForumTitle, forums: [Item])]
 
-        init(forums: [Forum]) {
+        init(forums: [Item]) {
             sections = Dictionary(grouping: forums, by: { $0.section })
                 .sorted(by: { lhs, rhs in lhs.key < rhs.key })
                 .map({ (caption: $0.key, forums: $0.value) })

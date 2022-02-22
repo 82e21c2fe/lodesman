@@ -26,7 +26,7 @@ final class Storage: ObservableObject
 
 extension Storage: ForumStorage
 {
-    var forums: [Forum] {
+    var forums: [MOForum] {
         let request = MOForum.fetchRequest()
         return (try? context.fetch(request)) ?? []
     }

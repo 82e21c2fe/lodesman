@@ -9,9 +9,9 @@ import SwiftUI
 
 
 
-struct ForumRow: View
+struct ForumRow<Item: Forum & ObservableObject & Identifiable>: View
 {
-    let forum: Forum
+    @ObservedObject var forum: Item
 
     var body: some View {
         HStack(alignment: .firstTextBaseline) {

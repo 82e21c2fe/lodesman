@@ -19,7 +19,9 @@ struct ForumInfo
 
 protocol ForumStorage: ObservableObject
 {
-    var forums: [Forum] { get }
+    associatedtype Item: Forum & ObservableObject & Identifiable
+
+    var forums: [Item] { get }
     func insert(forums items: [ForumInfo])
     func remove(forums forumIds: Set<ForumId>)
     func setUpdationState(forForum forumId: ForumId, to: UpdationState)
@@ -29,7 +31,7 @@ protocol ForumStorage: ObservableObject
 #if DEBUG
 final class ForumStorageStub: ForumStorage
 {
-    private(set) var forums: [Forum] = ForumStub.preview
+    private(set) var forums: [ForumStub] = ForumStub.preview
 
     func insert(forums items: [ForumInfo]) { assert(false) }
     func remove(forums forumIds: Set<ForumId>) { assert(false) }

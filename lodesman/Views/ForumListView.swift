@@ -10,12 +10,12 @@ import DomainPrimitives
 
 
 
-struct ForumListView: View
+struct ForumListView<Item: Forum & ObservableObject & Identifiable>: View
 {
-    private let model: ViewModel
+    private let model: ViewModel<Item>
     @Binding private var selected: Set<ForumId>
 
-    init(forums: [Forum], selection: Binding<Set<ForumId>>) {
+    init(forums: [Item], selection: Binding<Set<ForumId>>) {
         self.model = .init(forums: forums)
         self._selected = selection
     }
@@ -24,7 +24,7 @@ struct ForumListView: View
         List(selection: $selected) {
             ForEach(model.sections, id: \.caption) { section in
                 Section(header: Text(section.caption.rawValue)) {
-                    ForEach(section.forums, id: \.id) { forum in
+                    ForEach(section.forums) { forum in
                         ForumRow(forum: forum)
                     }
                 }
