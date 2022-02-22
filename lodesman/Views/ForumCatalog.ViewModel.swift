@@ -23,7 +23,7 @@ extension ForumCatalogView
             return result
         }
 
-        var selectedItems: [(section: ForumTitle, forumId: ForumId, title: ForumTitle)] {
+        var selectedItems: [ForumInfo] {
             var temp = [Int:(section: ForumTitle, title: ForumTitle)]()
             for section in catalog?.root ?? [] {
                 if selection.contains(section.id) {
@@ -46,7 +46,7 @@ extension ForumCatalogView
             return temp.compactMap { element in
                 guard let forumId = ForumId(rawValue: element.key)
                 else { return nil }
-                return (section: element.value.section, forumId: forumId, title: element.value.title)
+                return ForumInfo(id: forumId, title: element.value.title, section: element.value.section)
             }
         }
 

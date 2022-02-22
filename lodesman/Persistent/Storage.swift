@@ -31,12 +31,11 @@ extension Storage: ForumStorage
         return (try? context.fetch(request)) ?? []
     }
 
-    func insert(forums items: [(section: ForumTitle, forumId: ForumId, title: ForumTitle)]) {
+    func insert(forums items: [ForumInfo]) {
         objectWillChange.send()
         for item in items {
-            let forum = MOForum.with(forumId: item.forumId, context: context)
-            forum.title = item.title
-            forum.section = item.section
+            let forum = MOForum.with(forumId: item.id, context: context)
+            forum.update(from: item)
         }
 
         try? context.save()

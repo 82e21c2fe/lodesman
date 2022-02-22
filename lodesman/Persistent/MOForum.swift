@@ -60,6 +60,14 @@ extension MOForum: Forum, Identifiable
 
 extension MOForum
 {
+    func update(from other: ForumInfo) {
+        precondition(self.id == other.id)
+
+        objectWillChange.send()
+        self.title = other.title
+        self.section = other.section
+    }
+
     static func with(forumId id: ForumId, context: NSManagedObjectContext) -> MOForum
     {
         let request = fetchRequest()
