@@ -17,7 +17,7 @@ struct ForumRow: View
         HStack(alignment: .firstTextBaseline) {
             Image(systemName: "dot.radiowaves.left.and.right")
                 .foregroundColor(.accentColor)
-                .updationState(forum.state)
+                .updationState(forum.updationState)
             VStack(alignment: .leading) {
                 Text(forum.title.rawValue)
                     .lineLimit(4)
@@ -48,15 +48,10 @@ fileprivate let dateFmt: DateFormatter = {
 struct ForumRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ForumRow(forum: ForumStub(lastUpdate: Date(), state: nil))
-
-            ForumRow(forum: ForumStub(lastUpdate: Date(), state: .failure))
-
-            ForumRow(forum: ForumStub(lastUpdate: Date(), state: .loading))
-
-            ForumRow(forum: ForumStub(lastUpdate: Date(), state: .waiting))
-
-            ForumRow(forum: ForumStub(lastUpdate: Date(), state: .success))
+            ForumRow(forum: ForumStub(lastUpdate: Date(), updationState: .failure))
+            ForumRow(forum: ForumStub(lastUpdate: Date(), updationState: .loading))
+            ForumRow(forum: ForumStub(lastUpdate: Date(), updationState: .waiting))
+            ForumRow(forum: ForumStub(lastUpdate: Date(), updationState: .success))
         }
         .frame(width: 400)
     }

@@ -13,28 +13,28 @@ import DomainPrimitives
 
 @objc(MOForum) final class MOForum: NSManagedObject
 {
-    @NSManaged var id: Int
-    @NSManaged var title_: String
-    @NSManaged var section_: String
-    @NSManaged var lastUpdate: Date?
-    @NSManaged var state_: String?
-    @NSManaged var topics: Set<MOTopic>
+    @NSManaged private var externalId: Int
+    @NSManaged private var title_: String
+    @NSManaged private var section_: String
+    @NSManaged private var lastUpdate_: Date?
+    @NSManaged private var updationState_: String?
+    @NSManaged private var topics: Set<MOTopic>
 }
 
 
-extension MOForum: Forum
+extension MOForum: Forum, Identifiable
 {
-    var forumId: ForumId {
-        return ForumId(rawValue: id)!
+    var id: ForumId {
+        return ForumId(rawValue: externalId)!
     }
 
     var title: ForumTitle {
-        get { ForumTitle(rawValue: title_)! }
+        get { ForumTitle(rawValue: title_) ?? "Untitled" }
         set { title_ = newValue.rawValue }
     }
 
     var section: ForumTitle {
-        get { ForumTitle(rawValue: section_)! }
+        get { ForumTitle(rawValue: section_) ?? "Untitled" }
         set { section_ = newValue.rawValue }
     }
 
@@ -42,9 +42,18 @@ extension MOForum: Forum
         return topics.count
     }
 
-    var state: UpdationState? {
-        get { UpdationState(rawValue: state_ ?? "") }
-        set { state_ = newValue?.rawValue }
+    var updationState: UpdationState {
+        get { UpdationState(rawValue: updationState_ ?? "") ?? .success }
+        set {
+            if newValue == .success {
+                lastUpdate_ = Date()
+            }
+            updationState_ = newValue.rawValue
+        }
+    }
+
+    var lastUpdate: Date? {
+        return lastUpdate_
     }
 }
 
@@ -54,11 +63,11 @@ extension MOForum
     static func with(forumId id: ForumId, context: NSManagedObjectContext) -> MOForum
     {
         let request = fetchRequest()
-        request.predicate = NSPredicate(format: "id == %@", id.rawValue as NSNumber)
+        request.predicate = NSPredicate(format: "externalId == %@", id.rawValue as NSNumber)
         guard let result = try? context.fetch(request).first
         else {
             let result = MOForum(context: context)
-            result.id = id.rawValue
+            result.externalId = id.rawValue
             return result
         }
         return result
@@ -67,11 +76,14 @@ extension MOForum
     static func allWith(forumIds: Set<ForumId>, context: NSManagedObjectContext) -> [MOForum]
     {
         let request = MOForum.fetchRequest()
-        request.predicate = NSPredicate(format: "id IN %@", forumIds.map(\.rawValue) as CVarArg)
+        request.predicate = NSPredicate(format: "externalId IN %@", forumIds.map(\.rawValue) as CVarArg)
         return (try? context.fetch(request)) ?? []
     }
 
     @nonobjc static func fetchRequest() -> NSFetchRequest<MOForum> {
-        return NSFetchRequest<MOForum>(entityName: "Forum")
+        let request = NSFetchRequest<MOForum>(entityName: "Forum")
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \MOForum.section_, ascending: true),
+                                   NSSortDescriptor(keyPath: \MOForum.title_, ascending: true)]
+        return request
     }
 }

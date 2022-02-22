@@ -37,9 +37,9 @@ extension ContentView
             let needUpdate = storage.forums.filter({ ($0.lastUpdate ?? .distantPast).timeIntervalSinceNow < -3600 })
 
             for (index, forum) in needUpdate.enumerated() {
-                storage.setState(forForum: forum.forumId, state: .waiting)
+                storage.setUpdationState(forForum: forum.id, to: .waiting)
                 queue.asyncAfter(deadline: .now().advanced(by: .seconds(5 * index))) { [weak self] in
-                    self?.updateForum(from: forum.forumId, modifiedAfter: forum.lastUpdate ?? .distantPast)
+                    self?.updateForum(from: forum.id, modifiedAfter: forum.lastUpdate ?? .distantPast)
                 }
             }
         }
@@ -47,7 +47,7 @@ extension ContentView
         private func updateForum(from forumId: ForumId, modifiedAfter earlyDate: Date) {
             guard jobs.index(forKey: forumId) == nil else { return }
             DispatchQueue.main.async {
-                self.storage.setState(forForum: forumId, state: .loading)
+                self.storage.setUpdationState(forForum: forumId, to: .loading)
             }
             let job = fetcher.fetchTopics(from: forumId, modifiedAfter: earlyDate)
                 .map(\.topics)
@@ -56,11 +56,10 @@ extension ContentView
                     defer {self?.jobs.removeValue(forKey: forumId)}
                     switch completion {
                     case .finished:
-                        self?.storage.setLastUpdate(forForum: forumId)
-                        self?.storage.setState(forForum: forumId, state: .success)
+                        self?.storage.setUpdationState(forForum: forumId, to: .success)
                     case .failure(let error):
                         print("\(error.localizedDescription)")
-                        self?.storage.setState(forForum: forumId, state: .failure)
+                        self?.storage.setUpdationState(forForum: forumId, to: .failure)
                     }
                 } receiveValue: { [weak self] topics in
                     var items = topics

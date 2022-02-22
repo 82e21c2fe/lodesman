@@ -28,8 +28,6 @@ extension Storage: ForumStorage
 {
     var forums: [Forum] {
         let request = MOForum.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \MOForum.section_, ascending: true),
-                                   NSSortDescriptor(keyPath: \MOForum.title_, ascending: true)]
         return (try? context.fetch(request)) ?? []
     }
 
@@ -52,20 +50,14 @@ extension Storage: ForumStorage
         try? context.save()
     }
 
-    func setLastUpdate(forForum forumId: ForumId) {
+    func setUpdationState(forForum forumId: ForumId, to: UpdationState) {
         objectWillChange.send()
         let result = MOForum.with(forumId: forumId, context: context)
         result.objectWillChange.send()
-        result.lastUpdate = Date()
-
-        try? context.save()
-    }
-
-    func setState(forForum forumId: ForumId, state: UpdationState?) {
-        objectWillChange.send()
-        let result = MOForum.with(forumId: forumId, context: context)
-        result.objectWillChange.send()
-        result.state = state
+        result.updationState = to
+        if to == .success {
+            try? context.save()
+        }
     }
 }
 
@@ -116,7 +108,7 @@ extension Storage: TopicStorage
     func topics(fromForums forumIds: Set<ForumId>, whereTitleContains text: String, sortedBy: TopicSortOrder) -> [Topic] {
         let request = MOTopic.fetchRequest()
 
-        var fmt = "forum.id IN %@"
+        var fmt = "forum.externalId IN %@"
         var args: [Any] = [forumIds.map(\.rawValue)]
         if !text.isEmpty {
             fmt += " AND title_ CONTAINS[CD] %@"
