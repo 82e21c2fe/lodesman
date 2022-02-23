@@ -7,25 +7,35 @@
 
 import SwiftUI
 import DomainPrimitives
+import ServerConnector
 
 
 
 struct ContentView: View
 {
-    @ObservedObject var model: ViewModel
+    @AppStorage(SettingsKey.hostname) private var hostname = ""
+
+    @State private var showForumCatalog = false
+    @State private var selectedForums = Set<ForumId>()
+    @State private var selectedTopics = Set<TopicId>()
+
+    let forumStore: ForumStore
+    let topicStore: TopicStore
 
     var body: some View {
         NavigationView {
-            SidebarView(storage: model.forumStore,
-                        selection: $model.selectedForums,
-                        showForumCatalog: $model.showForumCatalog)
-            TopicsView(storage: model.topicStore,
-                       forums: model.selectedForums,
-                       selection: $model.selectedTopics)
+            SidebarView(storage: forumStore,
+                        selection: $selectedForums,
+                        showForumCatalog: $showForumCatalog)
+            TopicsView(storage: topicStore,
+                       forums: selectedForums,
+                       selection: $selectedTopics)
         }
-        .sheet(isPresented: $model.showForumCatalog) {
-            ForumCatalogView(fetcher: model.fetcher) { items in
-                model.subscribe(to: items)
+        .sheet(isPresented: $showForumCatalog) {
+            if let fetcher = ServerConnection(hostname: hostname) {
+                ForumCatalogView(fetcher: fetcher) { items in
+                    forumStore.insert(forums: items)
+                }
             }
         }
     }

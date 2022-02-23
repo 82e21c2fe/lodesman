@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import ServerConnector
 
 
 struct SettingsKey {
@@ -20,18 +19,19 @@ struct SettingsKey {
 struct lodesmanApp: App
 {
     let persistent = Persistent.shared
-    let fetcher = ServerConnection(hostname: "localhost")!
+    let updationManager: UpdationManager
 
     init() {
         UserDefaults.standard.register(defaults: [
             SettingsKey.hostname: "",
             SettingsKey.updateInterval: 24.0
         ])
+        updationManager = UpdationManager(persistent: persistent)
     }
 
     var body: some Scene {
         WindowGroup {
-            ContentView(model: .init(persistent: persistent, fetcher: fetcher))
+            ContentView(forumStore: persistent.forumStore, topicStore: persistent.topicStore)
         }
         Settings {
             SettingsView()

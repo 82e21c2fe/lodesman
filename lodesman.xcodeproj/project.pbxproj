@@ -79,7 +79,7 @@
 		2A9D22B227BA3B7C009CFF96 /* PageIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9D22B127BA3B7C009CFF96 /* PageIndexTests.swift */; };
 		2A9D22B427BA4490009CFF96 /* ForumPage.Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9D22B327BA4490009CFF96 /* ForumPage.Header.swift */; };
 		2ABC1E1E27C62E7100302A11 /* ForumStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC1E1D27C62E7100302A11 /* ForumStore.swift */; };
-		2AC15F7827AACD6A000F1DCB /* Content.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F7727AACD6A000F1DCB /* Content.ViewModel.swift */; };
+		2ABC1E2027C637F700302A11 /* UpdationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC1E1F27C637F700302A11 /* UpdationManager.swift */; };
 		2AC15F8027AEC145000F1DCB /* ForumList.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F7F27AEC145000F1DCB /* ForumList.ViewModel.swift */; };
 		2AC15F8427B0147F000F1DCB /* AvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F8327B0147F000F1DCB /* AvailabilityView.swift */; };
 		2AC15F8827B01EA7000F1DCB /* AvailabilityViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F8727B01EA7000F1DCB /* AvailabilityViewModelTests.swift */; };
@@ -206,7 +206,7 @@
 		2A9D22B127BA3B7C009CFF96 /* PageIndexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndexTests.swift; sourceTree = "<group>"; };
 		2A9D22B327BA4490009CFF96 /* ForumPage.Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumPage.Header.swift; sourceTree = "<group>"; };
 		2ABC1E1D27C62E7100302A11 /* ForumStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumStore.swift; sourceTree = "<group>"; };
-		2AC15F7727AACD6A000F1DCB /* Content.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.ViewModel.swift; sourceTree = "<group>"; };
+		2ABC1E1F27C637F700302A11 /* UpdationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdationManager.swift; sourceTree = "<group>"; };
 		2AC15F7F27AEC145000F1DCB /* ForumList.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumList.ViewModel.swift; sourceTree = "<group>"; };
 		2AC15F8127B00E58000F1DCB /* Availability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Availability.swift; sourceTree = "<group>"; };
 		2AC15F8327B0147F000F1DCB /* AvailabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityView.swift; sourceTree = "<group>"; };
@@ -295,7 +295,6 @@
 			isa = PBXGroup;
 			children = (
 				2A7A8525279D3C83003579FF /* ContentView.swift */,
-				2AC15F7727AACD6A000F1DCB /* Content.ViewModel.swift */,
 				2A5B059527A40E3D00319826 /* SidebarView.swift */,
 				2A53706427A42DE8000ABBDA /* TopicsView.swift */,
 			);
@@ -387,6 +386,7 @@
 				2A786070279D5EA200532E1D /* Model */,
 				2A7B61A727A6C45300949123 /* Persistent */,
 				2A7A8523279D3C83003579FF /* lodesmanApp.swift */,
+				2ABC1E1F27C637F700302A11 /* UpdationManager.swift */,
 				2A7A8527279D3C84003579FF /* Assets.xcassets */,
 				2A7A852C279D3C84003579FF /* lodesman.entitlements */,
 				2A7A8529279D3C84003579FF /* Preview Content */,
@@ -724,7 +724,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A7A8526279D3C83003579FF /* ContentView.swift in Sources */,
-				2AC15F7827AACD6A000F1DCB /* Content.ViewModel.swift in Sources */,
 				2A7860BE279E998C00532E1D /* ForumCatalogView.swift in Sources */,
 				2A7B61B427A6C9AF00949123 /* TopicStore.swift in Sources */,
 				2A53706327A4292D000ABBDA /* TopicPinButton.swift in Sources */,
@@ -741,6 +740,7 @@
 				2ABC1E1E27C62E7100302A11 /* ForumStore.swift in Sources */,
 				2A7B61AA27A6C47B00949123 /* lodesman.xcdatamodeld in Sources */,
 				2A7860BA279E96B300532E1D /* ServerConnecting.swift in Sources */,
+				2ABC1E2027C637F700302A11 /* UpdationManager.swift in Sources */,
 				2A5B058F27A40C0400319826 /* ToggleSidebarButton.swift in Sources */,
 				2AD1FDF727A1B1C200EE7778 /* ContentSizeView.swift in Sources */,
 				2AC1DA8727BCDE8500872676 /* NetworkSettingsView.swift in Sources */,
