@@ -31,8 +31,7 @@ struct lodesmanApp: App
 
     var body: some Scene {
         WindowGroup {
-            ContentView(model: .init(storage: Storage(context: persistent.container.viewContext),
-                                     fetcher: fetcher))
+            ContentView(model: .init(persistent: persistent, fetcher: fetcher))
         }
         Settings {
             SettingsView()

@@ -20,7 +20,7 @@ extension TopicGroupRule
 }
 
 
-struct TopicsView<Storage: TopicStorage>: View
+struct TopicsView<Storage: TopicStoring>: View
 {
     @ObservedObject var storage: Storage
     let forums: Set<ForumId>

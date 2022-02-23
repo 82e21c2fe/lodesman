@@ -1,5 +1,5 @@
 //
-//  Storage.swift
+//  TopicStore.swift
 //  lodesman
 //
 //  Created by Dmitri Shuvalov on 30.01.2022.
@@ -11,60 +11,12 @@ import DomainPrimitives
 
 
 
-final class Storage: ObservableObject
+final class TopicStore: TopicStoring, ObservableObject
 {
-    private let context: NSManagedObjectContext
-
     init(context: NSManagedObjectContext) {
         self.context = context
     }
 
-
-}
-
-//MARK: - Adopt ForumStorage
-
-extension Storage: ForumStorage
-{
-    var forums: [MOForum] {
-        let request = MOForum.fetchRequest()
-        return (try? context.fetch(request)) ?? []
-    }
-
-    func insert(forums items: [ForumInfo]) {
-        objectWillChange.send()
-        for item in items {
-            let forum = MOForum.with(forumId: item.id, context: context)
-            forum.update(from: item)
-        }
-
-        try? context.save()
-    }
-
-    func remove(forums forumIds: Set<ForumId>) {
-        objectWillChange.send()
-        let result = MOForum.allWith(forumIds: forumIds, context: context)
-        result.forEach { context.delete($0) }
-
-        try? context.save()
-    }
-
-    func setUpdationState(forForum forumId: ForumId, to: UpdationState) {
-        objectWillChange.send()
-        let result = MOForum.with(forumId: forumId, context: context)
-        result.objectWillChange.send()
-        result.updationState = to
-        if to == .success {
-            try? context.save()
-        }
-    }
-}
-
-
-//MARK: - Adopt TopicStorage
-
-extension Storage: TopicStorage
-{
     func insert(topics items: [Topic], toForum forumId: ForumId) {
         objectWillChange.send()
         let forum = MOForum.with(forumId: forumId, context: context)
@@ -124,4 +76,6 @@ extension Storage: TopicStorage
 
         return (try? context.fetch(request)) ?? []
     }
+
+    private let context: NSManagedObjectContext
 }

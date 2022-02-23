@@ -10,7 +10,7 @@ import DomainPrimitives
 
 
 
-struct ForumUnsubscriptionButton<Storage: ForumStorage>: View
+struct ForumUnsubscriptionButton<Storage: ForumStoring>: View
 {
     let storage: Storage
     @Binding var selection: Set<ForumId>

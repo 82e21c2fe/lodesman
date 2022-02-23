@@ -15,6 +15,8 @@ struct Persistent
     static let shared = Persistent()
 
     let container: NSPersistentContainer
+    let forumStore: ForumStore
+    let topicStore: TopicStore
 
 
     init(inMemory: Bool = false) {
@@ -29,6 +31,9 @@ struct Persistent
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         }
+
+        forumStore = ForumStore(context: container.viewContext)
+        topicStore = TopicStore(context: container.viewContext)
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  TopicStorage.swift
+//  TopicStoring.swift
 //  lodesman
 //
 //  Created by Dmitri Shuvalov on 28.01.2022.
@@ -18,7 +18,7 @@ enum TopicSortOrder: CaseIterable, Identifiable
 }
 
 
-protocol TopicStorage: ObservableObject
+protocol TopicStoring: ObservableObject
 {
     func topic(withId topicId: TopicId) -> Topic?
     func topics(fromForums: Set<ForumId>, whereTitleContains text: String, sortedBy: TopicSortOrder) -> [Topic]
@@ -29,7 +29,7 @@ protocol TopicStorage: ObservableObject
 
 
 #if DEBUG
-final class TopicStorageStub: TopicStorage
+final class TopicStorageStub: TopicStoring
 {
     func topic(withId topicId: TopicId) -> Topic? {
         return TopicStub.preview.first

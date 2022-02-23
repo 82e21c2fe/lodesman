@@ -1,5 +1,5 @@
 //
-//  ForumStorage.swift
+//  ForumStoring.swift
 //  lodesman
 //
 //  Created by Dmitri Shuvalov on 28.01.2022.
@@ -17,7 +17,7 @@ struct ForumInfo
 }
 
 
-protocol ForumStorage: ObservableObject
+protocol ForumStoring: ObservableObject
 {
     associatedtype Item: Forum & ObservableObject & Identifiable
 
@@ -29,7 +29,7 @@ protocol ForumStorage: ObservableObject
 
 
 #if DEBUG
-final class ForumStorageStub: ForumStorage
+final class ForumStorageStub: ForumStoring
 {
     private(set) var forums: [ForumStub] = ForumStub.preview
 

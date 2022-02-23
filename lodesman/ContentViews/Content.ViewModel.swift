@@ -18,26 +18,28 @@ extension ContentView
         @Published var selectedForums = Set<ForumId>()
         @Published var selectedTopics = Set<TopicId>()
 
-        @ObservedObject var storage: Storage
+        let topicStore: TopicStore
+        let forumStore: ForumStore
         let fetcher: ServerConnecting
 
-        init(storage: Storage, fetcher: ServerConnecting) {
-            self.storage = storage
+        init(persistent: Persistent, fetcher: ServerConnecting) {
+            self.topicStore = persistent.topicStore
+            self.forumStore = persistent.forumStore
             self.fetcher = fetcher
         }
 
         //MARK: -
         func subscribe(to items: [ForumInfo]) {
-            storage.insert(forums: items)
+            forumStore.insert(forums: items)
             updateForums()
         }
 
         //MARK: -
         private func updateForums() {
-            let needUpdate = storage.forums.filter({ ($0.lastUpdate ?? .distantPast).timeIntervalSinceNow < -3600 })
+            let needUpdate = forumStore.forums.filter({ ($0.lastUpdate ?? .distantPast).timeIntervalSinceNow < -3600 })
 
             for (index, forum) in needUpdate.enumerated() {
-                storage.setUpdationState(forForum: forum.id, to: .waiting)
+                forumStore.setUpdationState(forForum: forum.id, to: .waiting)
                 queue.asyncAfter(deadline: .now().advanced(by: .seconds(5 * index))) { [weak self] in
                     self?.updateForum(from: forum.id, modifiedAfter: forum.lastUpdate ?? .distantPast)
                 }
@@ -47,7 +49,7 @@ extension ContentView
         private func updateForum(from forumId: ForumId, modifiedAfter earlyDate: Date) {
             guard jobs.index(forKey: forumId) == nil else { return }
             DispatchQueue.main.async {
-                self.storage.setUpdationState(forForum: forumId, to: .loading)
+                self.forumStore.setUpdationState(forForum: forumId, to: .loading)
             }
             let job = fetcher.fetchTopics(from: forumId, modifiedAfter: earlyDate)
                 .map(\.topics)
@@ -56,10 +58,10 @@ extension ContentView
                     defer {self?.jobs.removeValue(forKey: forumId)}
                     switch completion {
                     case .finished:
-                        self?.storage.setUpdationState(forForum: forumId, to: .success)
+                        self?.forumStore.setUpdationState(forForum: forumId, to: .success)
                     case .failure(let error):
                         print("\(error.localizedDescription)")
-                        self?.storage.setUpdationState(forForum: forumId, to: .failure)
+                        self?.forumStore.setUpdationState(forForum: forumId, to: .failure)
                     }
                 } receiveValue: { [weak self] topics in
                     var items = topics
@@ -67,8 +69,8 @@ extension ContentView
                     let normal = Array(items[..<index])
                     let consumed = Set(items[index...].map(\.topicId))
 
-                    self?.storage.insert(topics: normal, toForum: forumId)
-                    self?.storage.remove(topics: consumed)
+                    self?.topicStore.insert(topics: normal, toForum: forumId)
+                    self?.topicStore.remove(topics: consumed)
                 }
             jobs[forumId] = job
         }

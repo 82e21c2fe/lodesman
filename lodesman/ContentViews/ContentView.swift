@@ -16,10 +16,10 @@ struct ContentView: View
 
     var body: some View {
         NavigationView {
-            SidebarView(storage: model.storage,
+            SidebarView(storage: model.forumStore,
                         selection: $model.selectedForums,
                         showForumCatalog: $model.showForumCatalog)
-            TopicsView(storage: model.storage,
+            TopicsView(storage: model.topicStore,
                        forums: model.selectedForums,
                        selection: $model.selectedTopics)
         }

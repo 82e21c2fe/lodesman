@@ -10,7 +10,7 @@ import DomainPrimitives
 
 
 
-struct TopicPinButton<Storage: TopicStorage>: View
+struct TopicPinButton<Storage: TopicStoring>: View
 {
     let storage: Storage
     let selectedTopics: Set<TopicId>

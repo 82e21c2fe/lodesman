@@ -10,7 +10,7 @@ import DomainPrimitives
 
 
 
-struct SidebarView<Storage: ForumStorage>: View
+struct SidebarView<Storage: ForumStoring>: View
 {
     @ObservedObject var storage: Storage
     @Binding var selection: Set<ForumId>

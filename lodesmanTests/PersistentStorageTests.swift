@@ -56,13 +56,13 @@ class PersistentStorageTests: XCTestCase
     //MARK: - forum
     func testContainerWithoutForums() throws {
         let persistent = Persistent(inMemory: true)
-        let storage = Storage(context: persistent.container.viewContext)
+        let storage = persistent.forumStore
         XCTAssertTrue(storage.forums.isEmpty)
     }
 
     func testInsertForumsInContainer() throws {
         let persistent = Persistent(inMemory: true)
-        let storage = Storage(context: persistent.container.viewContext)
+        let storage = persistent.forumStore
         let forums: [ForumInfo] = [.fixture(id: 1, title: "beta"),
                                    .fixture(id: 2, title: "alpha")]
         storage.insert(forums: forums)
@@ -79,7 +79,7 @@ class PersistentStorageTests: XCTestCase
 
     func testUpdateForumsInContainer() throws {
         let persistent = Persistent(inMemory: true)
-        let storage = Storage(context: persistent.container.viewContext)
+        let storage = persistent.forumStore
         let forums: [ForumInfo] = [.fixture(id: 1, title: "beta"),
                                    .fixture(id: 2, title: "alpha")]
         storage.insert(forums: forums)
@@ -99,7 +99,7 @@ class PersistentStorageTests: XCTestCase
 
     func testRemoveForumsFromEmptyContainer() throws {
         let persistent = Persistent(inMemory: true)
-        let storage = Storage(context: persistent.container.viewContext)
+        let storage = persistent.forumStore
         XCTAssertTrue(storage.forums.isEmpty)
         storage.remove(forums: [5, 2])
         XCTAssertTrue(storage.forums.isEmpty)
@@ -107,7 +107,7 @@ class PersistentStorageTests: XCTestCase
 
     func testRemoveForumsFromContainer() throws {
         let persistent = Persistent(inMemory: true)
-        let storage = Storage(context: persistent.container.viewContext)
+        let storage = persistent.forumStore
         let forums: [ForumInfo] = [.fixture(id: 1, title: "beta"),
                                    .fixture(id: 2, title: "alpha"),
                                    .fixture(id: 5, title: "gamma"),
@@ -125,7 +125,7 @@ class PersistentStorageTests: XCTestCase
     //MARK: - topic
     func testInsertTopicWithTopicId() throws {
         let persistent = Persistent(inMemory: true)
-        let storage = Storage(context: persistent.container.viewContext)
+        let storage = persistent.topicStore
         let topic = TopicStub.fixture(topicId: 10)
         storage.insert(topics: [topic], toForum: 1)
         let result = try XCTUnwrap(storage.topic(withId:10))
@@ -134,7 +134,7 @@ class PersistentStorageTests: XCTestCase
 
     func testUpdateTopicWithSynopsisNotNil() throws {
         let persistent = Persistent(inMemory: true)
-        let storage = Storage(context: persistent.container.viewContext)
+        let storage = persistent.topicStore
         let topic = TopicStub.fixture(topicId: 10, synopsis: "test")
         storage.insert(topics: [topic], toForum: 1)
         let result = try XCTUnwrap(storage.topic(withId:10))
@@ -147,7 +147,7 @@ class PersistentStorageTests: XCTestCase
 
     func testUpdateTopicWithSynopsisNil() throws {
         let persistent = Persistent(inMemory: true)
-        let storage = Storage(context: persistent.container.viewContext)
+        let storage = persistent.topicStore
         let topic = TopicStub.fixture(topicId: 10, synopsis: "test")
         storage.insert(topics: [topic], toForum: 1)
         let result = try XCTUnwrap(storage.topic(withId:10))
