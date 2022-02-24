@@ -43,6 +43,7 @@ final class TopicStore: TopicStoring, ObservableObject
     }
 
     func togglePin(forTopics topicIds: Set<TopicId>) {
+        objectWillChange.send()
         let topics = MOTopic.allWith(topicIds: topicIds, context: context)
         for topic in topics {
             topic.objectWillChange.send()
