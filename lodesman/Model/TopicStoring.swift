@@ -10,7 +10,7 @@ import DomainPrimitives
 
 
 
-enum TopicSortOrder: CaseIterable, Identifiable
+enum TopicSortOrder: String, CaseIterable, Identifiable
 {
     case byLastUpdate, byTitle
 

@@ -22,13 +22,14 @@ extension TopicGroupRule
 
 struct TopicsView<Storage: TopicStoring>: View
 {
+    @SceneStorage("topicTitleFilterText") private var filterText: String = ""
+    @SceneStorage("topicSortOrder") private var sortOrder: TopicSortOrder = .byLastUpdate
+
     @ObservedObject var storage: Storage
     let forums: Set<ForumId>
     @Binding var selection: Set<TopicId>
 
-    @State private var filterText: String = ""
-    @State private var sortOrder: TopicSortOrder = .byLastUpdate
-
+    
     var body: some View {
         TopicListView(storage.topics(fromForums: forums, whereTitleContains: filterText, sortedBy: sortOrder),
                       groupRule: .init(sortOrder),
