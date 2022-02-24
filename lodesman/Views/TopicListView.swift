@@ -14,12 +14,12 @@ enum TopicGroupRule {
 }
 
 
-struct TopicListView: View
+struct TopicListView<Item: Topic & ObservableObject & Identifiable>: View
 {
-    private let viewModel: ViewModel
+    private let viewModel: ViewModel<Item>
     @Binding private var selected: Set<TopicId>
 
-    init(_ topics: [Topic], groupRule: TopicGroupRule, selection: Binding<Set<TopicId>>) {
+    init(_ topics: [Item], groupRule: TopicGroupRule, selection: Binding<Set<TopicId>>) {
         self.viewModel = .init(topics, groupRule: groupRule)
         self._selected = selection
     }
@@ -28,8 +28,8 @@ struct TopicListView: View
         List(selection: $selected) {
             ForEach(viewModel.section, id: \.caption) { section in
                 Section(header: Text(section.caption)) {
-                    ForEach(section.topics, id: \.topicId) { topic in
-                        TopicRow(topic)
+                    ForEach(section.topics) { topic in
+                        TopicRow(topic: topic)
                             .background(Color.gray.opacity(0.05))
                     }
                 }

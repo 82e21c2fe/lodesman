@@ -19,17 +19,7 @@ protocol ServerConnecting
 
 extension ServerConnection: ServerConnecting {}
 
-
-extension ForumPage.Topic: Topic, Attachment
-{
-    // Topic
-    var synopsis: String? { nil }
-    var attachment: Attachment? { self }
-    var pinned: Bool { false }
-    // Attachment
-    var link: URL? { nil }
-    var size: ContentSize { contentSize }
-}
+extension ForumPage.Topic: TopicInfo {}
 
 //MARK: - Adoption of `Catalog`
 

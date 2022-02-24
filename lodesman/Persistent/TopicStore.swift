@@ -17,7 +17,7 @@ final class TopicStore: TopicStoring, ObservableObject
         self.context = context
     }
 
-    func insert(topics items: [Topic], toForum forumId: ForumId) {
+    func insert(topics items: [TopicInfo], toForum forumId: ForumId) {
         objectWillChange.send()
         let forum = MOForum.with(forumId: forumId, context: context)
         forum.objectWillChange.send()
@@ -38,25 +38,28 @@ final class TopicStore: TopicStoring, ObservableObject
         try? context.save()
     }
 
-    func topic(withId topicId: TopicId) -> Topic? {
+    func topic(withId topicId: TopicId) -> MOTopic? {
         return MOTopic.with(topicId: topicId, context: context)
     }
 
     func togglePin(forTopics topicIds: Set<TopicId>) {
-        objectWillChange.send()
         let topics = MOTopic.allWith(topicIds: topicIds, context: context)
         for topic in topics {
+            topic.objectWillChange.send()
             topic.pinned.toggle()
         }
 
         try? context.save()
     }
 
-    func topics(withIds topicIds: Set<TopicId>) -> [Topic] {
+    func topics(withIds topicIds: Set<TopicId>) -> [MOTopic] {
         return MOTopic.allWith(topicIds: topicIds, context: context)
     }
 
-    func topics(fromForums forumIds: Set<ForumId>, whereTitleContains text: String, sortedBy: TopicSortOrder) -> [Topic] {
+    func topics(fromForums forumIds: Set<ForumId>,
+                whereTitleContains text: String,
+                sortedBy: TopicSortOrder) -> [MOTopic]
+    {
         let request = MOTopic.fetchRequest()
 
         var fmt = "forum.externalId IN %@"
@@ -66,13 +69,7 @@ final class TopicStore: TopicStoring, ObservableObject
             args.append(text as NSString)
         }
         request.predicate = NSPredicate(format: fmt, argumentArray: args)
-
-        var sortDescriptors = [NSSortDescriptor(keyPath: \MOTopic.pinned, ascending: false),
-                               NSSortDescriptor(keyPath: \MOTopic.title_, ascending: true)]
-        if sortedBy == .byLastUpdate {
-            sortDescriptors.insert(NSSortDescriptor(keyPath: \MOTopic.lastUpdate, ascending: false), at: 1)
-        }
-        request.sortDescriptors = sortDescriptors
+        request.sortDescriptors = MOTopic.sortDescriptors(sortedBy)
 
         return (try? context.fetch(request)) ?? []
     }

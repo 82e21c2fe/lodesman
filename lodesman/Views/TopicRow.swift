@@ -22,13 +22,9 @@ extension TopicStatus
 }
 
 
-struct TopicRow: View
+struct TopicRow<Item: Topic & ObservableObject & Identifiable>: View
 {
-    private let topic: Topic
-
-    init(_ topic: Topic) {
-        self.topic = topic
-    }
+    @ObservedObject var topic: Item
 
     var body: some View {
         HStack {
@@ -36,10 +32,8 @@ struct TopicRow: View
                 Text(topic.status.rawValue)
                     .foregroundColor(topic.status.color)
                     .font(.title3)
-                if let attachment = topic.attachment {
-                    ContentSizeView(attachment.size)
-                    AvailabilityView(attachment.availability)
-                }
+                ContentSizeView(topic.contentSize)
+                AvailabilityView(topic.availability)
             }
             .padding(.leading)
             .frame(width: 90)
@@ -67,18 +61,14 @@ struct TopicRow_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            TopicRow(TopicStub(status: .approved,
-                               title: TopicTitle(rawValue: longTitle)!,
-                               attachment: AttachmentStub(availability: 5),
-                               pinned: true))
+            TopicRow(topic: TopicStub(status: .approved,
+                                      title: TopicTitle(rawValue: longTitle)!,
+                                      availability: 5,
+                                      pinned: true))
 
-            TopicRow(TopicStub(status: .unknown,
-                               attachment: AttachmentStub(size: 0.00043, availability: 1)))
-
-            TopicRow(TopicStub(status: .duplicate,
-                               attachment: AttachmentStub(size: 0.5, availability: 3)))
-
-            TopicRow(TopicStub(status: .consumed))
+            TopicRow(topic: TopicStub(status: .unknown, contentSize: 0.00043, availability: 1))
+            TopicRow(topic: TopicStub(status: .duplicate, contentSize: 0.5, availability: 3))
+            TopicRow(topic: TopicStub(status: .consumed))
         }
         .frame(width: 400)
     }

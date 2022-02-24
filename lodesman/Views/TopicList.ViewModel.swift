@@ -10,11 +10,11 @@ import SwiftUI
 
 extension TopicListView
 {
-    struct ViewModel
+    struct ViewModel<Item: Topic & ObservableObject & Identifiable>
     {
-        let section: [(caption: String, topics: [Topic])]
+        let section: [(caption: String, topics: [Item])]
 
-        init(_ topics: [Topic], groupRule: TopicGroupRule) {
+        init(_ topics: [Item], groupRule: TopicGroupRule) {
             var items = topics
             let index = items.partition(by: { !$0.pinned })
             let pinned = items[..<index]

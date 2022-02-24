@@ -41,7 +41,6 @@
 		2A7B61AF27A6C49F00949123 /* MOForum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61AB27A6C49F00949123 /* MOForum.swift */; };
 		2A7B61B027A6C49F00949123 /* MOTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61AC27A6C49F00949123 /* MOTopic.swift */; };
 		2A7B61B127A6C49F00949123 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61AD27A6C49F00949123 /* Persistent.swift */; };
-		2A7B61B227A6C49F00949123 /* MOAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61AE27A6C49F00949123 /* MOAttachment.swift */; };
 		2A7B61B427A6C9AF00949123 /* TopicStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61B327A6C9AF00949123 /* TopicStore.swift */; };
 		2A7B61B627A6C9E600949123 /* PersistentStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7B61B527A6C9E600949123 /* PersistentStorageTests.swift */; };
 		2A9D225927B90235009CFF96 /* ForumId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC15F9127B10C95000F1DCB /* ForumId.swift */; };
@@ -189,7 +188,6 @@
 		2A7B61AB27A6C49F00949123 /* MOForum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOForum.swift; sourceTree = "<group>"; };
 		2A7B61AC27A6C49F00949123 /* MOTopic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOTopic.swift; sourceTree = "<group>"; };
 		2A7B61AD27A6C49F00949123 /* Persistent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistent.swift; sourceTree = "<group>"; };
-		2A7B61AE27A6C49F00949123 /* MOAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOAttachment.swift; sourceTree = "<group>"; };
 		2A7B61B327A6C9AF00949123 /* TopicStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicStore.swift; sourceTree = "<group>"; };
 		2A7B61B527A6C9E600949123 /* PersistentStorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStorageTests.swift; sourceTree = "<group>"; };
 		2A7B61B927A8346700949123 /* ForumPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumPage.swift; sourceTree = "<group>"; };
@@ -406,7 +404,6 @@
 			isa = PBXGroup;
 			children = (
 				2A7B61A827A6C47B00949123 /* lodesman.xcdatamodeld */,
-				2A7B61AE27A6C49F00949123 /* MOAttachment.swift */,
 				2A7B61AB27A6C49F00949123 /* MOForum.swift */,
 				2A7B61AC27A6C49F00949123 /* MOTopic.swift */,
 				2A7B61AD27A6C49F00949123 /* Persistent.swift */,
@@ -745,7 +742,6 @@
 				2AD1FDF727A1B1C200EE7778 /* ContentSizeView.swift in Sources */,
 				2AC1DA8727BCDE8500872676 /* NetworkSettingsView.swift in Sources */,
 				2AD1FDFB27A1B77000EE7778 /* AttributedTextView.swift in Sources */,
-				2A7B61B227A6C49F00949123 /* MOAttachment.swift in Sources */,
 				2A5B059127A40C6400319826 /* ForumSubscriptionButton.swift in Sources */,
 				2A5B059827A4222B00319826 /* TopicStoring.swift in Sources */,
 				2A53706127A427D8000ABBDA /* TopicSortOrderPicker.swift in Sources */,

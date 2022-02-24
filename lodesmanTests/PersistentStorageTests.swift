@@ -9,35 +9,32 @@ import XCTest
 import DomainPrimitives
 @testable import lodesman
 
-extension AttachmentStub
+
+struct TopicInfoStub: TopicInfo
 {
-    static func fixture(link: URL? = URL(string: "https://example.home.arpa/bigfile.dat")!,
-                        size: ContentSize = 12.5,
-                        availability: Availability = 3) -> AttachmentStub
-    {
-        return AttachmentStub(link: link,
-                              size: size,
-                              availability: availability)
-    }
+    var topicId: TopicId
+    var title: TopicTitle
+    var status: TopicStatus
+    var lastUpdate: Date
+    var contentSize: ContentSize
+    var availability: Availability
 }
 
-extension TopicStub
+extension TopicInfoStub
 {
     static func fixture(topicId: TopicId = 10,
-                        status: TopicStatus = .approved,
                         title: TopicTitle = "test",
-                        synopsis: String? = "synopsis",
-                        attachment: AttachmentStub? = .fixture(),
+                        status: TopicStatus = .approved,
                         lastUpdate: Date = Date(),
-                        pinned: Bool = false) -> TopicStub
+                        contentSize: ContentSize = 12.5,
+                        availability: Availability = 3) -> TopicInfoStub
     {
-        return TopicStub(topicId: topicId,
-                         status: status,
-                         title: title,
-                         synopsis: synopsis,
-                         attachment: attachment,
-                         lastUpdate: lastUpdate,
-                         pinned: pinned)
+        return TopicInfoStub(topicId: topicId,
+                             title: title,
+                             status: status,
+                             lastUpdate: lastUpdate,
+                             contentSize: contentSize,
+                             availability: availability)
     }
 }
 
@@ -126,35 +123,9 @@ class PersistentStorageTests: XCTestCase
     func testInsertTopicWithTopicId() throws {
         let persistent = Persistent(inMemory: true)
         let storage = persistent.topicStore
-        let topic = TopicStub.fixture(topicId: 10)
+        let topic = TopicInfoStub.fixture(topicId: 10)
         storage.insert(topics: [topic], toForum: 1)
         let result = try XCTUnwrap(storage.topic(withId:10))
-        XCTAssertEqual(result.topicId, 10)
-    }
-
-    func testUpdateTopicWithSynopsisNotNil() throws {
-        let persistent = Persistent(inMemory: true)
-        let storage = persistent.topicStore
-        let topic = TopicStub.fixture(topicId: 10, synopsis: "test")
-        storage.insert(topics: [topic], toForum: 1)
-        let result = try XCTUnwrap(storage.topic(withId:10))
-        XCTAssertEqual(result.synopsis, "test")
-        let secondTopic = TopicStub.fixture(topicId: 10, synopsis: "second")
-        storage.insert(topics: [secondTopic], toForum: 1)
-        let second = try XCTUnwrap(storage.topic(withId:10))
-        XCTAssertEqual(second.synopsis, "second")
-    }
-
-    func testUpdateTopicWithSynopsisNil() throws {
-        let persistent = Persistent(inMemory: true)
-        let storage = persistent.topicStore
-        let topic = TopicStub.fixture(topicId: 10, synopsis: "test")
-        storage.insert(topics: [topic], toForum: 1)
-        let result = try XCTUnwrap(storage.topic(withId:10))
-        XCTAssertEqual(result.synopsis, "test")
-        let secondTopic = TopicStub.fixture(topicId: 10, synopsis: nil)
-        storage.insert(topics: [secondTopic], toForum: 1)
-        let second = try XCTUnwrap(storage.topic(withId:10))
-        XCTAssertEqual(second.synopsis, "test")
+        XCTAssertEqual(result.id, 10)
     }
 }

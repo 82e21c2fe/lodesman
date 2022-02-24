@@ -10,57 +10,69 @@ import DomainPrimitives
 
 
 
-protocol Attachment
-{
-    var link: URL? { get }
-    var size: ContentSize { get }
-    var availability: Availability { get }
-}
-
-
 protocol Topic
 {
-    var topicId: TopicId { get }
+    var id: TopicId { get }
     var status: TopicStatus { get }
     var title: TopicTitle { get }
-    var synopsis: String? { get }
-    var attachment: Attachment? { get }
+    var contentSize: ContentSize { get }
+    var availability: Availability { get }
     var lastUpdate: Date { get }
+    var link: URL? { get }
+    var synopsis: String? { get }
     var pinned: Bool { get }
 }
 
 
 #if DEBUG
-struct AttachmentStub: Attachment
+final class TopicStub: Topic, ObservableObject, Identifiable
 {
-    var link: URL? = URL(string: "https://example.home.arpa/bigfile.dat")!
-    var size: ContentSize = 12.5
-    var availability: Availability = 5
-}
+    var id: TopicId
+    var status: TopicStatus
+    var title: TopicTitle
+    var contentSize: ContentSize
+    var availability: Availability
+    var lastUpdate: Date
+    var link: URL?
+    var synopsis: String?
+    var pinned: Bool
 
-struct TopicStub: Topic
-{
-    var topicId: TopicId = 1
-    var status: TopicStatus = .approved
-    var title: TopicTitle = "untitled"
-    var synopsis: String? = TopicStub.synopsis
-    var attachment: Attachment?
-    var lastUpdate: Date = Date()
-    var pinned: Bool = false
+    init(id: TopicId? = nil,
+         status: TopicStatus? = nil,
+         title: TopicTitle? = nil,
+         contentSize: ContentSize? = nil,
+         availability: Availability? = nil,
+         lastUpdate: Date? = nil,
+         link: URL? = URL(string: "https://example.home.arpa/bigfile.dat"),
+         synopsis: String? = TopicStub.synopsis,
+         pinned: Bool? = nil)
+    {
+        self.id = id ?? 1
+        self.status = status ?? .approved
+        self.title = title ?? "Untitled"
+        self.contentSize = contentSize ?? 12.5
+        self.availability = availability ?? 5
+        self.lastUpdate = lastUpdate ?? Date()
+        self.link = link
+        self.synopsis = synopsis
+        self.pinned = pinned ?? false
+    }
 
     static let preview = [
-        TopicStub(topicId: 3,
+        TopicStub(id: 3,
                   title: "first topic",
-                  attachment: AttachmentStub(size: 0.45, availability: 3),
+                  contentSize: 0.45,
+                  availability: 3,
                   lastUpdate: Date(timeIntervalSinceNow: -100_000)),
-        TopicStub(topicId: 2,
+        TopicStub(id: 2,
                   title: "second topic",
-                  synopsis: "",
-                  attachment: AttachmentStub(size: 0.00045, availability: 3),
+                  contentSize: 0.00045,
+                  availability: 3,
                   lastUpdate: Date(timeIntervalSinceNow: -50_000),
+                  synopsis: "",
                   pinned: true),
-        TopicStub(topicId: 7, status: .duplicate, attachment: AttachmentStub(availability: 1)),
-        TopicStub(topicId: 5, status: .consumed)
+        TopicStub(id: 7, status: .duplicate, availability: 1),
+        TopicStub(id: 5, status: .consumed)
     ]
 
     static let synopsis = """
