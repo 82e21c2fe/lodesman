@@ -103,11 +103,14 @@ extension TopicStatus
 
 fileprivate func getStatus(fromTopic node: XMLNode) -> TopicStatus?
 {
-    guard let text = try? node.nodes(forXPath: XPathName.status).first?.textValue
+    guard let status = try? node.nodes(forXPath: XPathName.status)
+            .compactMap(\.textValue)
+            .compactMap({ TopicStatus($0) })
+            .first
     else {
         return nil
     }
-    return TopicStatus(text)
+    return status
 }
 
 fileprivate func getId(fromTopic node: XMLNode) -> TopicId?

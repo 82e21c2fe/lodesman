@@ -42,6 +42,7 @@ extension ForumPage.Topic
         let test = """
             <tr data-topic_id="\(id)">
                 <td><div class="torTopic">
+                    <span class="tt-label">x</span>
                     <span class="tor-icon \(status)">x</span>
                     <a href="">\(title)</a>
                 </div></td>
