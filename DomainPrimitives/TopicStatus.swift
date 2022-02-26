@@ -15,4 +15,5 @@ public enum TopicStatus: String
     case approved
     case duplicate
     case consumed
+    case closed
 }

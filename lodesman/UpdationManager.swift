@@ -90,7 +90,7 @@ final class UpdationManager
                 }
             } receiveValue: { [weak self] topics in
                 var items = topics
-                let index = items.partition(by: { $0.status == .consumed })
+                let index = items.partition(by: { [.consumed, .closed].contains($0.status) })
                 let normal = Array(items[..<index])
                 let consumed = Set(items[index...].map(\.topicId))
 

@@ -18,6 +18,7 @@ extension TopicStatus
         case .approved:     return "tor-approved"
         case .duplicate:    return "tor-dup"
         case .consumed:     return "tor-consumed"
+        case .closed:       return "tor-closed"
         }
     }
 }
@@ -31,7 +32,8 @@ extension ForumPage.Topic
                            size: String = "79.1 GB",
                            date: String = "2019-12-15 20:33") -> XMLElement
     {
-        let info = status == TopicStatus.consumed.xmlCode ? " " : """
+        let info = status == TopicStatus.consumed.xmlCode
+                || status == TopicStatus.closed.xmlCode ? " " : """
                 <td><div>
                     <div><span class="seedmed"><b>\(seeds)</b></span></div>
                     <div class="small"><a href="">\(size)</a></div>
@@ -172,6 +174,17 @@ class ForumPageTopicTests: XCTestCase
         XCTAssertEqual(topic.contentSize, 0)
         XCTAssertEqual(topic.availability, 0)
     }
+
+    func testTopicWithStatusClosed() throws {
+        let status = TopicStatus.closed
+        let node = ForumPage.Topic.xmlFixture(id: "117", status: status.xmlCode)
+        let topic = try XCTUnwrap(ForumPage.Topic(node))
+        XCTAssertEqual(topic.status, status)
+        XCTAssertEqual(topic.topicId, 117)
+        XCTAssertEqual(topic.contentSize, 0)
+        XCTAssertEqual(topic.availability, 0)
+    }
+
 
     func testTopicWithStatusUnknown() throws {
         let status = TopicStatus.unknown

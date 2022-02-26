@@ -96,6 +96,7 @@ extension TopicStatus
         else if text.contains("tor-consumed")       { self = .consumed }
         else if text.contains("tor-not-approved")   { self = .unknown }
         else if text.contains("tor-need-edit")      { self = .unknown }
+        else if text.contains("tor-closed")         { self = .closed }
         else                                        { self = .unknown }
     }
 }

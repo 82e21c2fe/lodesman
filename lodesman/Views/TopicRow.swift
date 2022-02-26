@@ -17,6 +17,7 @@ extension TopicStatus
         case .approved:     return .green
         case .duplicate:    return .orange
         case .consumed:     return .gray
+        case .closed:       return .gray
         }
     }
 }
